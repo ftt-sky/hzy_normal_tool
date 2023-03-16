@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_config/hzy_normal_colors.dart';
 import 'package:hzy_normal_tool/hzy_normal_tools/hzy_normal_tools.dart';
-import 'hzy_text_style.dart';
+import '../hzy_normal_config/hzy_text_style.dart';
 
 /*
  * @description: 创建通用 item 带> 带下划线 带 点击事件
