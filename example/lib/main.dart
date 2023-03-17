@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-15 21:53:34
  * @LastEditors: TT
- * @LastEditTime: 2023-03-16 23:34:55
+ * @LastEditTime: 2023-03-17 22:20:25
  */
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_normal_widgets_index.dart';
@@ -47,77 +47,80 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.amber,
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const HzyBtnWidget(
-              height: 60,
-              margin: EdgeInsets.all(10),
-              text: "点我",
-            ),
-            const HzyBtnWidget(
-              height: 60,
-              margin: EdgeInsets.all(10),
-              btnLayoutType: BtnLayoutType.img,
-              imageWidget: Icon(
-                Icons.add,
-              ),
-            ),
-            const HzyBtnWidget(
-              height: 60,
-              margin: EdgeInsets.all(10),
-              btnLayoutType: BtnLayoutType.letfImg,
-              imageWidget: Icon(
-                Icons.add,
-              ),
-              text: "点我",
-            ),
-            const HzyBtnWidget(
-              height: 60,
-              margin: EdgeInsets.all(10),
-              btnLayoutType: BtnLayoutType.rightImg,
-              imageWidget: Icon(
-                Icons.add,
-              ),
-              text: "点我",
-            ),
-            const HzyBtnWidget(
-              height: 60,
-              margin: EdgeInsets.all(10),
-              btnLayoutType: BtnLayoutType.topImg,
-              imageWidget: Icon(
-                Icons.add,
-              ),
-              text: "点我",
-            ),
-            const HzyBtnWidget(
-              height: 60,
-              margin: EdgeInsets.all(10),
-              btnLayoutType: BtnLayoutType.bottomImg,
-              imageWidget: Icon(
-                Icons.add,
-              ),
-              text: "点我",
-            ),
-          ],
-        ),
-      ),
+      body: createListView(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
+  }
+
+  createListView() {
+    Widget body = Column(
+      children: [
+        const HzySureAndCannerBtnWidget(
+          cannerScale: 1,
+          sureScale: 4,
+        ),
+        const HzySureAndCannerBtnWidget(
+          layoutType: 2,
+          cannerScale: 1,
+          sureScale: 4,
+        ),
+        const HzySureAndCannerBtnWidget(
+          btnType: 1,
+          cannerScale: 1,
+          sureScale: 4,
+        ),
+        HzySureAndCannerBtnWidget(
+          cannerScale: 1,
+          sureScale: 4,
+          spaceWidget: Container(
+            width: 1,
+            height: 20,
+            margin: const EdgeInsets.symmetric(horizontal: 9),
+            decoration: const BoxDecoration(
+              color: Colors.red,
+            ),
+          ),
+        ),
+        HzySureAndCannerBtnWidget(
+          cannerScale: 4,
+          sureScale: 4,
+          spaceWidget: Container(
+            width: 1,
+            height: 20,
+            margin: const EdgeInsets.symmetric(horizontal: 9),
+            decoration: const BoxDecoration(
+              color: Colors.red,
+            ),
+          ),
+        ),
+        HzySureAndCannerBtnWidget(
+          layoutType: 2,
+          spaceWidget: Container(
+            width: 1,
+            height: 20,
+            margin: const EdgeInsets.symmetric(horizontal: 9),
+            decoration: const BoxDecoration(
+              color: Colors.red,
+            ),
+          ),
+        ),
+      ],
+    );
+    body = SingleChildScrollView(
+      child: body,
+    );
+    body = Container(
+      padding: const EdgeInsets.all(20),
+      child: body,
+    );
+    return body;
   }
 }
