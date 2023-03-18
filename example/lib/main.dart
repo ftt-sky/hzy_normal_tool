@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-15 21:53:34
  * @LastEditors: TT
- * @LastEditTime: 2023-03-17 22:20:25
+ * @LastEditTime: 2023-03-18 17:11:48
  */
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_normal_widgets_index.dart';
@@ -111,6 +111,30 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.red,
             ),
           ),
+        ),
+        HzyPopDiaLogWidget(
+          title: "温馨提示",
+          tapSure: () {
+            showPopDiaLogWidget(context: context);
+          },
+        ),
+        HzyPopDiaLogWidget(
+          title: "温馨提示",
+          tapSure: () {
+            showPopDiaLogWidget(
+              barrierDismissible: false,
+              context: context,
+              msg: """
+2023年，美国军舰数量锐减，自20世纪90年代以来
+，美国海军从建造大量军舰的高峰期开始走下坡路。
+而最近，美国军舰造舰出现了问题，连续几个月出现了多个事件，
+让人不禁想到了当年苏联的末路。
+但是，这种情况是否会给中国的发展提供启示呢？",
+""",
+            );
+          },
+          msg:
+              "2023年，美国军舰数量锐减，自20世纪90年代以来，美国海军从建造大量军舰的高峰期开始走下坡路。而最近，美国军舰造舰出现了问题，连续几个月出现了多个事件，让人不禁想到了当年苏联的末路。但是，这种情况是否会给中国的发展提供启示呢？",
         ),
       ],
     );

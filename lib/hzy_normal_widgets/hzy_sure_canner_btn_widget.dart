@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-17 21:58:03
  * @LastEditors: TT
- * @LastEditTime: 2023-03-17 22:09:14
+ * @LastEditTime: 2023-03-18 17:05:52
  */
 
 import 'package:flutter/material.dart';
@@ -76,10 +76,10 @@ class HzySureAndCannerBtnWidget extends StatelessWidget {
   final int? layoutType;
 
   /// 确认事件回调
-  final Function? tapSure;
+  final GestureTapCallback? tapSure;
 
   /// 取消事件回调
-  final Function? tapCanner;
+  final GestureTapCallback? tapCanner;
 
   /// 中间空隙视图
   final Widget? spaceWidget;
@@ -139,7 +139,7 @@ class HzySureAndCannerBtnWidget extends StatelessWidget {
       radius: radius,
       height: height,
       fontcolor: sureTitleColor,
-      tapCall: () => tapSure,
+      tapCall: tapSure,
     );
     body = layoutType == 2
         ? body
@@ -159,7 +159,7 @@ class HzySureAndCannerBtnWidget extends StatelessWidget {
       radius: radius,
       height: height,
       fontcolor: cannerTitleColor,
-      tapCall: () => tapCanner,
+      tapCall: tapCanner,
     );
     body = layoutType == 2
         ? body

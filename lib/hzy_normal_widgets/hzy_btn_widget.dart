@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
  * @LastEditors: TT
- * @LastEditTime: 2023-03-17 21:43:47
+ * @LastEditTime: 2023-03-18 17:07:40
  */
 
 import 'package:flutter/material.dart';
@@ -55,7 +55,7 @@ class HzyBtnWidget extends StatelessWidget {
 
   /// 按钮宽
   final double? width;
- 
+
   /// 按钮高
   final double? height;
   // ---------- 装饰器 ----------- //
@@ -65,8 +65,6 @@ class HzyBtnWidget extends StatelessWidget {
 
   /// 背景颜色
   final Color? bgColor;
-
-  
 
   /// 外边距
   final EdgeInsetsGeometry? margin;
@@ -108,7 +106,7 @@ class HzyBtnWidget extends StatelessWidget {
   final double? space;
 
   // ---------- 点击回调 -------- //
-  final Function? tapCall;
+  final GestureTapCallback? tapCall;
   @override
   Widget build(BuildContext context) {
     Widget tW = createTextWidget();
@@ -163,7 +161,7 @@ class HzyBtnWidget extends StatelessWidget {
     body = tapCall == null
         ? body
         : InkWell(
-            onTap: () => tapCall,
+            onTap: tapCall,
             child: body,
           );
     return body;

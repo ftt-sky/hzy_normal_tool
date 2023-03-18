@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hzy_normal_tool/hzy_normal_config/hzy_normal_colors.dart';
 import 'package:hzy_normal_tool/hzy_normal_tools/hzy_normal_tools.dart';
+import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_normal_widgets_index.dart';
 import '../hzy_normal_config/hzy_text_style.dart';
 
 /*
@@ -20,7 +22,6 @@ Widget createNormalItemWidget({
   String? title,
   String? messge,
   bool? isshowline = false,
-  Function(int)? ontap,
   MainAxisAlignment? mainAxisAlignment = MainAxisAlignment.spaceBetween,
   bool? isshownext = false,
   int type = 0,
@@ -38,6 +39,7 @@ Widget createNormalItemWidget({
   BoxDecoration? decoration,
   Color? backgroundColor,
   BorderRadius? borderRadius,
+  Function(int)? ontap,
 }) {
   return InkWell(
     onTap: () {
@@ -128,4 +130,212 @@ configChevronRight({
     size: size,
     color: color,
   );
+}
+
+/*
+ * @description: 默认弹框
+ * @param
+ * {
+ *    barrierDismissible: 点击屏幕关闭弹框
+ *    dialogBackColor: 弹框背景颜色
+ *    body: 自定义弹框内容
+ *    titleWidget: 自定义提示语Widget
+ *    title: 提示语
+ *    titleColor: 提示语字体颜色
+ *    titleFontSize: 提示语字体大小
+ *    msgWidget: 提示内容自定义Widget
+ *    msg: 显示内容
+ *    msgColor: 提示内容字体颜色
+ *    msgFontSize: 提示内容字体大小
+ *    btnWidget: 自定义底部按钮
+ *    padding: 弹框内边距
+ *    msgAndBtnSpace: 提示内容和底部按钮的间距
+ *    titleAndMsgSpace: 标题与提示内容间距
+ *    sureMsg: 确认按钮文字
+ *    sureBgColor: 确认按钮背景颜色
+ *    sureTitleColor: 确认按钮字体颜色
+ *    cannerMsg: 取消按钮文字
+ *    cannerBgColor: 取消按钮背景颜色
+ *    cannerTitleColor: 取消按钮字体颜色
+ *    tapSure: 确认按钮点击事件
+ *    tapCanner: 取消按钮点击事件
+ *    space: 两个按钮间距
+ *    layoutType: 1 左右 2 上下
+ *    btnType:  按钮样式 1 一个按钮 2 两个按钮
+ * }
+ * @return {*}
+ */
+showPopDiaLogWidget({
+  required BuildContext context,
+  Color? dialogBackColor,
+  bool barrierDismissible = true,
+  Widget? body,
+  Widget? titleWidget,
+  String? title,
+  Color? titleColor = HzyNormalColorS.col222222,
+  double? titleFontSize = 16,
+  Widget? msgWidget,
+  Color? msgColor = HzyNormalColorS.col333333,
+  double? msgFontSize = 14,
+  String? msg,
+  Widget? btnSWidget,
+  EdgeInsetsGeometry? padding = const EdgeInsets.all(20),
+  double? msgAndBtnSpace = 20,
+  double? titleAndMsgSpace = 10,
+  String? sureMsg = "确认",
+  Color? sureBgColor = HzyNormalColorS.col2865ff,
+  Color? sureTitleColor = Colors.white,
+  String? cannerMsg = "取消",
+  Color? cannerBgColor = HzyNormalColorS.colf5f5f5,
+  Color? cannerTitleColor = HzyNormalColorS.col999999,
+  Function? tapSure,
+  Function? tapCanner,
+  double? space = 20,
+  int? layoutType = 1,
+  int? btnType = 2,
+}) {
+  showDialog(
+    context: context,
+    barrierDismissible: barrierDismissible,
+    builder: (context) {
+      return Dialog(
+        backgroundColor: dialogBackColor,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              15,
+            ),
+          ),
+        ),
+        child: body ??
+            HzyPopDiaLogWidget(
+              bgColor: dialogBackColor,
+              titleWidget: titleWidget,
+              titleAndMsgSpace: titleAndMsgSpace,
+              title: title,
+              titleColor: titleColor,
+              titleFontSize: titleFontSize,
+              msg: msg,
+              msgAndBtnSpace: msgAndBtnSpace,
+              msgColor: msgColor,
+              msgFontSize: msgFontSize,
+              msgWidget: msgWidget,
+              btnSWidget: btnSWidget,
+              padding: padding,
+              space: space,
+              sureBgColor: sureBgColor,
+              sureMsg: sureMsg,
+              sureTitleColor: sureTitleColor,
+              cannerBgColor: cannerBgColor,
+              cannerMsg: cannerMsg,
+              cannerTitleColor: cannerTitleColor,
+              tapCanner: () {
+                Navigator.of(context).pop();
+                if (tapCanner != null) {
+                  tapCanner();
+                }
+              },
+              tapSure: () {
+                if (tapSure != null) {
+                  tapSure();
+                } else {
+                  Navigator.of(context).pop();
+                }
+              },
+              layoutType: layoutType,
+              btnType: btnType,
+            ),
+      );
+    },
+  );
+}
+
+/*
+ * @description: 创建通用tf
+ * @param {
+ *  
+ *  textEditingController 控制器
+ *  textAlign 文本位置
+ *  hintText 占位文案
+ *  fontSize 文本大小
+ *  keyboardType 键盘类型
+ *  maxLength 最大输入字数
+ *  obscureText 是否加密
+ *  isExpanded 是否铺满
+ *  focusNode 
+ *  hintStyle 占位字体样式
+ *  style 内容字体样式
+ *  textInputAction
+ *  contentPaddinge 内容内边距
+ *  maxLines 最大行数
+ *  minLines 最小行数
+ *  onChange 输入监听
+ *  ontap 点击事件
+ * }
+ * @return {*}
+ */
+Widget createNormaltfWidget({
+  required BuildContext context,
+  TextAlign textAlign = TextAlign.left,
+  TextEditingController? textEditingController,
+  String? hintText,
+  double? fontsize = 14,
+  TextInputType? keyboardType,
+  int? maxLength,
+  bool obscureText = false,
+  bool isExpanded = true,
+  FocusNode? focusNode,
+  TextStyle? hintStyle,
+  TextStyle? style,
+  TextInputAction? textInputAction,
+  EdgeInsetsGeometry? contentPadding,
+  int? maxLines = 1,
+  int? minLines,
+  Function(String value)? onChange,
+  Function? ontap,
+}) {
+  Widget body = TextField(
+    keyboardType: keyboardType,
+    textAlign: textAlign,
+    maxLines: maxLines,
+    minLines: minLines,
+    obscureText: obscureText,
+    inputFormatters: [LengthLimitingTextInputFormatter(maxLength)],
+    style: style ??
+        HzyTextStyle.fontMedium(
+          size: fontsize!,
+          color: HzyNormalColorS.col222222,
+        ),
+    controller: textEditingController,
+    focusNode: focusNode,
+    textInputAction: textInputAction ?? TextInputAction.go,
+    decoration: InputDecoration(
+      border: InputBorder.none,
+      counterText: "",
+      contentPadding: contentPadding,
+      hintText: hintText,
+      hintStyle: hintStyle ??
+          HzyTextStyle.fontMedium(
+            size: fontsize!,
+            color: HzyNormalColorS.colcccccc,
+          ),
+    ),
+    onTap: () {
+      if (ontap != null) {
+        ontap();
+      }
+    },
+    onChanged: (value) {
+      if (onChange != null) {
+        onChange(value);
+      }
+    },
+    onEditingComplete: () {
+      HzyNormalTools.keydissmiss(context);
+    },
+  );
+  if (isExpanded) {
+    body = Expanded(child: body);
+  }
+  return body;
 }

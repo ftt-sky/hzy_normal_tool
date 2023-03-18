@@ -12,3 +12,4 @@ export 'hzy_normal_widagets.dart';
 export 'hzy_appbar_generator.dart';
 export 'hzy_place_holder_widget.dart';
 export 'hzy_sure_canner_btn_widget.dart';
+export 'hzy_pop_dia_log_widget.dart';
