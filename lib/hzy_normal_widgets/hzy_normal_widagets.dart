@@ -339,3 +339,22 @@ Widget createNormaltfWidget({
   }
   return body;
 }
+
+/// 创建dialog
+configDiaLogWidget({
+  required Widget child,
+  Color? backgroundColor,
+  ShapeBorder? shape = const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(
+        15,
+      ),
+    ),
+  ),
+}) {
+  return Dialog(
+    backgroundColor: backgroundColor,
+    shape: shape,
+    child: child,
+  );
+}

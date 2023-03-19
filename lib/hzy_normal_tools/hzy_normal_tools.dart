@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -215,4 +218,73 @@ class HzyNormalTools {
   static getDataToClipboard() {
     return Clipboard.getData(Clipboard.kTextPlain);
   }
+}
+
+/// debug 环境下,日志输出
+dprint(Object? object) {
+  if (kIsWeb) {
+    if (kDebugMode) {
+      print(object.toString());
+    }
+  } else {
+    log(object.toString());
+  }
+}
+
+/// 信息太长,分段打印
+p(String msg) {
+  //因为String的length是字符数量不是字节数量所以为了防止中文字符过多，
+  //  把4*1024的MAX字节打印长度改为1000字符数
+  int maxStrLength = 1000;
+  //大于1000时
+  while (msg.length > maxStrLength) {
+    if (kDebugMode) {
+      print(msg.substring(0, maxStrLength));
+    }
+    msg = msg.substring(maxStrLength);
+  }
+  if (kDebugMode) {
+    //剩余部分
+    print(msg);
+  }
+}
+
+// 颜色 16进制
+Color getColorFromHex(String? hexColor) {
+  if (hexColor == "null" || hexColor == "" || hexColor == null) {
+    return Colors.black;
+  } else {
+    return Color(int.parse(hexColor.replaceFirst('#', '0xFF')));
+  }
+}
+
+/// 从下往上弹框
+configShowBottomSheet({
+  required BuildContext context,
+  required Widget child,
+  Color? backgroundColor = Colors.transparent,
+  ShapeBorder? shape = const ContinuousRectangleBorder(),
+}) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: backgroundColor,
+    shape: shape,
+    builder: (ct) => child,
+  );
+}
+
+
+
+showDig({
+  required BuildContext context,
+  required Widget widget,
+  bool barrierDismissible = true,
+  Color? barrierColor = Colors.black54,
+}) {
+  showDialog(
+    barrierColor: barrierColor,
+    barrierDismissible: barrierDismissible,
+    context: context,
+    builder: (context) => widget,
+  );
 }

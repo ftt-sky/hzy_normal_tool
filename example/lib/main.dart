@@ -4,9 +4,10 @@
  * @Author: TT
  * @Date: 2023-03-15 21:53:34
  * @LastEditors: TT
- * @LastEditTime: 2023-03-18 17:11:48
+ * @LastEditTime: 2023-03-19 17:35:00
  */
 import 'package:flutter/material.dart';
+import 'package:hzy_normal_tool/hzy_normal_tools/hzy_normal_tools.dart';
 import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_normal_widgets_index.dart';
 
 void main() {
@@ -135,6 +136,57 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           msg:
               "2023年，美国军舰数量锐减，自20世纪90年代以来，美国海军从建造大量军舰的高峰期开始走下坡路。而最近，美国军舰造舰出现了问题，连续几个月出现了多个事件，让人不禁想到了当年苏联的末路。但是，这种情况是否会给中国的发展提供启示呢？",
+        ),
+        HzyNormalItemWidget(
+          itemModel: HzyNormalItemModel(
+            leftMsg: "大大说的",
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              gradient: const LinearGradient(
+                colors: [
+                  Colors.red,
+                  Colors.orange,
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+          ),
+        ),
+        HzyNormalItemWidget(
+          itemModel: HzyNormalItemModel(
+            leftMsg: "大大说的",
+            rightType: 1,
+          ),
+        ),
+        HzyNormalItemWidget(
+          itemModel: HzyNormalItemModel(
+            leftMsg: "大大说的",
+            rightType: 1,
+            isShowLine: false,
+          ),
+        ),
+        HzyNormalItemWidget(
+          itemModel: HzyNormalItemModel(
+            leftMsg: "大大说的",
+            rightType: 3,
+            isShowLine: true,
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(
+                16,
+              ),
+            ),
+            lineColor: Colors.red,
+            lineHeight: 0.5,
+            isCanTap: true,
+            rightMsg: "右边",
+          ),
+          tapItem: ({index}) {
+            configShowBottomSheet(
+              context: context,
+              child: HzyPopSelectImageWidget(),
+            );
+          },
         ),
       ],
     );

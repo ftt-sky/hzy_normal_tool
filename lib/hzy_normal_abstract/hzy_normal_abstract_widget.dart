@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_place_holder_widget.dart';
 
@@ -166,7 +165,7 @@ abstract class HzyAbstractWidget {
       errorWidget: createEmptyWidget(),
       loadingWidget: createLoadingWidget(),
       isshowloading: configIsshowLoading(),
-      child: createBody(),
+      child: createBody(constraints: constraints),
     );
   }
 

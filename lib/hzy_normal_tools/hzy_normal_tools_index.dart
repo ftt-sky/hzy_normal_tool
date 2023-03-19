@@ -8,3 +8,4 @@
  */
 
 export 'hzy_normal_tools.dart';
+export 'hzy_navigator_tools.dart';
