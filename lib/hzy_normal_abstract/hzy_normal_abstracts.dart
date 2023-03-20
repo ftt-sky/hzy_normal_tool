@@ -17,6 +17,8 @@ abstract class HzyAbstracRefreshWidget {
 abstract class HzyAbstracRefreshMehod {
   int page = 1;
 
+  void configRefreshController();
+
   /// 结束刷新
   PageState endRefresh({
     required int type,
@@ -58,6 +60,17 @@ abstract class HzyAbstractAttribute {
 
   /// 添加右滑返回拦截器
   final bool isAddPopScope = false;
+}
+
+abstract class HzyAbstractNetWorkTs {
+  Map<String, dynamic>? configNetWorkParmas({
+    String? mark,
+  });
+
+  configNetWork({
+    required String mark,
+    int? type,
+  });
 }
 
 // 配置网络请求规范

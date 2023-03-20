@@ -1,11 +1,22 @@
-
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: TT
+ * @Date: 2023-03-16 17:37:21
+ * @LastEditors: TT
+ * @LastEditTime: 2023-03-20 11:36:15
+ */
 
 import 'package:flutter/cupertino.dart';
+import 'package:hzy_normal_tool/hzy_normal_base/hzy_normal_base_index.dart';
+import 'package:hzy_normal_tool/hzy_normal_config/page_state.dart';
 
 import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
 
 abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
     with HzyAbstractWidget, HzyAbstractAttribute {
+  HzyBaseVM? vm;
+
   /// 界面初始化完成
   @override
   void initState() {
@@ -30,13 +41,45 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
   }
 
   @override
+  bool configIsNeedLayout() {
+    return vm?.config.isNeedLayout ?? false;
+  }
+
+  @override
+  bool configIsshowLoading() {
+    return vm?.config.isShowLoading ?? false;
+  }
+
+  @override
+  configPageState() {
+    return vm?.config.pageState ?? PageState.initializedState;
+  }
+
+  @override
+  bool configOnWillPop() {
+    return vm?.config.isOnWillPop ?? true;
+  }
+
+  @override
   void dispose() {
     initDefaultDispose();
     super.dispose();
   }
 
+  void configReload() {}
+
   /// 界面进入
-  void initDefaultState() {}
+  void initDefaultState() {
+    cofigVM();
+  }
+
+  cofigVM() {
+    vm = HzyBaseVM(
+      reload: () {
+        configReload();
+      },
+    );
+  }
 
   /// 界面销毁
   void initDefaultDispose() {}

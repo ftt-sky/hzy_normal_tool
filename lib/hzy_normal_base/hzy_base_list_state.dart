@@ -4,12 +4,12 @@
  * @Author: TT
  * @Date: 2023-03-12 10:25:14
  * @LastEditors: TT
- * @LastEditTime: 2023-03-15 22:43:26
+ * @LastEditTime: 2023-03-20 11:51:41
  */
 
 import 'package:flutter/material.dart';
+import 'package:hzy_normal_tool/hzy_normal_base/hzy_normal_base_index.dart';
 import '../hzy_normal_abstract/hzy_normal_abstracts.dart';
-import 'hzy_base_state.dart';
 
 abstract class HzyBaseLisState<T extends StatefulWidget> extends HzyBaseState<T>
     with HzyAbstracRefreshWidget {
