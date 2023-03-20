@@ -4,18 +4,17 @@
  * @Author: TT
  * @Date: 2023-03-16 17:37:21
  * @LastEditors: TT
- * @LastEditTime: 2023-03-20 11:36:15
+ * @LastEditTime: 2023-03-20 23:26:08
  */
 
 import 'package:flutter/cupertino.dart';
 import 'package:hzy_normal_tool/hzy_normal_base/hzy_normal_base_index.dart';
-import 'package:hzy_normal_tool/hzy_normal_config/page_state.dart';
 
 import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
 
 abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
     with HzyAbstractWidget, HzyAbstractAttribute {
-  HzyBaseVM? vm;
+  HzyBaseVM vm = HzyBaseVM();
 
   /// 界面初始化完成
   @override
@@ -42,22 +41,22 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
 
   @override
   bool configIsNeedLayout() {
-    return vm?.config.isNeedLayout ?? false;
+    return vm.config.isNeedLayout;
   }
 
   @override
   bool configIsshowLoading() {
-    return vm?.config.isShowLoading ?? false;
+    return vm.config.isShowLoading;
   }
 
   @override
   configPageState() {
-    return vm?.config.pageState ?? PageState.initializedState;
+    return vm.config.pageState;
   }
 
   @override
   bool configOnWillPop() {
-    return vm?.config.isOnWillPop ?? true;
+    return vm.config.isOnWillPop ;
   }
 
   @override
@@ -66,19 +65,19 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
     super.dispose();
   }
 
-  void configReload() {}
+  void configReload() {
+    setState(() {});
+  }
 
   /// 界面进入
   void initDefaultState() {
-    cofigVM();
+    configVMReload();
   }
 
-  cofigVM() {
-    vm = HzyBaseVM(
-      reload: () {
-        configReload();
-      },
-    );
+  configVMReload() {
+    vm.reload = () {
+      configReload();
+    };
   }
 
   /// 界面销毁

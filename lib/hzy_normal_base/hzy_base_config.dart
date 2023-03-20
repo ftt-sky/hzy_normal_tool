@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-20 11:00:41
  * @LastEditors: TT
- * @LastEditTime: 2023-03-20 11:51:24
+ * @LastEditTime: 2023-03-20 23:32:06
  */
 
 import '../hzy_normal_abstract/hzy_normal_abstracts.dart';
@@ -18,13 +18,10 @@ class HzyBaseConfig {
 }
 
 class HzyBaseVM with HzyAbstractNetWorkTs, HzyAbstracRefreshMehod {
-  final Function() reload;
+  Function()? reload;
 
   HzyBaseConfig config = HzyBaseConfig();
 
-  HzyBaseVM({
-    required this.reload,
-  });
   @override
   Map<String, dynamic>? configNetWorkParmas({String? mark}) {
     return null;
@@ -41,6 +38,12 @@ class HzyBaseVM with HzyAbstractNetWorkTs, HzyAbstracRefreshMehod {
 
   @override
   void configRefreshController() {}
+
+  configReload() {
+    if (reload != null) {
+      reload!();
+    }
+  }
 
   @override
   PageState endRefresh({required int type, required PageState pageState}) {
