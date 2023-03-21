@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 17:37:21
  * @LastEditors: TT
- * @LastEditTime: 2023-03-20 23:26:08
+ * @LastEditTime: 2023-03-21 18:09:30
  */
 
 import 'package:flutter/cupertino.dart';
@@ -41,7 +41,7 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
 
   @override
   bool configIsNeedLayout() {
-    return vm.config.isNeedLayout;
+    return false;
   }
 
   @override
@@ -56,7 +56,7 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
 
   @override
   bool configOnWillPop() {
-    return vm.config.isOnWillPop ;
+    return true;
   }
 
   @override

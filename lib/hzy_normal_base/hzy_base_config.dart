@@ -12,8 +12,7 @@ import '/hzy_normal_config/page_state.dart';
 
 class HzyBaseConfig {
   bool isShowLoading = false;
-  bool isNeedLayout = false;
-  bool isOnWillPop = true;
+
   PageState pageState = PageState.initializedState;
 }
 
