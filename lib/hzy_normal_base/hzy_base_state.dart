@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 17:37:21
  * @LastEditors: TT
- * @LastEditTime: 2023-03-21 18:09:30
+ * @LastEditTime: 2023-03-21 20:53:42
  */
 
 import 'package:flutter/cupertino.dart';
@@ -15,6 +15,8 @@ import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
 abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
     with HzyAbstractWidget, HzyAbstractAttribute {
   HzyBaseVM vm = HzyBaseVM();
+
+  String? errMsg;
 
   /// 界面初始化完成
   @override

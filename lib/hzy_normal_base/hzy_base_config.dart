@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-20 11:00:41
  * @LastEditors: TT
- * @LastEditTime: 2023-03-20 23:32:06
+ * @LastEditTime: 2023-03-21 21:09:59
  */
 
 import '../hzy_normal_abstract/hzy_normal_abstracts.dart';
@@ -21,6 +21,7 @@ class HzyBaseVM with HzyAbstractNetWorkTs, HzyAbstracRefreshMehod {
 
   HzyBaseConfig config = HzyBaseConfig();
 
+  String? listMark;
   @override
   Map<String, dynamic>? configNetWorkParmas({String? mark}) {
     return null;
@@ -37,6 +38,11 @@ class HzyBaseVM with HzyAbstractNetWorkTs, HzyAbstracRefreshMehod {
 
   @override
   void configRefreshController() {}
+
+  tapCommonPlaceHolderBtn() {
+    config.pageState = PageState.initializedState;
+    configNetWork(mark: listMark ?? "", type: 3);
+  }
 
   configReload() {
     if (reload != null) {

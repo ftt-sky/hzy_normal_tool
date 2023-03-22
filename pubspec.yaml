@@ -1,7 +1,7 @@
 name: hzy_normal_tool
 description: A new Flutter package project.
 version: 0.0.1
-homepage: "http"
+homepage: "https://gitee.com/tengteng_fan/hzy_normal_tool.git"
 environment:
   sdk: '>=2.19.2 <3.0.0'
   flutter: ">=1.17.0"
