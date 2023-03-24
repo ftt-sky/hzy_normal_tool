@@ -2,30 +2,22 @@
  * @Descripttion: 
  * @version: 
  * @Author: TT
- * @Date: 2023-03-16 17:37:21
+ * @Date: 2023-03-24 21:12:39
  * @LastEditors: TT
- * @LastEditTime: 2023-03-24 22:29:58
+ * @LastEditTime: 2023-03-24 22:29:47
  */
 
-import 'package:flutter/cupertino.dart';
-import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
+import 'package:flutter/material.dart';
+import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_normal_abstract_index.dart';
 
-abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
+abstract class HzyBaseLess extends StatelessWidget
     with HzyAbstractWidget, HzyAbstractAttribute, HzyAbstractNetWork {
-  String? errMsg;
+  HzyBaseLess({super.key});
 
-  /// 界面初始化完成
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration.zero).then((value) {
-      initDefaultState();
-    });
-  }
-
+  /// =============== UI配置 =============== ///
   @override
   Widget build(BuildContext context) {
-    Widget widget = createScaffol(
+    Widget body = createScaffol(
       context: context,
       safeAreatop: safeAreatop,
       safeAreabottm: safeAreabottm,
@@ -33,13 +25,12 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
       title: title,
       backgroundColor: backgroundColor,
       navbackcolor: navbackcolor,
-      isneedScaffol: isneedScaffol,
       isAddPopScope: isAddPopScope,
+      isneedScaffol: isneedScaffol,
     );
-    return widget;
+    return body;
   }
 
-  /// =============== UI配置 =============== ///
   @override
   bool configIsNeedLayout() {
     return false;
@@ -59,18 +50,6 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
   bool configOnWillPop() {
     return true;
   }
-
-  @override
-  void dispose() {
-    initDefaultDispose();
-    super.dispose();
-  }
-
-  /// 界面进入
-  void initDefaultState() {}
-
-  /// 界面销毁
-  void initDefaultDispose() {}
 
   /// =============== 网络事件 =============== ///
   @override
