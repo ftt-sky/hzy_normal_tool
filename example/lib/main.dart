@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-15 21:53:34
  * @LastEditors: TT
- * @LastEditTime: 2023-03-19 17:35:00
+ * @LastEditTime: 2023-03-26 17:27:48
  */
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_tools/hzy_normal_tools.dart';
@@ -181,10 +181,12 @@ class _MyHomePageState extends State<MyHomePage> {
             isCanTap: true,
             rightMsg: "右边",
           ),
-          tapItem: ({index}) {
+          tapItem: ({currentIndex}) {
             configShowBottomSheet(
               context: context,
-              child: HzyPopSelectImageWidget(),
+              child: HzyPopSelectImageWidget(
+                tapCall: (index) {},
+              ),
             );
           },
         ),

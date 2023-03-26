@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
  * @LastEditors: TT
- * @LastEditTime: 2023-03-19 17:36:04
+ * @LastEditTime: 2023-03-26 17:28:01
  */
 
 import 'package:flutter/material.dart';
@@ -193,7 +193,7 @@ class HzyNormalItemWidget extends StatelessWidget {
 
   final HzyNormalItemModel itemModel;
 
-  final Function({int? index})? tapItem;
+  final Function({int? currentIndex})? tapItem;
 
   @override
   Widget build(BuildContext context) {
@@ -237,7 +237,7 @@ class HzyNormalItemWidget extends StatelessWidget {
             onTap: () {
               if (tapItem != null) {
                 tapItem!(
-                  index: itemModel.type,
+                  currentIndex: itemModel.type,
                 );
               } else if (itemModel.tapItemCall != null) {
                 itemModel.tapItemCall!(

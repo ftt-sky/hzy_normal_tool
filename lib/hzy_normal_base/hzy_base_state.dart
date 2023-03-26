@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 17:37:21
  * @LastEditors: TT
- * @LastEditTime: 2023-03-24 22:29:58
+ * @LastEditTime: 2023-03-26 16:03:45
  */
 
 import 'package:flutter/cupertino.dart';
@@ -13,6 +13,7 @@ import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
 abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
     with HzyAbstractWidget, HzyAbstractAttribute, HzyAbstractNetWork {
   String? errMsg;
+  late BuildContext? buildContext;
 
   /// 界面初始化完成
   @override
@@ -25,6 +26,7 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
 
   @override
   Widget build(BuildContext context) {
+    buildContext = context;
     Widget widget = createScaffol(
       context: context,
       safeAreatop: safeAreatop,

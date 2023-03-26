@@ -4,14 +4,16 @@
  * @Author: TT
  * @Date: 2023-03-19 17:15:23
  * @LastEditors: TT
- * @LastEditTime: 2023-03-19 19:43:51
+ * @LastEditTime: 2023-03-26 16:37:33
  */
 
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_tool.dart';
 
 class HzyPopSelectImageWidget extends StatelessWidget {
-  HzyPopSelectImageWidget({super.key});
+  HzyPopSelectImageWidget({super.key, required this.tapCall});
+
+  final Function(int index) tapCall;
 
   final List<HzyNormalItemModel> list = [
     HzyNormalItemModel(
@@ -51,6 +53,9 @@ class HzyPopSelectImageWidget extends StatelessWidget {
           list.length,
           (index) => HzyNormalItemWidget(
             itemModel: list[index],
+            tapItem: ({currentIndex}) {
+              tapCall(index);
+            },
           ),
         )
       ],
