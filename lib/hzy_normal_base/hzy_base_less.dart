@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-24 21:12:39
  * @LastEditors: TT
- * @LastEditTime: 2023-03-26 15:45:21
+ * @LastEditTime: 2023-03-27 16:16:34
  */
 
 import 'package:flutter/material.dart';
@@ -14,12 +14,9 @@ abstract class HzyBaseLess extends StatelessWidget
     with HzyAbstractWidget, HzyAbstractAttribute, HzyAbstractNetWork {
   HzyBaseLess({super.key});
 
-  late final BuildContext? buildContext;
-
   /// =============== UI配置 =============== ///
   @override
   Widget build(BuildContext context) {
-    buildContext = context;
     Widget body = createScaffol(
       context: context,
       safeAreatop: safeAreatop,

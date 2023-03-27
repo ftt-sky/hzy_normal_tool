@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-19 17:15:23
  * @LastEditors: TT
- * @LastEditTime: 2023-03-26 16:37:33
+ * @LastEditTime: 2023-03-27 16:29:20
  */
 
 import 'package:flutter/material.dart';
@@ -26,6 +26,11 @@ class HzyPopSelectImageWidget extends StatelessWidget {
         bottom: 15,
       ),
       isShowLine: true,
+      borderRadius: const BorderRadius.vertical(
+        top: Radius.circular(
+          12,
+        ),
+      ),
     ),
     HzyNormalItemModel(
       leftMsg: "相机",
