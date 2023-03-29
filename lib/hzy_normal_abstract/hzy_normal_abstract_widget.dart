@@ -119,8 +119,9 @@ abstract class HzyAbstractWidget {
 
   /// 创建Safe子视图
   createSafeAreaChildWidget() {
-    Widget body = createLayoutChileWidget();
-    body = configIsNeedLayout() ? createWebBodyWidget() : body;
+    Widget body = configIsNeedLayout()
+        ? createWebBodyWidget()
+        : createLayoutChileWidget();
     return body;
   }
 
@@ -151,7 +152,7 @@ abstract class HzyAbstractWidget {
     Widget body = Container(
       decoration: configBoxDecoreation(),
       width: constraints == null ? null : configSizeBoxWidth(constraints),
-      child: createCommBaseWidget(),
+      child: createCommBaseWidget(constraints: constraints),
     );
     return body;
   }
