@@ -1,4 +1,3 @@
-
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -141,6 +140,8 @@ class HzyNormalColorS {
   static const Color col202e7e = Color(0xff202e7e);
 
   static const Color colc4c4c4 = Color(0xffc4c4c4);
+
+  static const Color colf4f5f9 = Color(0xfff4f5f9);
 
   ///
   static const Color col7b7b7b = Color(0xff7b7b7b);
