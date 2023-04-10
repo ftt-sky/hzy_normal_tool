@@ -31,10 +31,7 @@ abstract class HzyAbstractWidget {
               safeAreabottm: safeAreabottm,
             ),
           )
-        : createSafeArea(
-            safeAreatop: safeAreatop,
-            safeAreabottm: safeAreabottm,
-          );
+        : createSafeAreaChildWidget();
     body = isAddPopScope!
         ? WillPopScope(
             child: body,
