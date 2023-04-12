@@ -59,12 +59,14 @@ abstract class HzyAbstractWidget {
         actions: createAppBaractions(),
         leading: createAppBarleading(),
         textColor: createAppBarTextColor(),
+        flexibleSpace: createFlexBleSpace(),
         leadingIconColor: createLeadingIconColor(),
         leadingCallback: () {
           configleadingCallbak(context);
         },
         titlew: createAppBarTitleWidget(),
         bottom: createAppBarBottomWidget(),
+        prferredheight: configPrferredheight(),
       );
     }
     return null;
@@ -95,9 +97,18 @@ abstract class HzyAbstractWidget {
     return null;
   }
 
+  Widget? createFlexBleSpace() {
+    return null;
+  }
+
   /// 创建AppBar bottom
   PreferredSizeWidget? createAppBarBottomWidget() {
     return null;
+  }
+  
+  /// 配置appBar 高度
+  double configPrferredheight() {
+    return -1;
   }
 
   // ----------- 创建Widget ----------- //

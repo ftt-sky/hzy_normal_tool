@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: TT
+ * @Date: 2023-03-15 22:15:22
+ * @LastEditors: TT
+ * @LastEditTime: 2023-04-12 21:58:32
+ */
 import 'package:flutter/material.dart';
 import '../hzy_normal_config/hzy_normal_colors.dart';
 
@@ -15,6 +23,7 @@ class HzyAppBarGenerator {
     Color? textColor,
     Color? leadingIconColor,
     Color? backgroundColor,
+    Widget? flexibleSpace,
     Function()? leadingCallback,
   }) {
     final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
@@ -30,6 +39,7 @@ class HzyAppBarGenerator {
         backgroundColor: backgroundColor,
         centerTitle: true,
         actions: actions,
+        flexibleSpace: flexibleSpace,
         leading: showback
             ? (canshowback
                 ? (leading ??
