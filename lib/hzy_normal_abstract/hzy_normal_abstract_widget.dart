@@ -105,7 +105,7 @@ abstract class HzyAbstractWidget {
   PreferredSizeWidget? createAppBarBottomWidget() {
     return null;
   }
-  
+
   /// 配置appBar 高度
   double configPrferredheight() {
     return -1;
@@ -127,15 +127,8 @@ abstract class HzyAbstractWidget {
 
   /// 创建Safe子视图
   createSafeAreaChildWidget() {
-    Widget body = configIsNeedLayout()
-        ? createWebBodyWidget()
-        : createLayoutChileWidget();
-    return body;
-  }
-
-  // 创建WEB根视图
-  createWebBodyWidget() {
-    Widget body = createLayoutWidget();
+    Widget body =
+        configIsNeedLayout() ? createLayoutWidget() : createLayoutChileWidget();
     return body;
   }
 
