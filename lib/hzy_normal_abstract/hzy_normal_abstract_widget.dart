@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_place_holder_widget.dart';
 
@@ -105,7 +106,7 @@ abstract class HzyAbstractWidget {
   PreferredSizeWidget? createAppBarBottomWidget() {
     return null;
   }
-  
+
   /// 配置appBar 高度
   double configPrferredheight() {
     return -1;
@@ -127,9 +128,8 @@ abstract class HzyAbstractWidget {
 
   /// 创建Safe子视图
   createSafeAreaChildWidget() {
-    Widget body = configIsNeedLayout()
-        ? createWebBodyWidget()
-        : createLayoutChileWidget();
+    Widget body =
+        configIsNeedLayout() ? createLayoutWidget() : createLayoutChileWidget();
     return body;
   }
 
