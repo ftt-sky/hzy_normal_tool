@@ -133,12 +133,6 @@ abstract class HzyAbstractWidget {
     return body;
   }
 
-  // 创建WEB根视图
-  createWebBodyWidget() {
-    Widget body = createLayoutWidget();
-    return body;
-  }
-
   // 创建layout根视图
   createLayoutWidget() {
     Widget body = LayoutBuilder(
