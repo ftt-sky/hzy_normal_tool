@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
  * @LastEditors: TT
- * @LastEditTime: 2023-03-26 17:28:01
+ * @LastEditTime: 2023-04-19 18:10:38
  */
 
 import 'package:flutter/material.dart';
@@ -143,6 +143,14 @@ class HzyNormalItemModel {
   /// item 下标
   int? type;
 
+  /// 路由
+  String? router;
+
+  /// 点击响应事件类型
+  /// 1 路由跳转
+  /// 2 其他触发事件
+  int? tapType;
+
   /// item 点击事件
   Function({int? index})? tapItemCall;
 
@@ -181,6 +189,8 @@ class HzyNormalItemModel {
     this.type,
     this.height = 10,
     this.isHintWidget = false,
+    this.router,
+    this.tapType = 1,
   });
 }
 

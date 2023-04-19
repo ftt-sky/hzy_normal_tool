@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
  * @LastEditors: TT
- * @LastEditTime: 2023-03-18 17:07:40
+ * @LastEditTime: 2023-04-19 15:48:13
  */
 
 import 'package:flutter/material.dart';
@@ -148,7 +148,7 @@ class HzyBtnWidget extends StatelessWidget {
       alignment: Alignment.center,
       decoration: decoration ??
           BoxDecoration(
-            color: bgColor ?? Colors.white,
+            color: bgColor,
             border: border,
             borderRadius: borderRadius ??
                 BorderRadius.circular(
@@ -164,6 +164,9 @@ class HzyBtnWidget extends StatelessWidget {
             onTap: tapCall,
             child: body,
           );
+    body = FittedBox(
+      child: body,
+    );
     return body;
   }
 

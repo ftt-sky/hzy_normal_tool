@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_place_holder_widget.dart';
 
@@ -170,11 +169,6 @@ abstract class HzyAbstractWidget {
       isshowloading: configIsshowLoading(),
       child: createBody(constraints: constraints),
     );
-  }
-
-  /// 创建头部
-  Widget createHeaderWidget() {
-    return Container();
   }
 
   /// 创建真实body

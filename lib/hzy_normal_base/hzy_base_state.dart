@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 17:37:21
  * @LastEditors: TT
- * @LastEditTime: 2023-04-13 11:24:40
+ * @LastEditTime: 2023-04-19 15:50:20
  */
 
 import 'package:flutter/cupertino.dart';
@@ -20,6 +20,9 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      interfaceRenderingCompleted();
+    });
     Future.delayed(Duration.zero).then((value) {
       initDefaultState();
     });
@@ -75,6 +78,9 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
 
   /// 界面进入
   void initDefaultState() {}
+
+  /// 界面渲染完成
+  void interfaceRenderingCompleted() {}
 
   /// 界面销毁
   void initDefaultDispose() {}
