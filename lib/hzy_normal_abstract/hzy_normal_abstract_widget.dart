@@ -64,6 +64,7 @@ abstract class HzyAbstractWidget {
         leadingCallback: () {
           configleadingCallbak(context);
         },
+        showback: configShowBack(),
         titlew: createAppBarTitleWidget(),
         bottom: createAppBarBottomWidget(),
         prferredheight: configPrferredheight(),
@@ -104,6 +105,10 @@ abstract class HzyAbstractWidget {
   /// 创建AppBar bottom
   PreferredSizeWidget? createAppBarBottomWidget() {
     return null;
+  }
+
+  bool configShowBack() {
+    return true;
   }
 
   /// 配置appBar 高度
