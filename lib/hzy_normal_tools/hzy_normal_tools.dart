@@ -177,7 +177,7 @@ class HzyNormalTools {
   // 通用间隔
   static Widget configlineSpace({
     double height = 0.5,
-    Color color = HzyNormalColorS.cole5e5e5,
+    Color color = HzyNormalColorS.cole3e3e3,
     EdgeInsetsGeometry? padding,
     EdgeInsetsGeometry? margin,
     Decoration? decoration,
@@ -272,8 +272,6 @@ configShowBottomSheet({
     builder: (ct) => child,
   );
 }
-
-
 
 showDig({
   required BuildContext context,

@@ -103,8 +103,8 @@ class HzyNormalColorS {
   static const Color cole9e9e9 = Color(0xFFE9E9E9);
   static const Color col0e0e0e = Color(0xff0e0e0e);
   // 微信分割线的颜色
-  static const Color cole5e5e5 = Color(0xffe5e5e5);
-  static const Color col191919 = Color(0xff191919);
+  static const Color cole3e3e3 = Color(0xffe3e3e3);
+  static const Color col252525 = Color(0xff212121);
 
   /// c3c3c3
   static const Color colc3c3c3 = Color(0xffc3c3c3);
