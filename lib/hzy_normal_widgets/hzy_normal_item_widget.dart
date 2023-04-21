@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
  * @LastEditors: TT
- * @LastEditTime: 2023-04-19 18:10:38
+ * @LastEditTime: 2023-04-21 17:17:11
  */
 
 import 'package:flutter/material.dart';
@@ -216,15 +216,14 @@ class HzyNormalItemWidget extends StatelessWidget {
         createRightWidget(),
       ],
     );
-    body = Container(
-      padding: itemModel.padding,
-      decoration: itemModel.decoration ??
-          BoxDecoration(
-            color: itemModel.backGroudColor,
-            borderRadius: itemModel.borderRadius,
-          ),
-      child: body,
-    );
+
+    body = itemModel.padding == null
+        ? body
+        : Padding(
+            padding: itemModel.padding!,
+            child: body,
+          );
+
     body = Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -241,7 +240,14 @@ class HzyNormalItemWidget extends StatelessWidget {
             : Container()
       ],
     );
-
+    body = Container(
+      decoration: itemModel.decoration ??
+          BoxDecoration(
+            color: itemModel.backGroudColor,
+            borderRadius: itemModel.borderRadius,
+          ),
+      child: body,
+    );
     body = itemModel.isCanTap == true
         ? InkWell(
             onTap: () {

@@ -85,24 +85,31 @@ class HzyNormalColorS {
   static const Color colfbf8f5 = Color(0xfffbf8f5);
   static const Color cold9d9d9 = Color(0xffd9d9d9);
 
+  /// 主题配对色
+
   static const Color colababab = Color(0xffababab);
   static const Color col505050 = Color(0xff505050);
 
   static const Color col171717 = Color(0xff171717);
   static const Color col272727 = Color(0xff272727);
-  // 苹果设置页背景色
+
+  /// 苹果设置页背景色
   static const Color colefedf3 = Color(0xffefedf3);
   static const Color col151515 = Color(0xff151515);
-  // 苹果分割线颜色
+
+  /// 苹果分割线颜色
   static const Color coldddddd = Color(0XffDDDDDD);
   static const Color col2d2d2d = Color(0xff2d2d2d);
-  // 纯白色
+
+  /// 纯白色
   static const Color colffffff = Color(0xffFFFFFF);
   static const Color col212121 = Color(0xff212121);
-  // 微信灰色背景
+
+  /// 微信灰色背景
   static const Color cole9e9e9 = Color(0xFFE9E9E9);
   static const Color col0e0e0e = Color(0xff0e0e0e);
-  // 微信分割线的颜色
+
+  /// 微信分割线的颜色
   static const Color cole3e3e3 = Color(0xffe3e3e3);
   static const Color col252525 = Color(0xff212121);
 
@@ -117,14 +124,16 @@ class HzyNormalColorS {
   /// 999 颜色
   static const Color col999999 = Color(0xFF999999);
   static const Color col7C7C7C = Color(0xff7C7C7C);
-  // 灰色 未选中字体颜色
+
+  /// 灰色 未选中字体颜色
   static const Color cola6a6a6 = Color(0xffa6a6a6);
   static const Color col4d4d4d = Color(0xff4d4d4d);
 
   /// 切换帐号的颜色
   static const Color col4c5679 = Color(0xff4c5679);
   static const Color col727a94 = Color(0xff727a94);
-  // 默认头像背景颜色
+
+  /// 默认头像背景颜色
   static const Color colededed = Color(0xffededed);
   // 默认头像颜色
   static const Color colbdbdbd = Color(0xffbdbdbd);
