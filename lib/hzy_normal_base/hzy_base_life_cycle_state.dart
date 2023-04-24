@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: TT
+ * @Date: 2023-04-22 10:11:48
+ * @LastEditors: TT
+ * @LastEditTime: 2023-04-24 11:25:23
+ */
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_tool.dart';
 
@@ -6,6 +14,9 @@ abstract class HzyBaseLifeCycleState<T extends StatefulWidget>
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      configWidgetRenderingCompleted();
+    });
     super.initState();
   }
 
@@ -19,6 +30,10 @@ abstract class HzyBaseLifeCycleState<T extends StatefulWidget>
   Future<bool> didPopRoute() {
     dprint("idPopRoute");
     return super.didPopRoute();
+  }
+
+  Future<bool> configWidgetRenderingCompleted() async {
+    return true;
   }
 
   @override
