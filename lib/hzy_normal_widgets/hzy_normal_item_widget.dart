@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
  * @LastEditors: TT
- * @LastEditTime: 2023-04-21 17:17:11
+ * @LastEditTime: 2023-04-30 19:47:18
  */
 
 import 'package:flutter/material.dart';
@@ -55,16 +55,23 @@ class HzyNormalItemModel {
 
   int? leftType;
   String? leftMsg;
-  // 左边 图片和文本的间距
+
+  /// 左边 图片和文本的间距
   double? leftSpace;
-  // 左边文字大小
+
+  /// 左边文字大小
   double? leftFontSize;
-  // 左边文字颜色
+
+  /// 左边文字颜色
   Color? leftMsgColor;
+
+  /// 左边图片视图
+  Widget? leftImageWidget;
 
   /// 左边图片路径
   String? leftImagePath;
-  // 左边图片大小
+
+  /// 左边图片大小
   Size? leftImageSize;
 
   /// 左边整个模块视图
@@ -162,6 +169,7 @@ class HzyNormalItemModel {
     this.isCanTap = true,
     this.isShowLine = false,
     this.leftFontSize = 16,
+    this.leftImageWidget,
     this.leftImagePath,
     this.leftImageSize = const Size(20, 20),
     this.leftMsg,
@@ -298,22 +306,27 @@ class HzyNormalItemWidget extends StatelessWidget {
 
     // 创建左边图片部分
     createLeftImageWidget() {
-      Widget body = Image.asset(
-        itemModel.leftImagePath ?? "",
-        width: itemModel.leftImageSize?.width,
-        height: itemModel.leftImageSize?.height,
-      );
-      body = (itemModel.leftType == 1) ? Container() : body;
+      Widget body = itemModel.leftImageWidget ??
+          Image.asset(
+            itemModel.leftImagePath ?? "",
+            width: itemModel.leftImageSize?.width,
+            height: itemModel.leftImageSize?.height,
+          );
+      body = (itemModel.leftType == 1 && itemModel.leftImageWidget == null)
+          ? Container()
+          : body;
       return body;
     }
 
     Widget body = Row(
       children: [
-        createLeftTextWidget(),
-        SizedBox(
-          width: itemModel.leftType == 3 ? 0 : itemModel.leftSpace,
-        ),
         createLeftImageWidget(),
+        SizedBox(
+          width: (itemModel.leftType == 3 && itemModel.leftImageWidget == null)
+              ? 0
+              : itemModel.leftSpace,
+        ),
+        createLeftTextWidget(),
       ],
     );
 
