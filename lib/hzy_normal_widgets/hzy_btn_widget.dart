@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
  * @LastEditors: TT
- * @LastEditTime: 2023-04-19 15:48:13
+ * @LastEditTime: 2023-05-03 14:13:34
  */
 
 import 'package:flutter/material.dart';
@@ -47,6 +47,7 @@ class HzyBtnWidget extends StatelessWidget {
     this.lineHeight,
     this.imageWidget,
     this.space = 4,
+    this.isFittedBox = true,
     this.tapCall,
   });
 
@@ -104,6 +105,9 @@ class HzyBtnWidget extends StatelessWidget {
 
   /// 间距
   final double? space;
+
+  /// 是否使用fitbox
+  final bool isFittedBox;
 
   // ---------- 点击回调 -------- //
   final GestureTapCallback? tapCall;
@@ -164,9 +168,11 @@ class HzyBtnWidget extends StatelessWidget {
             onTap: tapCall,
             child: body,
           );
-    body = FittedBox(
-      child: body,
-    );
+    body = isFittedBox
+        ? FittedBox(
+            child: body,
+          )
+        : body;
     return body;
   }
 
