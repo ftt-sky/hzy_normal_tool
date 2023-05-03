@@ -14,6 +14,9 @@ abstract class HzyBaseLess extends StatelessWidget
     with HzyAbstractWidget, HzyAbstractAttribute, HzyAbstractNetWork {
   HzyBaseLess({super.key});
 
+  @override
+  bool get safeAreabottm => false;
+
   /// =============== UI配置 =============== ///
   @override
   Widget build(BuildContext context) {

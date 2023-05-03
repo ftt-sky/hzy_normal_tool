@@ -61,6 +61,7 @@ abstract class HzyAbstractWidget {
         textColor: createAppBarTextColor(),
         flexibleSpace: createFlexBleSpace(),
         leadingIconColor: createLeadingIconColor(),
+        icon: createLeadIcon(),
         leadingCallback: () {
           configleadingCallbak(context);
         },
@@ -70,6 +71,11 @@ abstract class HzyAbstractWidget {
         prferredheight: configPrferredheight(),
       );
     }
+    return null;
+  }
+  
+  /// 配置返回按钮iconData
+  IconData? createLeadIcon() {
     return null;
   }
 

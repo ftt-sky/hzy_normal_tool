@@ -16,6 +16,7 @@ class HzyAppBarGenerator {
     List<Widget>? actions,
     Widget? titlew,
     Widget? leading,
+    IconData? icon,
     bool showback = true,
     double elevation = 0,
     double prferredheight = -1,
@@ -45,7 +46,7 @@ class HzyAppBarGenerator {
                 ? (leading ??
                     IconButton(
                       icon: Icon(
-                        Icons.arrow_back_ios,
+                        icon ?? Icons.arrow_back_ios,
                         color: leadingIconColor ?? HzyNormalColorS.col101010,
                       ),
                       onPressed:

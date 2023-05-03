@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
  * @LastEditors: TT
- * @LastEditTime: 2023-04-30 19:47:18
+ * @LastEditTime: 2023-05-03 22:06:57
  */
 
 import 'package:flutter/material.dart';
@@ -114,6 +114,9 @@ class HzyNormalItemModel {
   /// 整个item的paddint
   EdgeInsetsGeometry? padding;
 
+  /// 整个item的margin
+  EdgeInsetsGeometry? margin;
+
   /// 是否可以点击
   bool? isCanTap;
 
@@ -198,6 +201,7 @@ class HzyNormalItemModel {
     this.height = 10,
     this.isHintWidget = false,
     this.router,
+    this.margin,
     this.tapType = 1,
   });
 }
@@ -243,12 +247,13 @@ class HzyNormalItemWidget extends StatelessWidget {
                   height: itemModel.lineHeight ?? 0.5,
                   margin: itemModel.lineMargin,
                   padding: itemModel.linePadding,
-                  decoration: itemModel.decoration,
+                  decoration: itemModel.lineDecoration,
                 )
             : Container()
       ],
     );
     body = Container(
+      margin: itemModel.margin,
       decoration: itemModel.decoration ??
           BoxDecoration(
             color: itemModel.backGroudColor,
@@ -276,6 +281,7 @@ class HzyNormalItemWidget extends StatelessWidget {
     body = itemModel.isHintWidget == true
         ? Container(
             height: itemModel.height,
+            margin: itemModel.margin,
             decoration: itemModel.decoration ??
                 BoxDecoration(
                   color: itemModel.backGroudColor,
@@ -322,7 +328,7 @@ class HzyNormalItemWidget extends StatelessWidget {
       children: [
         createLeftImageWidget(),
         SizedBox(
-          width: (itemModel.leftType == 3 && itemModel.leftImageWidget == null)
+          width: (itemModel.leftType != 3 && itemModel.leftImageWidget == null)
               ? 0
               : itemModel.leftSpace,
         ),
