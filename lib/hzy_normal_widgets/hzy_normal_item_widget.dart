@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
  * @LastEditors: TT
- * @LastEditTime: 2023-05-04 14:59:31
+ * @LastEditTime: 2023-05-04 17:41:09
  */
 
 import 'package:flutter/material.dart';
@@ -54,6 +54,7 @@ class HzyNormalItemModel {
    */
 
   int? leftType;
+
   String? leftMsg;
 
   /// 左边 图片和文本的间距
@@ -219,14 +220,21 @@ class HzyNormalItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget body = Row(
-      mainAxisAlignment:
-          itemModel.mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        createLeftWidget(),
-        createRightWidget(),
-      ],
+    Widget body = LayoutBuilder(
+      builder: (p0, p1) {
+        Widget bt = Row(
+          mainAxisAlignment:
+              itemModel.mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            createLeftWidget(
+              maxW: p1.maxWidth,
+            ),
+            createRightWidget(),
+          ],
+        );
+        return bt;
+      },
     );
 
     body = itemModel.padding == null
@@ -293,7 +301,9 @@ class HzyNormalItemWidget extends StatelessWidget {
   }
 
   /// 左边视图
-  Widget createLeftWidget() {
+  Widget createLeftWidget({
+    required double maxW,
+  }) {
     // 创建左边文字部分
     createLeftTextWidget() {
       Widget body = Text(
@@ -304,12 +314,19 @@ class HzyNormalItemWidget extends StatelessWidget {
         ),
         overflow: TextOverflow.ellipsis,
       );
-
+      double maxWidth = maxW;
+      if (itemModel.rightType == 0 && itemModel.rightWidget == null) {
+        maxWidth = maxW;
+      } else {
+        maxWidth = maxW - 50;
+      }
       body = (itemModel.leftType == 1 || itemModel.leftType == 3)
           ? body
           : Container();
       body = Container(
-        constraints: BoxConstraints(maxWidth: 200),
+        constraints: BoxConstraints(
+          maxWidth: maxWidth,
+        ),
         child: body,
       );
 

@@ -73,7 +73,7 @@ abstract class HzyAbstractWidget {
     }
     return null;
   }
-  
+
   /// 配置返回按钮iconData
   IconData? createLeadIcon() {
     return null;
@@ -163,6 +163,7 @@ abstract class HzyAbstractWidget {
   }) {
     Widget body = Container(
       decoration: configBoxDecoreation(),
+      height: configLayoutHeight(),
       width: constraints == null ? null : configSizeBoxWidth(constraints),
       child: createCommBaseWidget(constraints: constraints),
     );
@@ -227,6 +228,10 @@ abstract class HzyAbstractWidget {
 
   /// 配置显示界面最大宽度
   configSizeBoxWidth(constraints) {}
+
+  double? configLayoutHeight() {
+    return null;
+  }
 
   /// 获取 屏幕 最大尺寸
   configlayoutbuiderConstraints(BoxConstraints constraints) {}
