@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
  * @LastEditors: TT
- * @LastEditTime: 2023-05-03 14:13:34
+ * @LastEditTime: 2023-05-04 22:22:33
  */
 
 import 'package:flutter/material.dart';
@@ -47,7 +47,7 @@ class HzyBtnWidget extends StatelessWidget {
     this.lineHeight,
     this.imageWidget,
     this.space = 4,
-    this.isFittedBox = true,
+    this.isFittedBox = false,
     this.tapCall,
   });
 
