@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
  * @LastEditors: TT
- * @LastEditTime: 2023-05-03 22:06:57
+ * @LastEditTime: 2023-05-04 14:59:31
  */
 
 import 'package:flutter/material.dart';
@@ -302,11 +302,17 @@ class HzyNormalItemWidget extends StatelessWidget {
           size: itemModel.leftFontSize,
           color: itemModel.leftMsgColor,
         ),
+        overflow: TextOverflow.ellipsis,
       );
 
       body = (itemModel.leftType == 1 || itemModel.leftType == 3)
           ? body
           : Container();
+      body = Container(
+        constraints: BoxConstraints(maxWidth: 200),
+        child: body,
+      );
+
       return body;
     }
 
@@ -350,8 +356,10 @@ class HzyNormalItemWidget extends StatelessWidget {
           size: itemModel.rightFontSize,
           color: itemModel.rightFontColor,
         ),
+        overflow: TextOverflow.ellipsis,
       );
       body = itemModel.rightType == 1 ? Container() : body;
+
       return body;
     }
 
@@ -382,8 +390,8 @@ class HzyNormalItemWidget extends StatelessWidget {
       ],
     );
     body = itemModel.rightWidget ?? body;
-
     body = itemModel.rightType == 0 ? Container() : body;
+
     return body;
   }
 }
