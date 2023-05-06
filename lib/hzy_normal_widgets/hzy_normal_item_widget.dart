@@ -320,15 +320,15 @@ class HzyNormalItemWidget extends StatelessWidget {
       } else {
         maxWidth = maxW - 50;
       }
-      body = (itemModel.leftType == 1 || itemModel.leftType == 3)
-          ? body
-          : Container();
       body = Container(
         constraints: BoxConstraints(
           maxWidth: maxWidth,
         ),
         child: body,
       );
+      body = (itemModel.leftType == 1 || itemModel.leftType == 3)
+          ? body
+          : Container();
 
       return body;
     }

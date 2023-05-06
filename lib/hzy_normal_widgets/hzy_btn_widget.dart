@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
  * @LastEditors: TT
- * @LastEditTime: 2023-05-04 22:22:33
+ * @LastEditTime: 2023-05-06 17:15:42
  */
 
 import 'package:flutter/material.dart';
@@ -156,7 +156,7 @@ class HzyBtnWidget extends StatelessWidget {
             border: border,
             borderRadius: borderRadius ??
                 BorderRadius.circular(
-                  (height ?? 0) / 2,
+                  radius ?? 0,
                 ),
           ),
       child: body,

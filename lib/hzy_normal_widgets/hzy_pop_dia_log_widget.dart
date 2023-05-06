@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-17 20:44:46
  * @LastEditors: TT
- * @LastEditTime: 2023-03-18 17:11:22
+ * @LastEditTime: 2023-05-06 17:41:35
  */
 
 import 'package:flutter/material.dart';
@@ -154,29 +154,34 @@ class HzyPopDiaLogWidget extends StatelessWidget {
 
   /// 创建标题
   createTitleWidget() {
-    Widget body = Text(
-      title ?? "",
-      style: HzyTextStyle.fontBold(
-        size: titleFontSize,
-        color: titleColor,
-      ),
-      textAlign: TextAlign.center,
-    );
+    Widget body = title == null
+        ? Container()
+        : Text(
+            title ?? "",
+            style: HzyTextStyle.fontBold(
+              size: titleFontSize,
+              color: titleColor,
+            ),
+            textAlign: TextAlign.center,
+          );
     body = titleWidget ?? body;
     return body;
   }
 
   /// 创建内容
   createMsgWidget() {
-    Widget body = Text(
-      msg ?? "",
-      style: HzyTextStyle.fontMedium(
-        size: msgFontSize,
-        color: msgColor,
-      ),
-      textAlign: TextAlign.center,
-    );
+    Widget body = msg == null
+        ? Container()
+        : Text(
+            msg ?? "",
+            style: HzyTextStyle.fontMedium(
+              size: msgFontSize,
+              color: msgColor,
+            ),
+            textAlign: TextAlign.center,
+          );
     body = msgWidget ?? body;
+
     return body;
   }
 
