@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-17 20:44:46
  * @LastEditors: TT
- * @LastEditTime: 2023-05-06 17:41:35
+ * @LastEditTime: 2023-05-07 08:58:42
  */
 
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class HzyPopDiaLogWidget extends StatelessWidget {
   const HzyPopDiaLogWidget({
     super.key,
     this.bgColor = Colors.white,
-    this.radius = 16,
+    this.radius = 20,
     this.titleWidget,
     this.title,
     this.titleColor = HzyNormalColorS.col222222,
@@ -196,6 +196,7 @@ class HzyPopDiaLogWidget extends StatelessWidget {
       cannerMsg: cannerMsg,
       cannerTitleColor: cannerTitleColor,
       tapCanner: tapCanner,
+      radius: radius,
       tapSure: tapSure,
       layoutType: layoutType,
       btnType: btnType,

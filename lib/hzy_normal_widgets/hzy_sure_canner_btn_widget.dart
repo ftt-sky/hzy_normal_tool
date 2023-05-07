@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-17 21:58:03
  * @LastEditors: TT
- * @LastEditTime: 2023-05-06 16:54:54
+ * @LastEditTime: 2023-05-07 08:53:33
  */
 
 import 'package:flutter/material.dart';
@@ -119,12 +119,12 @@ class HzySureAndCannerBtnWidget extends StatelessWidget {
       body = Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          cBtn,
+          sBtn,
           spaceWidget ??
               SizedBox(
                 height: btnType == 1 ? 0 : space,
               ),
-          sBtn,
+          cBtn,
         ],
       );
     }
