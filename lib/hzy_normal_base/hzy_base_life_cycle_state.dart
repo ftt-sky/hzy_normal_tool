@@ -4,26 +4,17 @@
  * @Author: TT
  * @Date: 2023-04-22 10:11:48
  * @LastEditors: TT
- * @LastEditTime: 2023-04-24 11:25:23
+ * @LastEditTime: 2023-05-11 14:54:06
  */
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_tool.dart';
 
 abstract class HzyBaseLifeCycleState<T extends StatefulWidget>
-    extends HzyBaseState<T> with WidgetsBindingObserver, HzyNormalLifeCycleAbs {
+    extends HzyBaseState<T> with HzyNormalLifeCycleAbs {
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      configWidgetRenderingCompleted();
-    });
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
   }
 
   @override
@@ -31,11 +22,6 @@ abstract class HzyBaseLifeCycleState<T extends StatefulWidget>
     dprint("idPopRoute");
     return super.didPopRoute();
   }
-
-  Future<bool> configWidgetRenderingCompleted() async {
-    return true;
-  }
-
   @override
   Future<bool> didPushRoute(String route) {
     dprint("didPushRoute");
@@ -45,7 +31,6 @@ abstract class HzyBaseLifeCycleState<T extends StatefulWidget>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-
     if (state == AppLifecycleState.resumed) {
       dprint("app进入前台");
       configAppLifeCycleResumed();

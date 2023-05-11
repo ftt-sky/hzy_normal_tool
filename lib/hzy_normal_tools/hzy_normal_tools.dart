@@ -283,6 +283,8 @@ showDig({
     barrierColor: barrierColor,
     barrierDismissible: barrierDismissible,
     context: context,
-    builder: (context) => widget,
+    builder: (context) {
+      return widget;
+    },
   );
 }

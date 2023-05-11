@@ -4,14 +4,18 @@
  * @Author: TT
  * @Date: 2023-03-16 17:37:21
  * @LastEditors: TT
- * @LastEditTime: 2023-04-19 15:50:20
+ * @LastEditTime: 2023-05-11 14:53:19
  */
 
 import 'package:flutter/cupertino.dart';
 import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
 
 abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
-    with HzyAbstractWidget, HzyAbstractAttribute, HzyAbstractNetWork {
+    with
+        HzyAbstractWidget,
+        HzyAbstractAttribute,
+        HzyAbstractNetWork,
+        WidgetsBindingObserver {
   String? errMsg;
   late BuildContext? buildContext;
   bool isNeedSuperBuild = false;
@@ -26,6 +30,12 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
     Future.delayed(Duration.zero).then((value) {
       initDefaultState();
     });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 
   @override
@@ -68,12 +78,6 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
   @override
   bool configOnWillPop() {
     return true;
-  }
-
-  @override
-  void dispose() {
-    initDefaultDispose();
-    super.dispose();
   }
 
   /// 界面进入

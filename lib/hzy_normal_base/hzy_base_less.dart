@@ -11,7 +11,11 @@ import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_normal_abstract_index.dart';
 
 abstract class HzyBaseLess extends StatelessWidget
-    with HzyAbstractWidget, HzyAbstractAttribute, HzyAbstractNetWork {
+    with
+        HzyAbstractWidget,
+        HzyAbstractAttribute,
+        HzyAbstractNetWork,
+        WidgetsBindingObserver {
   HzyBaseLess({super.key});
 
   @override
@@ -20,6 +24,9 @@ abstract class HzyBaseLess extends StatelessWidget
   /// =============== UI配置 =============== ///
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      interfaceRenderingCompleted();
+    });
     Widget body = createScaffol(
       context: context,
       safeAreatop: safeAreatop,
@@ -65,4 +72,6 @@ abstract class HzyBaseLess extends StatelessWidget
   getnetworkdata({int? type, Map<String, dynamic>? info}) async {}
 
   /// =============== 触发事件 =============== ///
+  /// 界面渲染完成
+  interfaceRenderingCompleted() {}
 }
