@@ -104,6 +104,7 @@ abstract class HzyAbstractWidget {
     return null;
   }
 
+  /// 配置导航栏背景
   Widget? createFlexBleSpace() {
     return null;
   }
@@ -113,6 +114,7 @@ abstract class HzyAbstractWidget {
     return null;
   }
 
+  /// 是否显示返回按钮
   bool configShowBack() {
     return true;
   }
