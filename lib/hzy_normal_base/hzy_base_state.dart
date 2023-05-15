@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 17:37:21
  * @LastEditors: TT
- * @LastEditTime: 2023-05-11 14:53:19
+ * @LastEditTime: 2023-05-15 22:45:07
  */
 
 import 'package:flutter/cupertino.dart';
@@ -16,9 +16,25 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
         HzyAbstractAttribute,
         HzyAbstractNetWork,
         WidgetsBindingObserver {
+  /// 失败描述语
   String? errMsg;
+
+  /// 当前content
   late BuildContext? buildContext;
-  bool isNeedSuperBuild = false;
+
+  /// 是否显示加载动画
+  bool isShowLoading = false;
+
+  /// 是否需要LayoutBuild
+  bool isNeedLayout = false;
+
+  /// 是否关闭底部安全区域
+  @override
+  bool get safeAreabottm => false;
+
+  /// 配置导航栏字体
+  @override
+  String? get title => configAppBarTitle();
 
   /// 界面初始化完成
   @override
@@ -60,24 +76,34 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
   }
 
   /// =============== UI配置 =============== ///
+
+  /// 是否使用LayoutBuild
   @override
   bool configIsNeedLayout() {
-    return false;
+    return isNeedLayout;
   }
 
+  /// 是否显示加载动画
   @override
   bool configIsshowLoading() {
-    return false;
+    return isShowLoading;
   }
 
+  /// 配置界面状态
   @override
   configPageState() {
     return pageState;
   }
 
+  /// 是否关闭右滑返回
   @override
   bool configOnWillPop() {
     return true;
+  }
+
+  /// 配置导航栏文字
+  String? configAppBarTitle() {
+    return null;
   }
 
   /// 界面进入
