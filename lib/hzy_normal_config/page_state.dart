@@ -1,4 +1,11 @@
-
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: TT
+ * @Date: 2023-03-16 17:37:21
+ * @LastEditors: TT
+ * @LastEditTime: 2023-05-20 11:41:42
+ */
 enum PageState {
   // 初始状态
   initializedState,
@@ -21,7 +28,10 @@ class BaseState {
   bool isok = true;
   String? msg;
   String? mark;
-  BaseState({this.pageState = PageState.noMoreDataState, this.msg});
+  BaseState({
+    this.pageState = PageState.initializedState,
+    this.msg,
+  });
 }
 
 class TTcommentTool {
