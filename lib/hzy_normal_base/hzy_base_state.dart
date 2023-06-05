@@ -39,13 +39,13 @@ abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
   /// 界面初始化完成
   @override
   void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      interfaceRenderingCompleted();
-    });
     Future.delayed(Duration.zero).then((value) {
       initDefaultState();
     });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      interfaceRenderingCompleted();
+    });
+    super.initState();
   }
 
   @override
