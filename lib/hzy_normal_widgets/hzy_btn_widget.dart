@@ -165,7 +165,9 @@ class HzyBtnWidget extends StatelessWidget {
     body = tapCall == null
         ? body
         : InkWell(
-            onTap: tapCall,
+            onTap: () {
+              tapCall!();
+            },
             child: body,
           );
     body = isFittedBox
