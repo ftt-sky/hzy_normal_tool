@@ -1,53 +1,104 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: TT
+ * @Date: 2023-06-25 08:46:03
+ * @LastEditors: TT
+ * @LastEditTime: 2023-06-25 09:57:10
+ */
+
 import 'package:flutter/material.dart';
-import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_place_holder_widget.dart';
 
 import '../hzy_normal_config/page_state.dart';
 import '../hzy_normal_widgets/hzy_appbar_generator.dart';
+import '../hzy_normal_widgets/hzy_place_holder_widget.dart';
 
-abstract class HzyAbstractWidget {
+class HzyNormalWidgetConfig {
+  bool? safeAreatop;
+  bool? safeAreabottm;
+  Color? backgroundColor;
+  Color? navbackcolor;
+  bool? resizeToAvoidBottomInset;
+  String? title;
+  bool? isneedScaffol = true;
+  bool? isAddPopScope = false;
+}
+
+abstract class HzyAbsWidget {
   Widget createBuild({
     required BuildContext context,
-    bool? safeAreatop,
-    bool? safeAreabottm,
-    Color? backgroundColor,
-    Color? navbackcolor,
-    bool? resizeToAvoidBottomInset,
-    String? title,
-    bool? isneedScaffol = true,
-    bool? isAddPopScope = false,
   }) {
-    Widget body = Container();
+    Widget body = createChildWidget(
+      context: context,
+    );
+    return body;
+  }
+
+  createChildWidget({
+    required BuildContext context,
+  }) {
+    Widget body = configIsNeedLayout()
+        ? createLayoutWidget()
+        : createLayoutChileWidget(
+            context: context,
+          );
+    return body;
+  }
+
+  // 创建layout根视图
+  createLayoutWidget() {
+    Widget body = LayoutBuilder(
+      builder: (context, constraints) {
+        configlayoutbuiderConstraints(constraints);
+        return createLayoutChileWidget(
+          context: context,
+        );
+      },
+    );
+    return body;
+  }
+
+  /// 创建可修改的根视图
+  createLayoutChileWidget({
+    BoxConstraints? constraints,
+    required BuildContext context,
+  }) {
+    Widget body = Container(
+      decoration: configBoxDecoreation(),
+      height: configLayoutHeight(),
+      width: constraints == null
+          ? null
+          : configSizeBoxWidth(
+              constraints,
+            ),
+      child: createScaffol(
+        context: context,
+        constraints: constraints,
+      ),
+    );
     return body;
   }
 
   /// 创建scaffoll
   Widget createScaffol({
     required BuildContext context,
-    bool? safeAreatop,
-    bool? safeAreabottm,
-    Color? backgroundColor,
-    Color? navbackcolor,
-    bool? resizeToAvoidBottomInset,
-    String? title,
-    bool? isneedScaffol = true,
-    bool? isAddPopScope = false,
+    BoxConstraints? constraints,
   }) {
-    Widget body = isneedScaffol!
+    Widget body = configIsNeedScaffol()
         ? Scaffold(
-            resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-            backgroundColor: backgroundColor,
+            resizeToAvoidBottomInset: configResizeToAvoidBottomInset(),
+            backgroundColor: configScallBackgroundColor(),
             appBar: createAppBar(
               context: context,
-              title: title,
-              navbackcolor: navbackcolor,
             ),
             body: createSafeArea(
-              safeAreatop: safeAreatop,
-              safeAreabottm: safeAreabottm,
+              constraints: constraints,
             ),
           )
-        : createSafeAreaChildWidget();
-    body = isAddPopScope!
+        : createSafeArea(
+            constraints: constraints,
+          );
+    body = configIsAddPopScope()
         ? WillPopScope(
             child: body,
             onWillPop: () async {
@@ -63,14 +114,12 @@ abstract class HzyAbstractWidget {
   /// 创建导航栏
   PreferredSize? createAppBar({
     required BuildContext context,
-    Color? navbackcolor,
-    String? title,
   }) {
-    if (title != null) {
+    if (configIsShowAppBar()) {
       return HzyAppBarGenerator.getNoramlAppBar(
         context: context,
-        title: title,
-        backgroundColor: navbackcolor,
+        title: createAppBarTitleStr() ?? "",
+        backgroundColor: createAppBarNavBackColor(),
         actions: createAppBaractions(),
         leading: createAppBarleading(),
         textColor: createAppBarTextColor(),
@@ -86,6 +135,21 @@ abstract class HzyAbstractWidget {
         prferredheight: configPrferredheight(),
       );
     }
+    return null;
+  }
+
+  /// 是否显示导航栏
+  bool configIsShowAppBar() {
+    return createAppBarTitleStr() == null;
+  }
+
+  /// 配置导航栏背景颜色
+  Color? createAppBarNavBackColor() {
+    return null;
+  }
+
+  /// 配置导航栏字体
+  String? createAppBarTitleStr() {
     return null;
   }
 
@@ -143,47 +207,41 @@ abstract class HzyAbstractWidget {
 
   /// 创建safe
   Widget createSafeArea({
-    bool? safeAreatop = true,
-    bool? safeAreabottm = true,
-  }) {
-    return SafeArea(
-      child: createSafeAreaChildWidget(),
-      top: safeAreatop!,
-      bottom: safeAreabottm!,
-    );
-  }
-
-  /// 创建Safe子视图
-  createSafeAreaChildWidget() {
-    Widget body =
-        configIsNeedLayout() ? createLayoutWidget() : createLayoutChileWidget();
-    return body;
-  }
-
-  // 创建layout根视图
-  createLayoutWidget() {
-    Widget body = LayoutBuilder(
-      builder: (context, constraints) {
-        configlayoutbuiderConstraints(constraints);
-        return createLayoutChileWidget(
-          constraints: constraints,
-        );
-      },
-    );
-    return body;
-  }
-
-  /// 创建可修改的根视图
-  ///
-  createLayoutChileWidget({
     BoxConstraints? constraints,
   }) {
-    Widget body = Container(
-      decoration: configBoxDecoreation(),
-      height: configLayoutHeight(),
-      width: constraints == null ? null : configSizeBoxWidth(constraints),
-      child: createCommBaseWidget(constraints: constraints),
+    return SafeArea(
+      top: configSafeAreaTop(),
+      bottom: configSafeAreaBottom(),
+      child: !configIsShowHeader()
+          ? createCommBaseWidget(
+              constraints: constraints,
+            )
+          : createCommColum(
+              constraints: constraints,
+            ),
     );
+  }
+
+  /// 分割
+  Widget createCommColum({
+    BoxConstraints? constraints,
+  }) {
+    Widget body = Column(
+      children: [
+        createCommHeader(),
+        Expanded(
+          child: createCommBaseWidget(
+            constraints: constraints,
+          ),
+        )
+      ],
+    );
+    return body;
+  }
+
+  /// 自定义头部
+  Widget createCommHeader() {
+    Widget body = Container();
     return body;
   }
 
@@ -218,12 +276,42 @@ abstract class HzyAbstractWidget {
 
   // ----------- 配置项 ---------- //
 
+  /// 是否需要脚手架
+  bool configIsNeedScaffol() {
+    return true;
+  }
+
+  /// 是否界面跟随键盘弹起而形变
+  bool? configResizeToAvoidBottomInset() {
+    return null;
+  }
+
+  /// 配置脚手架背景颜色
+  Color? configScallBackgroundColor() {
+    return null;
+  }
+
+  /// 是否打开顶部安全区域
+  bool configSafeAreaTop() {
+    return true;
+  }
+
+  /// 是否打开底部安全区域
+  bool configSafeAreaBottom() {
+    return true;
+  }
+
+  /// 是否关闭右滑返回
+  bool configIsAddPopScope() {
+    return false;
+  }
+
   /// 配置是否显示加载界面
   bool configIsshowLoading() {
     return false;
   }
 
-  /// 配置是否是WEB
+  /// 配置是否Layout
   bool configIsNeedLayout() {
     return false;
   }
@@ -231,6 +319,11 @@ abstract class HzyAbstractWidget {
   /// 配置是否可以右滑返回
   bool configOnWillPop() {
     return true;
+  }
+
+  /// 是否显示头部
+  bool configIsShowHeader() {
+    return false;
   }
 
   /// 配置界面状态
@@ -246,12 +339,10 @@ abstract class HzyAbstractWidget {
   /// 配置显示界面最大宽度
   configSizeBoxWidth(constraints) {}
 
+  /// 配置显示界面最大高度
   double? configLayoutHeight() {
     return null;
   }
-
-  /// 获取 屏幕 最大尺寸
-  configlayoutbuiderConstraints(BoxConstraints constraints) {}
 
   // -------------- 点击事件 ------------- //
   /// 点击通用返回按钮点击事件
@@ -260,6 +351,11 @@ abstract class HzyAbstractWidget {
   ) {
     configgoback(context);
   }
+
+  /// 获取 屏幕 最大尺寸
+  configlayoutbuiderConstraints(
+    BoxConstraints constraints,
+  ) {}
 
   /// 执行返回界面
   configgoback(
