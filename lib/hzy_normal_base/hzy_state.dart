@@ -4,14 +4,13 @@
  * @Author: TT
  * @Date: 2023-06-25 09:51:56
  * @LastEditors: TT
- * @LastEditTime: 2023-06-25 09:52:58
+ * @LastEditTime: 2023-06-26 11:01:10
  */
 
 import 'package:flutter/material.dart';
+import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_abs_attribute.dart';
 import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_abs_widget.dart';
-
-import '../hzy_normal_abstract/hzy_abs_attribute.dart';
-import '../hzy_normal_abstract/hzy_normal_abstracts.dart';
+import 'package:hzy_normal_tool/hzy_normal_tool.dart';
 
 abstract class HzyState<T extends StatefulWidget> extends State<T>
     with
@@ -24,6 +23,8 @@ abstract class HzyState<T extends StatefulWidget> extends State<T>
 
   /// 当前content
   late BuildContext? buildContext;
+  bool isShowLoading = false;
+  PageState pageState = PageState.initializedState;
 
   /// 界面初始化完成
   @override
@@ -50,16 +51,60 @@ abstract class HzyState<T extends StatefulWidget> extends State<T>
 
   Widget configBuild(BuildContext context) {
     buildContext = context;
-
-    return widget;
+    Widget body = createBuild(
+      context: context,
+    );
+    return body;
   }
 
   /// =============== UI配置 =============== ///
 
-  /// 是否使用LayoutBuild
+  /// 是否使用Layout
   @override
   bool configIsNeedLayout() {
     return isNeedLayout;
+  }
+
+  /// 创建根视图装饰器
+  @override
+  configBoxDecoreation() {
+    return null;
+  }
+
+  /// 是否使用脚手架
+  @override
+  bool configIsNeedScaffol() {
+    return isNeedScaffol;
+  }
+
+  ///是否形变
+  @override
+  bool? configResizeToAvoidBottomInset() {
+    return resizeToAvoidBottomInset;
+  }
+
+  /// 脚手架背景颜色
+  @override
+  Color? configScallBackgroundColor() {
+    return scallBackGroundColor;
+  }
+
+  /// 是否关闭右滑返回
+  @override
+  bool configIsAddPopScope() {
+    return isAddPopScope;
+  }
+
+  /// 是否关闭顶部安全区域
+  @override
+  bool configSafeAreaTop() {
+    return safeAreatop;
+  }
+
+  /// 是否关闭底部安全区域
+  @override
+  bool configSafeAreaBottom() {
+    return safeAreabottm;
   }
 
   /// 是否显示加载动画
@@ -80,29 +125,49 @@ abstract class HzyState<T extends StatefulWidget> extends State<T>
     return true;
   }
 
-  /// 配置导航栏文字
-  String? configAppBarTitle() {
-    return null;
+  @override
+  bool configIsShowAppBar() {
+    return isShowAppBar;
   }
 
+  /// 配置导航栏标题
+  @override
+  String? createAppBarTitleStr() {
+    return appBarTitle;
+  }
+
+  /// 配置导航栏背景颜色
+  @override
+  Color? createAppBarNavBackColor() {
+    return navBackgroudColor;
+  }
+
+  /// ========== 界面生命周期 ========== ///
   /// 界面进入
   void initDefaultState() {}
 
   /// 界面渲染完成
-  void interfaceRenderingCompleted() {}
+  void interfaceRenderingCompleted() {
+    dprint("界面渲染完成");
+  }
 
   /// 界面销毁
   void initDefaultDispose() {}
 
   /// =============== 网络事件 =============== ///
   @override
-  Map<String, dynamic>? configNetWorkParmas(
-      {String? mark, Map<String, dynamic>? params}) {
+  Map<String, dynamic>? configNetWorkParmas({
+    String? mark,
+    Map<String, dynamic>? params,
+  }) {
     return null;
   }
 
   @override
-  getnetworkdata({int? type, Map<String, dynamic>? info}) async {}
+  getnetworkdata({
+    int? type,
+    Map<String, dynamic>? info,
+  }) async {}
 
   /// =============== 触发事件 =============== ///
 }

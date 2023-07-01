@@ -4,25 +4,15 @@
  * @Author: TT
  * @Date: 2023-06-25 08:46:03
  * @LastEditors: TT
- * @LastEditTime: 2023-06-25 09:57:10
+ * @LastEditTime: 2023-06-29 10:13:11
  */
 
 import 'package:flutter/material.dart';
 
 import '../hzy_normal_config/page_state.dart';
+import '../hzy_normal_tools/hzy_normal_tools.dart';
 import '../hzy_normal_widgets/hzy_appbar_generator.dart';
 import '../hzy_normal_widgets/hzy_place_holder_widget.dart';
-
-class HzyNormalWidgetConfig {
-  bool? safeAreatop;
-  bool? safeAreabottm;
-  Color? backgroundColor;
-  Color? navbackcolor;
-  bool? resizeToAvoidBottomInset;
-  String? title;
-  bool? isneedScaffol = true;
-  bool? isAddPopScope = false;
-}
 
 abstract class HzyAbsWidget {
   Widget createBuild({
@@ -52,6 +42,7 @@ abstract class HzyAbsWidget {
         configlayoutbuiderConstraints(constraints);
         return createLayoutChileWidget(
           context: context,
+          constraints: constraints,
         );
       },
     );
@@ -76,6 +67,7 @@ abstract class HzyAbsWidget {
         constraints: constraints,
       ),
     );
+
     return body;
   }
 
@@ -84,7 +76,9 @@ abstract class HzyAbsWidget {
     required BuildContext context,
     BoxConstraints? constraints,
   }) {
-    Widget body = configIsNeedScaffol()
+    bool isNeed = configIsNeedScaffol();
+    dprint(isNeed);
+    Widget body = isNeed
         ? Scaffold(
             resizeToAvoidBottomInset: configResizeToAvoidBottomInset(),
             backgroundColor: configScallBackgroundColor(),
@@ -227,14 +221,16 @@ abstract class HzyAbsWidget {
     BoxConstraints? constraints,
   }) {
     Widget body = Column(
+      mainAxisSize: configIsNeedScaffol() ? MainAxisSize.max : MainAxisSize.min,
       children: [
         createCommHeader(),
-        Expanded(
-          child: createCommBaseWidget(
-            constraints: constraints,
-          ),
-        )
+        createCommBaseWidget(
+          constraints: constraints,
+        ),
       ],
+    );
+    body = createCommBaseWidget(
+      constraints: constraints,
     );
     return body;
   }

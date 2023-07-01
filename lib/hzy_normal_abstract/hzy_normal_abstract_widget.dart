@@ -5,21 +5,6 @@ import '../hzy_normal_config/page_state.dart';
 import '../hzy_normal_widgets/hzy_appbar_generator.dart';
 
 abstract class HzyAbstractWidget {
-  Widget createBuild({
-    required BuildContext context,
-    bool? safeAreatop,
-    bool? safeAreabottm,
-    Color? backgroundColor,
-    Color? navbackcolor,
-    bool? resizeToAvoidBottomInset,
-    String? title,
-    bool? isneedScaffol = true,
-    bool? isAddPopScope = false,
-  }) {
-    Widget body = Container();
-    return body;
-  }
-
   /// 创建scaffoll
   Widget createScaffol({
     required BuildContext context,

@@ -290,11 +290,13 @@ Widget createNormaltfWidget({
   TextStyle? hintStyle,
   TextStyle? style,
   TextInputAction? textInputAction,
+  Brightness? keyboardAppearance,
   EdgeInsetsGeometry? contentPadding,
   int? maxLines = 1,
   int? minLines,
   Function(String value)? onChange,
   Function? ontap,
+  void Function()? onEditingComplete,
 }) {
   Widget body = TextField(
     keyboardType: keyboardType,
@@ -311,6 +313,7 @@ Widget createNormaltfWidget({
     controller: textEditingController,
     focusNode: focusNode,
     textInputAction: textInputAction ?? TextInputAction.go,
+    keyboardAppearance: keyboardAppearance,
     decoration: InputDecoration(
       border: InputBorder.none,
       counterText: "",
@@ -334,6 +337,7 @@ Widget createNormaltfWidget({
     },
     onEditingComplete: () {
       HzyNormalTools.keydissmiss(context);
+      if (onEditingComplete != null) onEditingComplete!();
     },
   );
   if (isExpanded) {
