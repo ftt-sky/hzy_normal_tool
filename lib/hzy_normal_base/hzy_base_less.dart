@@ -4,11 +4,12 @@
  * @Author: TT
  * @Date: 2023-03-24 21:12:39
  * @LastEditors: TT
- * @LastEditTime: 2023-03-27 16:16:34
+ * @LastEditTime: 2023-07-07 14:42:40
  */
 
 import 'package:flutter/material.dart';
-import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_normal_abstract_index.dart';
+
+import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
 
 abstract class HzyBaseLess extends StatelessWidget
     with

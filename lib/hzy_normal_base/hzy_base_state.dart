@@ -11,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
 
 abstract class HzyBaseState<T extends StatefulWidget> extends State<T>
-    with
+   implements
         HzyAbstractWidget,
         HzyAbstractAttribute,
         HzyAbstractNetWork,

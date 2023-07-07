@@ -337,7 +337,7 @@ Widget createNormaltfWidget({
     },
     onEditingComplete: () {
       HzyNormalTools.keydissmiss(context);
-      if (onEditingComplete != null) onEditingComplete!();
+      if (onEditingComplete != null) onEditingComplete();
     },
   );
   if (isExpanded) {

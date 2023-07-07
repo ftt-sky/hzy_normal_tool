@@ -205,7 +205,7 @@ class HzyNormalTools {
 
   // 赋值剪切板内容
   static setDataToClipboard({
-    String? text,
+    required String text,
     Function? copyBlock,
   }) async {
     await Clipboard.setData(ClipboardData(text: text));

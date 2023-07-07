@@ -13,7 +13,7 @@ import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_abs_widget.dart';
 import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_normal_abstract_index.dart';
 
 abstract class HzyLess extends StatelessWidget
-    with
+   implements
         HzyAbsWidget,
         HzyAbsAttribute,
         HzyAbstractNetWork,

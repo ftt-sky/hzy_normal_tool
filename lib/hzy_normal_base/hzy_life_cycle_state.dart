@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 10:22:23
  * @LastEditors: TT
- * @LastEditTime: 2023-06-25 10:24:03
+ * @LastEditTime: 2023-07-07 14:34:47
  */
 
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ import '../hzy_normal_abstract/hzy_normal_life_cycle_abs.dart';
 import '../hzy_normal_tools/hzy_normal_tools.dart';
 
 abstract class HzyLifeCycleState<T extends StatefulWidget> extends HzyState<T>
-    with HzyNormalLifeCycleAbs {
+    implements HzyNormalLifeCycleAbs {
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
@@ -22,20 +22,7 @@ abstract class HzyLifeCycleState<T extends StatefulWidget> extends HzyState<T>
   }
 
   @override
-  Future<bool> didPopRoute() {
-    dprint("idPopRoute");
-    return super.didPopRoute();
-  }
-
-  @override
-  Future<bool> didPushRoute(String route) {
-    dprint("didPushRoute");
-    return super.didPushRoute(route);
-  }
-
-  @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    super.didChangeAppLifecycleState(state);
     if (state == AppLifecycleState.resumed) {
       dprint("app进入前台");
       configAppLifeCycleResumed();
@@ -54,14 +41,12 @@ abstract class HzyLifeCycleState<T extends StatefulWidget> extends HzyState<T>
   ///当前系统改主题改变回调
   @override
   void didChangePlatformBrightness() {
-    super.didChangePlatformBrightness();
     configPlatformBrightness();
   }
 
   /// 当前系统语言发生改变回调
   @override
   void didChangeLocales(List<Locale>? locales) {
-    super.didChangeLocales(locales);
     configChangeLocales(locales);
   }
 

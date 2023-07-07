@@ -14,7 +14,7 @@ import '../hzy_normal_tools/hzy_normal_tools.dart';
 import '../hzy_normal_widgets/hzy_appbar_generator.dart';
 import '../hzy_normal_widgets/hzy_place_holder_widget.dart';
 
-abstract class HzyAbsWidget {
+mixin class HzyAbsWidget {
   Widget createBuild({
     required BuildContext context,
   }) {
@@ -258,7 +258,9 @@ abstract class HzyAbsWidget {
   @protected
   Widget createBody({
     BoxConstraints? constraints,
-  });
+  }) {
+    throw UnimplementedError();
+  }
 
   /// 创建缺省页
   Widget? createEmptyWidget() {

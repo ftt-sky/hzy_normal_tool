@@ -4,7 +4,7 @@ import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_place_holder_widget.dart'
 import '../hzy_normal_config/page_state.dart';
 import '../hzy_normal_widgets/hzy_appbar_generator.dart';
 
-abstract class HzyAbstractWidget {
+mixin class HzyAbstractWidget {
   /// 创建scaffoll
   Widget createScaffol({
     required BuildContext context,
@@ -27,11 +27,14 @@ abstract class HzyAbstractWidget {
               navbackcolor: navbackcolor,
             ),
             body: createSafeArea(
+              context: context,
               safeAreatop: safeAreatop,
               safeAreabottm: safeAreabottm,
             ),
           )
-        : createSafeAreaChildWidget();
+        : createSafeAreaChildWidget(
+            context: context,
+          );
     body = isAddPopScope!
         ? WillPopScope(
             child: body,
@@ -128,29 +131,40 @@ abstract class HzyAbstractWidget {
 
   /// 创建safe
   Widget createSafeArea({
+    required BuildContext context,
     bool? safeAreatop = true,
     bool? safeAreabottm = true,
   }) {
     return SafeArea(
-      child: createSafeAreaChildWidget(),
+      child: createSafeAreaChildWidget(context: context),
       top: safeAreatop!,
       bottom: safeAreabottm!,
     );
   }
 
   /// 创建Safe子视图
-  createSafeAreaChildWidget() {
-    Widget body =
-        configIsNeedLayout() ? createLayoutWidget() : createLayoutChileWidget();
+  createSafeAreaChildWidget({
+    required BuildContext context,
+  }) {
+    Widget body = configIsNeedLayout()
+        ? createLayoutWidget(
+            context: context,
+          )
+        : createLayoutChileWidget(
+            context: context,
+          );
     return body;
   }
 
   // 创建layout根视图
-  createLayoutWidget() {
+  createLayoutWidget({
+    required BuildContext context,
+  }) {
     Widget body = LayoutBuilder(
       builder: (context, constraints) {
         configlayoutbuiderConstraints(constraints);
         return createLayoutChileWidget(
+          context: context,
           constraints: constraints,
         );
       },
@@ -161,19 +175,24 @@ abstract class HzyAbstractWidget {
   /// 创建可修改的根视图
   ///
   createLayoutChileWidget({
+    required BuildContext context,
     BoxConstraints? constraints,
   }) {
     Widget body = Container(
       decoration: configBoxDecoreation(),
       height: configLayoutHeight(),
       width: constraints == null ? null : configSizeBoxWidth(constraints),
-      child: createCommBaseWidget(constraints: constraints),
+      child: createCommBaseWidget(
+        constraints: constraints,
+        context: context,
+      ),
     );
     return body;
   }
 
   /// 创建通用站位界面
   Widget createCommBaseWidget({
+    required BuildContext context,
     BoxConstraints? constraints,
   }) {
     return HzyPlaceHolderWidget(
@@ -181,15 +200,21 @@ abstract class HzyAbstractWidget {
       errorWidget: createEmptyWidget(),
       loadingWidget: createLoadingWidget(),
       isshowloading: configIsshowLoading(),
-      child: createBody(constraints: constraints),
+      child: createBody(
+        constraints: constraints,
+        context: context,
+      ),
     );
   }
 
   /// 创建真实body
   @protected
   Widget createBody({
+    required BuildContext context,
     BoxConstraints? constraints,
-  });
+  }) {
+    throw UnimplementedError();
+  }
 
   /// 创建缺省页
   Widget? createEmptyWidget() {

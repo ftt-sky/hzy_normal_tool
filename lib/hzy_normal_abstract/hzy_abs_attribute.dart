@@ -4,14 +4,14 @@
  * @Author: TT
  * @Date: 2023-06-25 10:05:36
  * @LastEditors: TT
- * @LastEditTime: 2023-06-26 10:34:55
+ * @LastEditTime: 2023-07-07 15:49:14
  */
 import 'package:flutter/material.dart';
 
 import '../hzy_normal_config/page_state.dart';
 
 /// 界面通用属性
-abstract class HzyAbsAttribute {
+mixin class HzyAbsAttribute {
   /// 是否显示导航栏
   final bool isShowAppBar = true;
 

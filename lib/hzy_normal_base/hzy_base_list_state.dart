@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-12 10:25:14
  * @LastEditors: TT
- * @LastEditTime: 2023-05-11 15:20:52
+ * @LastEditTime: 2023-07-07 15:56:16
  */
 
 import 'package:flutter/material.dart';
@@ -12,9 +12,12 @@ import 'package:hzy_normal_tool/hzy_normal_base/hzy_normal_base_index.dart';
 import '../hzy_normal_abstract/hzy_normal_abstracts.dart';
 
 abstract class HzyBaseLisState<T extends StatefulWidget> extends HzyBaseState<T>
-    with HzyAbstracRefreshWidget, HzyAbstracRefreshMehod {
+    implements HzyAbstracRefreshWidget, HzyAbstracRefreshMehod {
   @override
-  Widget createBody({BoxConstraints? constraints}) {
+  Widget createBody({
+    required BuildContext context,
+    BoxConstraints? constraints,
+  }) {
     return createRefreshWidget();
   }
 

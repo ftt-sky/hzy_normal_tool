@@ -4,8 +4,9 @@
  * @Author: TT
  * @Date: 2023-03-15 21:53:34
  * @LastEditors: TT
- * @LastEditTime: 2023-03-26 17:27:48
+ * @LastEditTime: 2023-07-07 15:50:01
  */
+import 'package:example/test_less_v.dart';
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_tools/hzy_normal_tools.dart';
 import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_normal_widgets_index.dart';
@@ -37,12 +38,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
   void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return TestLessV();
+        },
+      ),
+    );
   }
 
   @override

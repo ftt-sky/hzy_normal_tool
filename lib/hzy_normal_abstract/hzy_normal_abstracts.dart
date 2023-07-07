@@ -33,7 +33,7 @@ abstract class HzyAbstracRefreshMehod {
 }
 
 /// 界面通用属性
-abstract class HzyAbstractAttribute {
+mixin class HzyAbstractAttribute {
   /// 导航栏标题
   final String? title = null;
 
@@ -74,63 +74,23 @@ abstract class HzyAbstractNetWorkTs {
 }
 
 // 配置网络请求规范
-abstract class HzyAbstractNetWork {
-  // String pathStr = "path";
-  // String paramsStr = "params";
-
-  // Function(String path, dynamic data)? onSuccess;
-
-  // Function(String path, dynamic data)? onFail;
-
+mixin class HzyAbstractNetWork {
   /// 配置网络请求参数
   /// mark 区分不同请求
   @protected
   Map<String, dynamic>? configNetWorkParmas({
     String? mark,
     Map<String, dynamic>? params,
-  });
-
-  /// 统一装饰网络请求参数格式
-  /// {
-  ///   path: path,
-  ///   params: params
-  /// }
-  // @protected
-  // configNormalParmas({
-  //   String? path,
-  //   Map<String, dynamic>? params,
-  // });
+  }) {
+    throw UnimplementedError();
+  }
 
   /// 网络请求
   @protected
   getnetworkdata({
     int? type,
     Map<String, dynamic>? info,
-  });
-
-  /// 解析数据之网络成功
-  // configParsingdataWithNetWorkSuccess({
-  //   required String path,
-  //   dynamic rep,
-  //   dynamic data,
-  // });
-
-  // /// 成功数据解析完成后回调
-  // configSuccessDataCallBack({
-  //   required String path,
-  //   dynamic data,
-  // });
-
-  // /// 解析数据之网络失败
-  // configFailDataCallBack({
-  //   required String path,
-  //   dynamic data,
-  // });
-
-  // /// 失败数据解析完成后回调
-  // configParsingdataWithNetWorkFail({
-  //   required String path,
-  //   dynamic rep,
-  //   String? msg,
-  // });
+  }) {
+    throw UnimplementedError();
+  }
 }
