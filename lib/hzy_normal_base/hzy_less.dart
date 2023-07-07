@@ -4,16 +4,15 @@
  * @Author: TT
  * @Date: 2023-06-25 09:51:44
  * @LastEditors: TT
- * @LastEditTime: 2023-06-26 11:00:25
+ * @LastEditTime: 2023-07-07 16:04:53
  */
 
 import 'package:flutter/cupertino.dart';
-import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_abs_attribute.dart';
-import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_abs_widget.dart';
-import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_normal_abstract_index.dart';
+
+import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
 
 abstract class HzyLess extends StatelessWidget
-   implements
+    with
         HzyAbsWidget,
         HzyAbsAttribute,
         HzyAbstractNetWork,

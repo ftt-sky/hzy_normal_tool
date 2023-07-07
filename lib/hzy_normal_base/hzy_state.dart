@@ -4,13 +4,13 @@
  * @Author: TT
  * @Date: 2023-06-25 09:51:56
  * @LastEditors: TT
- * @LastEditTime: 2023-07-07 14:29:34
+ * @LastEditTime: 2023-07-07 16:20:05
  */
 
 import 'package:flutter/material.dart';
-import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_abs_attribute.dart';
-import 'package:hzy_normal_tool/hzy_normal_abstract/hzy_abs_widget.dart';
-import 'package:hzy_normal_tool/hzy_normal_tool.dart';
+
+import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
+import '../hzy_normal_config/page_state.dart';
 
 abstract class HzyState<T extends StatefulWidget> extends State<T>
     with
@@ -46,15 +46,9 @@ abstract class HzyState<T extends StatefulWidget> extends State<T>
 
   @override
   Widget build(BuildContext context) {
-    return configBuild(context);
-  }
-
-  Widget configBuild(BuildContext context) {
-    buildContext = context;
-    Widget body = createBuild(
+    return createBuild(
       context: context,
     );
-    return body;
   }
 
   /// =============== UI配置 =============== ///
@@ -147,9 +141,7 @@ abstract class HzyState<T extends StatefulWidget> extends State<T>
   void initDefaultState() {}
 
   /// 界面渲染完成
-  void interfaceRenderingCompleted() {
-    dprint("界面渲染完成");
-  }
+  void interfaceRenderingCompleted() {}
 
   /// 界面销毁
   void initDefaultDispose() {}

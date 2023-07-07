@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 08:46:03
  * @LastEditors: TT
- * @LastEditTime: 2023-06-29 10:13:11
+ * @LastEditTime: 2023-07-07 16:18:16
  */
 
 import 'package:flutter/material.dart';
@@ -78,20 +78,21 @@ mixin class HzyAbsWidget {
   }) {
     bool isNeed = configIsNeedScaffol();
     dprint(isNeed);
-    Widget body = isNeed
+    Widget body = createSafeArea(
+      context: context,
+      constraints: constraints,
+    );
+
+    body = isNeed
         ? Scaffold(
             resizeToAvoidBottomInset: configResizeToAvoidBottomInset(),
             backgroundColor: configScallBackgroundColor(),
             appBar: createAppBar(
               context: context,
             ),
-            body: createSafeArea(
-              constraints: constraints,
-            ),
+            body: body,
           )
-        : createSafeArea(
-            constraints: constraints,
-          );
+        : body;
     body = configIsAddPopScope()
         ? WillPopScope(
             child: body,
@@ -201,6 +202,7 @@ mixin class HzyAbsWidget {
 
   /// 创建safe
   Widget createSafeArea({
+    required BuildContext context,
     BoxConstraints? constraints,
   }) {
     return SafeArea(
@@ -208,9 +210,11 @@ mixin class HzyAbsWidget {
       bottom: configSafeAreaBottom(),
       child: !configIsShowHeader()
           ? createCommBaseWidget(
+              context: context,
               constraints: constraints,
             )
           : createCommColum(
+              context: context,
               constraints: constraints,
             ),
     );
@@ -218,6 +222,7 @@ mixin class HzyAbsWidget {
 
   /// 分割
   Widget createCommColum({
+    required BuildContext context,
     BoxConstraints? constraints,
   }) {
     Widget body = Column(
@@ -225,12 +230,14 @@ mixin class HzyAbsWidget {
       children: [
         createCommHeader(),
         createCommBaseWidget(
+          context: context,
           constraints: constraints,
         ),
       ],
     );
     body = createCommBaseWidget(
       constraints: constraints,
+      context: context,
     );
     return body;
   }
@@ -243,6 +250,7 @@ mixin class HzyAbsWidget {
 
   /// 创建通用站位界面
   Widget createCommBaseWidget({
+    required BuildContext context,
     BoxConstraints? constraints,
   }) {
     return HzyPlaceHolderWidget(
@@ -250,13 +258,17 @@ mixin class HzyAbsWidget {
       errorWidget: createEmptyWidget(),
       loadingWidget: createLoadingWidget(),
       isshowloading: configIsshowLoading(),
-      child: createBody(constraints: constraints),
+      child: createBody(
+        constraints: constraints,
+        context: context,
+      ),
     );
   }
 
   /// 创建真实body
   @protected
   Widget createBody({
+    required BuildContext context,
     BoxConstraints? constraints,
   }) {
     throw UnimplementedError();

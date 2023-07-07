@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 10:05:36
  * @LastEditors: TT
- * @LastEditTime: 2023-07-07 15:49:14
+ * @LastEditTime: 2023-07-07 16:19:13
  */
 import 'package:flutter/material.dart';
 
@@ -43,10 +43,71 @@ mixin class HzyAbsAttribute {
   final bool isAddPopScope = false;
 }
 
-abstract class HzyAbsState {
+mixin class HzyAbsState {
   /// 网络加载状态
   final PageState state = PageState.initializedState;
 
   /// 是否显示加载动画
   final bool showLoading = false;
+}
+
+/// 刷新界面 规范
+mixin class HzyAbstracRefreshWidget {
+  /// 创建刷新控件
+  Widget createRefreshWidget(BuildContext context) {
+    throw UnimplementedError();
+  }
+
+  /// 创建列表
+  Widget createListView(BuildContext context) {
+    throw UnimplementedError();
+  }
+
+  /// 创建列表 item
+  Widget createListitem(BuildContext context, int index) {
+    throw UnimplementedError();
+  }
+}
+
+/// 刷新界面 触发方法
+mixin class HzyAbstracRefreshMehod {
+  int page = 1;
+
+  void configRefreshController() {}
+
+  /// 结束刷新
+  PageState endRefresh({
+    required int type,
+    required PageState pageState,
+  }) {
+    throw UnimplementedError();
+  }
+
+  /// 下啦刷新 触发事件
+  void configRefresh() {}
+
+  /// 上啦加载 触发事件
+  void configLoading() {}
+}
+
+// 配置网络请求规范
+mixin class HzyAbstractNetWork {
+  /// 配置网络请求参数
+  /// mark 区分不同请求
+  @protected
+  Map<String, dynamic>? configNetWorkParmas({
+    String? mark,
+    Map<String, dynamic>? params,
+  }) {
+    throw UnimplementedError();
+  }
+
+  /// 网络请求
+  @protected
+  getnetworkdata({
+    int? type,
+    Map<String, dynamic>? info,
+  }) {
+    throw UnimplementedError();
+  }
 }

@@ -4,19 +4,20 @@
  * @Author: TT
  * @Date: 2023-06-25 10:23:27
  * @LastEditors: TT
- * @LastEditTime: 2023-07-07 14:28:27
+ * @LastEditTime: 2023-07-07 16:18:39
  */
 import 'package:flutter/material.dart';
-import 'package:hzy_normal_tool/hzy_normal_base/hzy_life_cycle_state.dart';
 
-import '../hzy_normal_abstract/hzy_normal_abstracts.dart';
+import '../hzy_normal_abstract/hzy_normal_abstract_index.dart';
+import 'hzy_life_cycle_state.dart';
 
 abstract class HzyLisState<T extends StatefulWidget>
     extends HzyLifeCycleState<T>
-    implements HzyAbstracRefreshWidget, HzyAbstracRefreshMehod {
+    with HzyAbstracRefreshWidget, HzyAbstracRefreshMehod {
   @override
-  Widget createBody({BoxConstraints? constraints}) {
-    return createRefreshWidget();
+  Widget createBody(
+      {required BuildContext context, BoxConstraints? constraints}) {
+    return createRefreshWidget(context);
   }
 
   /// 创建列表 item
