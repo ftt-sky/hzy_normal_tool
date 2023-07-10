@@ -290,13 +290,15 @@ Widget createNormaltfWidget({
   TextStyle? hintStyle,
   TextStyle? style,
   TextInputAction? textInputAction,
+  List<TextInputFormatter>? inputFormatters,
   Brightness? keyboardAppearance,
   EdgeInsetsGeometry? contentPadding,
+  Widget? suffixIcon,
   int? maxLines = 1,
   int? minLines,
   Function(String value)? onChange,
   Function? ontap,
-  void Function()? onEditingComplete,
+  Function? onEditingComplete,
 }) {
   Widget body = TextField(
     keyboardType: keyboardType,
@@ -304,7 +306,12 @@ Widget createNormaltfWidget({
     maxLines: maxLines,
     minLines: minLines,
     obscureText: obscureText,
-    inputFormatters: [LengthLimitingTextInputFormatter(maxLength)],
+    inputFormatters: inputFormatters ??
+        [
+          LengthLimitingTextInputFormatter(
+            maxLength,
+          ),
+        ],
     style: style ??
         HzyTextStyle.fontMedium(
           size: fontsize!,
