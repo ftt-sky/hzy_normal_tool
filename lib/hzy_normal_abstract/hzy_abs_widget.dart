@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 08:46:03
  * @LastEditors: TT
- * @LastEditTime: 2023-07-07 16:18:16
+ * @LastEditTime: 2023-07-10 09:31:23
  */
 
 import 'package:flutter/material.dart';
@@ -107,7 +107,7 @@ mixin class HzyAbsWidget {
   // -------------- 配置导航栏 -------------- //
 
   /// 创建导航栏
-  PreferredSize? createAppBar({
+  PreferredSizeWidget? createAppBar({
     required BuildContext context,
   }) {
     if (configIsShowAppBar()) {
@@ -127,7 +127,7 @@ mixin class HzyAbsWidget {
         showback: configShowBack(),
         titlew: createAppBarTitleWidget(),
         bottom: createAppBarBottomWidget(),
-        prferredheight: configPrferredheight(),
+        toolbarHeight: configPrferredheight(),
       );
     }
     return null;
@@ -194,8 +194,8 @@ mixin class HzyAbsWidget {
   }
 
   /// 配置appBar 高度
-  double configPrferredheight() {
-    return -1;
+  double? configPrferredheight() {
+    return null;
   }
 
   // ----------- 创建Widget ----------- //
