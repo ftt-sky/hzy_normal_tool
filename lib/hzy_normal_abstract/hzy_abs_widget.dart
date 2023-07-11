@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 08:46:03
  * @LastEditors: TT
- * @LastEditTime: 2023-07-10 09:31:23
+ * @LastEditTime: 2023-07-11 11:59:24
  */
 
 import 'package:flutter/material.dart';
@@ -67,8 +67,13 @@ mixin class HzyAbsWidget {
         constraints: constraints,
       ),
     );
-
+    body = configIsNeedRootContatner() ? body : createScaffol(context: context);
     return body;
+  }
+
+  /// 是否需要根视图
+  bool configIsNeedRootContatner() {
+    return false;
   }
 
   /// 创建scaffoll
@@ -92,7 +97,15 @@ mixin class HzyAbsWidget {
             ),
             body: body,
           )
-        : body;
+        : !configIsShowHeader()
+            ? createCommBaseWidget(
+                context: context,
+                constraints: constraints,
+              )
+            : createCommColum(
+                context: context,
+                constraints: constraints,
+              );
     body = configIsAddPopScope()
         ? WillPopScope(
             child: body,
