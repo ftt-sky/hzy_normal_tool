@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 08:46:03
  * @LastEditors: TT
- * @LastEditTime: 2023-07-11 11:59:24
+ * @LastEditTime: 2023-07-12 09:52:56
  */
 
 import 'package:flutter/material.dart';
@@ -67,7 +67,12 @@ mixin class HzyAbsWidget {
         constraints: constraints,
       ),
     );
-    body = configIsNeedRootContatner() ? body : createScaffol(context: context);
+    body = configIsNeedRootContatner()
+        ? body
+        : createScaffol(
+            context: context,
+            constraints: constraints,
+          );
     return body;
   }
 
