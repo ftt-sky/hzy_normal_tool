@@ -4,18 +4,32 @@
  * @Author: TT
  * @Date: 2023-03-19 17:15:23
  * @LastEditors: TT
- * @LastEditTime: 2023-03-27 16:29:20
+ * @LastEditTime: 2023-07-20 18:03:30
  */
 
 import 'package:flutter/material.dart';
 import 'package:hzy_normal_tool/hzy_normal_tool.dart';
 
-class HzyPopSelectImageWidget extends StatelessWidget {
-  HzyPopSelectImageWidget({super.key, required this.tapCall});
+class HzyPopSelectImageWidget extends StatefulWidget {
+  const HzyPopSelectImageWidget({
+    super.key,
+    required this.tapCall,
+    this.bgColor,
+    this.list,
+  });
 
   final Function(int index) tapCall;
+  final List<HzyNormalItemModel>? list;
+  final Color? bgColor;
 
-  final List<HzyNormalItemModel> list = [
+  @override
+  State<StatefulWidget> createState() {
+    return HzyPopSelectImageWidgetState();
+  }
+}
+
+class HzyPopSelectImageWidgetState extends State<HzyPopSelectImageWidget> {
+  List<HzyNormalItemModel> itemList = [
     HzyNormalItemModel(
       leftMsg: "相册",
       mainAxisAlignment: MainAxisAlignment.center,
@@ -49,17 +63,24 @@ class HzyPopSelectImageWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
     ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    itemList = widget.list ?? itemList;
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget body = Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         ...List.generate(
-          list.length,
+          itemList.length,
           (index) => HzyNormalItemWidget(
-            itemModel: list[index],
+            itemModel: itemList[index],
             tapItem: ({currentIndex}) {
-              tapCall(index);
+              widget.tapCall(index);
             },
           ),
         )
@@ -67,9 +88,9 @@ class HzyPopSelectImageWidget extends StatelessWidget {
     );
 
     body = Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(
+      decoration: BoxDecoration(
+        color: widget.bgColor ?? Colors.white,
+        borderRadius: const BorderRadius.vertical(
           top: Radius.circular(
             16,
           ),
