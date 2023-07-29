@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-17 20:44:46
  * @LastEditors: TT
- * @LastEditTime: 2023-05-07 08:58:42
+ * @LastEditTime: 2023-07-26 17:53:53
  */
 
 import 'package:flutter/material.dart';
@@ -29,7 +29,7 @@ class HzyPopDiaLogWidget extends StatelessWidget {
     this.btnSWidget,
     this.padding = const EdgeInsets.all(20),
     this.msgAndBtnSpace = 20,
-    this.titleAndMsgSpace = 10,
+    this.titleAndMsgSpace = 12,
     this.sureMsg = "确认",
     this.sureBgColor = HzyNormalColorS.col2865ff,
     this.sureTitleColor = Colors.white,
@@ -131,11 +131,13 @@ class HzyPopDiaLogWidget extends StatelessWidget {
       children: [
         createTitleWidget(),
         SizedBox(
-          height: (title == null && titleWidget == null) ? 0 : titleAndMsgSpace,
+          height: (title == null && titleWidget == null)
+              ? 0
+              : ((msg == null && msgWidget == null) ? 30 : titleAndMsgSpace),
         ),
         createMsgWidget(),
         SizedBox(
-          height: (msg == null && msgWidget == null) ? 0 : msgAndBtnSpace,
+          height: (msg == null && msgWidget == null) ? 8 : msgAndBtnSpace,
         ),
         createBtnWidget(),
       ],
