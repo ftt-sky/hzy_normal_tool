@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 08:46:03
  * @LastEditors: TT
- * @LastEditTime: 2023-07-12 09:52:56
+ * @LastEditTime: 2023-07-31 09:17:14
  */
 
 import 'package:flutter/material.dart';
@@ -15,16 +15,15 @@ import '../hzy_normal_widgets/hzy_appbar_generator.dart';
 import '../hzy_normal_widgets/hzy_place_holder_widget.dart';
 
 mixin class HzyAbsWidget {
+  /**
+   * 
+   * 
+   * 
+   * 
+   * 
+  */
+  /// 整体build
   Widget createBuild({
-    required BuildContext context,
-  }) {
-    Widget body = createChildWidget(
-      context: context,
-    );
-    return body;
-  }
-
-  createChildWidget({
     required BuildContext context,
   }) {
     Widget body = configIsNeedLayout()
@@ -54,31 +53,25 @@ mixin class HzyAbsWidget {
     BoxConstraints? constraints,
     required BuildContext context,
   }) {
-    Widget body = Container(
-      decoration: configBoxDecoreation(),
-      height: configLayoutHeight(),
-      width: constraints == null
-          ? null
-          : configSizeBoxWidth(
-              constraints,
+    Widget body = configIsNeedRootContatner()
+        ? Container(
+            decoration: configBoxDecoreation(),
+            height: configLayoutHeight(),
+            width: constraints == null
+                ? null
+                : configSizeBoxWidth(
+                    constraints,
+                  ),
+            child: createScaffol(
+              context: context,
+              constraints: constraints,
             ),
-      child: createScaffol(
-        context: context,
-        constraints: constraints,
-      ),
-    );
-    body = configIsNeedRootContatner()
-        ? body
+          )
         : createScaffol(
             context: context,
             constraints: constraints,
           );
     return body;
-  }
-
-  /// 是否需要根视图
-  bool configIsNeedRootContatner() {
-    return false;
   }
 
   /// 创建scaffoll
@@ -88,29 +81,22 @@ mixin class HzyAbsWidget {
   }) {
     bool isNeed = configIsNeedScaffol();
     dprint(isNeed);
-    Widget body = createSafeArea(
-      context: context,
-      constraints: constraints,
-    );
-
-    body = isNeed
+    Widget body = isNeed
         ? Scaffold(
             resizeToAvoidBottomInset: configResizeToAvoidBottomInset(),
             backgroundColor: configScallBackgroundColor(),
             appBar: createAppBar(
               context: context,
             ),
-            body: body,
+            body: createSafeArea(
+              context: context,
+              constraints: constraints,
+            ),
           )
-        : !configIsShowHeader()
-            ? createCommBaseWidget(
-                context: context,
-                constraints: constraints,
-              )
-            : createCommColum(
-                context: context,
-                constraints: constraints,
-              );
+        : createScallBody(
+            context: context,
+            constraints: constraints,
+          );
     body = configIsAddPopScope()
         ? WillPopScope(
             child: body,
@@ -223,19 +209,35 @@ mixin class HzyAbsWidget {
     required BuildContext context,
     BoxConstraints? constraints,
   }) {
-    return SafeArea(
-      top: configSafeAreaTop(),
-      bottom: configSafeAreaBottom(),
-      child: !configIsShowHeader()
-          ? createCommBaseWidget(
-              context: context,
-              constraints: constraints,
-            )
-          : createCommColum(
-              context: context,
-              constraints: constraints,
-            ),
+    Widget body = createScallBody(
+      context: context,
+      constraints: constraints,
     );
+    body = configIsNeedSafeArea()
+        ? SafeArea(
+            top: configSafeAreaTop(),
+            bottom: configSafeAreaBottom(),
+            child: body,
+          )
+        : body;
+    return body;
+  }
+
+  /// 配置脚手架子视图
+  Widget createScallBody({
+    required BuildContext context,
+    BoxConstraints? constraints,
+  }) {
+    Widget body = !configIsShowHeader()
+        ? createCommBaseWidget(
+            context: context,
+            constraints: constraints,
+          )
+        : createCommColum(
+            context: context,
+            constraints: constraints,
+          );
+    return body;
   }
 
   /// 分割
@@ -253,10 +255,6 @@ mixin class HzyAbsWidget {
         ),
       ],
     );
-    body = createCommBaseWidget(
-      constraints: constraints,
-      context: context,
-    );
     return body;
   }
 
@@ -271,16 +269,20 @@ mixin class HzyAbsWidget {
     required BuildContext context,
     BoxConstraints? constraints,
   }) {
-    return HzyPlaceHolderWidget(
-      pageState: configPageState(),
-      errorWidget: createEmptyWidget(),
-      loadingWidget: createLoadingWidget(),
-      isshowloading: configIsshowLoading(),
-      child: createBody(
-        constraints: constraints,
-        context: context,
-      ),
+    Widget body = createBody(
+      constraints: constraints,
+      context: context,
     );
+    body = configIsNeedPlaceHolder()
+        ? HzyPlaceHolderWidget(
+            pageState: configPageState(),
+            errorWidget: createEmptyWidget(),
+            loadingWidget: createLoadingWidget(),
+            isshowloading: configIsshowLoading(),
+            child: body,
+          )
+        : body;
+    return body;
   }
 
   /// 创建真实body
@@ -303,9 +305,23 @@ mixin class HzyAbsWidget {
   }
 
   // ----------- 配置项 ---------- //
+  /// 是否需要根视图
+  bool configIsNeedRootContatner() {
+    return false;
+  }
 
   /// 是否需要脚手架
   bool configIsNeedScaffol() {
+    return true;
+  }
+
+  /// 是否需要安全区域
+  bool configIsNeedSafeArea() {
+    return true;
+  }
+
+  /// 是否需要占位图
+  bool configIsNeedPlaceHolder() {
     return true;
   }
 
