@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
  * @LastEditors: TT
- * @LastEditTime: 2023-05-06 17:15:42
+ * @LastEditTime: 2023-08-14 17:44:01
  */
 
 import 'package:flutter/material.dart';
@@ -31,6 +31,7 @@ class HzyBtnWidget extends StatelessWidget {
     super.key,
     this.btnLayoutType = BtnLayoutType.text,
     this.decoration,
+    this.alignment,
     this.margin,
     this.padding,
     this.width,
@@ -43,7 +44,7 @@ class HzyBtnWidget extends StatelessWidget {
     this.text,
     this.textStyle,
     this.fontSize = 14,
-    this.fontcolor = Colors.black,
+    this.fontColor = Colors.black,
     this.lineHeight,
     this.imageWidget,
     this.space = 4,
@@ -59,6 +60,8 @@ class HzyBtnWidget extends StatelessWidget {
 
   /// 按钮高
   final double? height;
+
+  final AlignmentGeometry? alignment;
   // ---------- 装饰器 ----------- //
 
   /// 背景装饰器
@@ -95,7 +98,7 @@ class HzyBtnWidget extends StatelessWidget {
   final double? fontSize;
 
   /// 字体颜色
-  final Color? fontcolor;
+  final Color? fontColor;
 
   /// 字体行高
   final double? lineHeight;
@@ -142,14 +145,16 @@ class HzyBtnWidget extends StatelessWidget {
         break;
       default:
     }
-    Widget body = createLayout(list: child);
+    Widget body = createLayout(
+      list: child,
+    );
 
     body = Container(
       width: width,
       height: height,
       margin: margin,
       padding: padding,
-      alignment: Alignment.center,
+      alignment: alignment ?? Alignment.center,
       decoration: decoration ??
           BoxDecoration(
             color: bgColor,
@@ -221,7 +226,7 @@ class HzyBtnWidget extends StatelessWidget {
           style: textStyle ??
               HzyTextStyle.fontMedium(
                 size: fontSize,
-                color: fontcolor,
+                color: fontColor,
                 height: lineHeight,
               ),
         );

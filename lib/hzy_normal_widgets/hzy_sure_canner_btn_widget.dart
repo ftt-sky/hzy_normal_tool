@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-17 21:58:03
  * @LastEditors: TT
- * @LastEditTime: 2023-05-07 08:53:33
+ * @LastEditTime: 2023-08-14 16:46:38
  */
 
 import 'package:flutter/material.dart';
@@ -138,7 +138,7 @@ class HzySureAndCannerBtnWidget extends StatelessWidget {
       bgColor: sureBgColor,
       radius: radius,
       height: height,
-      fontcolor: sureTitleColor,
+      fontColor: sureTitleColor,
       tapCall: tapSure,
     );
     body = layoutType == 2
@@ -158,7 +158,7 @@ class HzySureAndCannerBtnWidget extends StatelessWidget {
       bgColor: cannerBgColor,
       radius: radius,
       height: height,
-      fontcolor: cannerTitleColor,
+      fontColor: cannerTitleColor,
       tapCall: tapCanner,
     );
     body = layoutType == 2

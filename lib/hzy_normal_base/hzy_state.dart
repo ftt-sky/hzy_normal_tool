@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 09:51:56
  * @LastEditors: TT
- * @LastEditTime: 2023-07-07 16:20:05
+ * @LastEditTime: 2023-08-14 17:59:40
  */
 
 import 'package:flutter/material.dart';
@@ -162,4 +162,11 @@ abstract class HzyState<T extends StatefulWidget> extends State<T>
   }) async {}
 
   /// =============== 触发事件 =============== ///
+  ///
+
+  configSetState(void Function() fn) {
+    if (mounted) {
+      setState(fn);
+    }
+  }
 }
