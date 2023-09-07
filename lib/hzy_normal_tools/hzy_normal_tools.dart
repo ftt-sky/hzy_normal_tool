@@ -6,6 +6,23 @@ import 'package:flutter/services.dart';
 
 import '../hzy_normal_config/hzy_normal_colors.dart';
 import '../hzy_normal_config/page_state.dart';
+import '../hzy_normal_widgets/hzy_normal_widgets_index.dart';
+
+/// 通用点击回调
+typedef TapIndexCallback = void Function(
+  int index,
+);
+typedef TapIndexOptionCallback = void Function(
+  int? index,
+);
+typedef TapCallback = void Function();
+typedef TapBoolCallback = void Function(
+  bool yorn,
+);
+typedef TapItemCallback = void Function(
+  HzyNormalItemModel itemModel,
+  int? index,
+);
 
 class HzyNormalTools {
   // 根据列表数据 配置界面状态
@@ -264,8 +281,8 @@ configShowBottomSheet({
   required Widget child,
   Color? backgroundColor = Colors.transparent,
   ShapeBorder? shape = const ContinuousRectangleBorder(),
-}) {
-  showModalBottomSheet(
+}) async {
+  return await showModalBottomSheet(
     context: context,
     backgroundColor: backgroundColor,
     shape: shape,
@@ -278,8 +295,8 @@ showDig({
   required Widget widget,
   bool barrierDismissible = true,
   Color? barrierColor = Colors.black54,
-}) {
-  showDialog(
+}) async {
+  return await showDialog(
     barrierColor: barrierColor,
     barrierDismissible: barrierDismissible,
     context: context,

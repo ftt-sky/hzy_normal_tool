@@ -195,7 +195,7 @@ showPopDiaLogWidget({
   int? layoutType,
   int? btnType,
 }) {
-  showDialog(
+  return showDialog(
     context: context,
     barrierDismissible: barrierDismissible,
     builder: (context) {
@@ -232,7 +232,7 @@ showPopDiaLogWidget({
               cannerMsg: cannerMsg ?? "取消",
               cannerTitleColor: cannerTitleColor ?? HzyNormalColorS.col999999,
               tapCanner: () {
-                Navigator.of(context).pop();
+                Navigator.pop(context, false);
                 if (tapCanner != null) {
                   tapCanner();
                 }
@@ -241,7 +241,7 @@ showPopDiaLogWidget({
                 if (tapSure != null) {
                   tapSure();
                 } else {
-                  Navigator.of(context).pop();
+                  Navigator.pop(context, true);
                 }
               },
               layoutType: layoutType ?? 1,
@@ -295,9 +295,11 @@ Widget createNormaltfWidget({
   EdgeInsetsGeometry? contentPadding,
   Widget? suffixIcon,
   int? maxLines = 1,
+  InputDecoration? decoration,
   int? minLines,
   Function(String value)? onChange,
   Function? ontap,
+  Color? cursorColor,
   Function? onEditingComplete,
 }) {
   Widget body = TextField(
@@ -306,12 +308,8 @@ Widget createNormaltfWidget({
     maxLines: maxLines,
     minLines: minLines,
     obscureText: obscureText,
-    inputFormatters: inputFormatters ??
-        [
-          LengthLimitingTextInputFormatter(
-            maxLength,
-          ),
-        ],
+    maxLength: maxLength,
+    inputFormatters: inputFormatters,
     style: style ??
         HzyTextStyle.fontMedium(
           size: fontsize!,
@@ -321,17 +319,19 @@ Widget createNormaltfWidget({
     focusNode: focusNode,
     textInputAction: textInputAction ?? TextInputAction.go,
     keyboardAppearance: keyboardAppearance,
-    decoration: InputDecoration(
-      border: InputBorder.none,
-      counterText: "",
-      contentPadding: contentPadding,
-      hintText: hintText,
-      hintStyle: hintStyle ??
-          HzyTextStyle.fontMedium(
-            size: fontsize!,
-            color: HzyNormalColorS.colcccccc,
-          ),
-    ),
+    decoration: decoration ??
+        InputDecoration(
+          border: InputBorder.none,
+          counterText: "",
+          contentPadding: contentPadding,
+          hintText: hintText,
+          hintStyle: hintStyle ??
+              HzyTextStyle.fontMedium(
+                size: fontsize!,
+                color: HzyNormalColorS.colcccccc,
+              ),
+        ),
+    cursorColor: cursorColor,
     onTap: () {
       if (ontap != null) {
         ontap();

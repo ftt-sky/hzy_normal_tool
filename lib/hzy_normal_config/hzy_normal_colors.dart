@@ -68,7 +68,7 @@ class HzyNormalColorS {
   static const Color cole1e1e1 = Color(0xFFE1E1E1);
   static const Color colf4f4f4 = Color(0xfff4f4f4);
   static const Color colf2f2f2 = Color(0xfff2f2f2);
-  static const Color colf0f0f0 = Color(0xfff0f0f0);
+
   static const Color colf2f2f6 = Color(0xffF2F2F6);
 
   static const Color col151517 = Color(0xff151517);
@@ -132,6 +132,11 @@ class HzyNormalColorS {
   /// 切换帐号的颜色
   static const Color col4c5679 = Color(0xff4c5679);
   static const Color col727a94 = Color(0xff727a94);
+
+  /// 禁用按钮背景颜色
+  static const Color colf0f0f0 = Color(0xfff0f0f0);
+
+  /// 禁用按钮字体颜色
 
   /// 默认头像背景颜色
   static const Color colededed = Color(0xffededed);

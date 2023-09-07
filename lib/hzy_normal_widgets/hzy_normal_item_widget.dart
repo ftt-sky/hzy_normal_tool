@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
  * @LastEditors: TT
- * @LastEditTime: 2023-07-25 10:20:47
+ * @LastEditTime: 2023-09-06 09:54:38
  */
 
 import 'package:flutter/material.dart';
@@ -12,7 +12,6 @@ import 'package:hzy_normal_tool/hzy_normal_config/hzy_normal_colors.dart';
 import 'package:hzy_normal_tool/hzy_normal_config/hzy_text_style.dart';
 import 'package:hzy_normal_tool/hzy_normal_tools/hzy_normal_tools.dart';
 import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_normal_widagets.dart';
-
 
 class HzyNormalItemModel {
   /**
@@ -211,13 +210,12 @@ class HzyNormalItemModel {
 class HzyNormalItemWidget extends StatelessWidget {
   const HzyNormalItemWidget({
     super.key,
-    this.tapItem,
+    this.tapItemCallback,
     required this.itemModel,
   });
 
   final HzyNormalItemModel itemModel;
-
-  final Function({int? currentIndex})? tapItem;
+  final TapItemCallback? tapItemCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -273,10 +271,8 @@ class HzyNormalItemWidget extends StatelessWidget {
     body = itemModel.isCanTap == true
         ? InkWell(
             onTap: () {
-              if (tapItem != null) {
-                tapItem!(
-                  currentIndex: itemModel.type,
-                );
+              if (tapItemCallback != null) {
+                tapItemCallback?.call(itemModel, itemModel.type);
               } else if (itemModel.tapItemCall != null) {
                 itemModel.tapItemCall!(
                   index: itemModel.type,
