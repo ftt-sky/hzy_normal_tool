@@ -4,10 +4,9 @@
  * @Author: TT
  * @Date: 2023-03-15 22:15:22
  * @LastEditors: TT
- * @LastEditTime: 2023-08-18 17:54:00
+ * @LastEditTime: 2023-09-09 10:13:47
  */
 import 'package:flutter/material.dart';
-import 'package:hzy_normal_tool/hzy_normal_config/hzy_text_style.dart';
 import '../hzy_normal_config/hzy_normal_colors.dart';
 
 class HzyAppBarGenerator {
