@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-15 22:15:22
  * @LastEditors: TT
- * @LastEditTime: 2023-09-09 16:02:02
+ * @LastEditTime: 2023-09-09 16:04:07
  */
 import 'package:flutter/material.dart';
 import '../hzy_normal_config/hzy_normal_colors.dart';
@@ -94,11 +94,15 @@ class HzyAppBarGenerator {
   }) {
     final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
     bool canShowBack = parentRoute?.canPop ?? false;
+    ThemeData themeData = Theme.of(context);
+    leadingIconColor ??=
+        (themeData.appBarTheme.iconTheme?.color ?? HzyNormalColorS.col101010);
+
     Widget backBtn = leading ??
         IconButton(
           icon: Icon(
             icon ?? Icons.arrow_back_ios,
-            color: leadingIconColor ?? HzyNormalColorS.col101010,
+            color: leadingIconColor,
           ),
           onPressed: leadingCallback ?? () => Navigator.of(context).pop(),
         );

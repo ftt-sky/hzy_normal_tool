@@ -1,9 +1,20 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: TT
+ * @Date: 2023-07-10 11:05:10
+ * @LastEditors: TT
+ * @LastEditTime: 2023-09-12 09:09:08
+ */
 import 'package:flutter/material.dart';
 
 import '../hzy_normal_tools/hzy_normal_tools.dart';
 
 typedef SliverHeaderBuilder = Widget Function(
-    BuildContext context, double shrinkOffset, bool overlapsContent);
+  BuildContext context,
+  double shrinkOffset,
+  bool overlapsContent,
+);
 
 class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   // child 为 header
@@ -63,4 +74,37 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
     return oldDelegate.maxExtent != maxExtent ||
         oldDelegate.minExtent != minExtent;
   }
+}
+
+/// 创建Sliver依赖
+configSliverOverlapAbsorber({
+  required Widget sliver,
+  required BuildContext context,
+}) {
+  Widget body = SliverOverlapAbsorber(
+    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+      context,
+    ),
+    sliver: sliver,
+  );
+  return body;
+}
+
+/// 创建去除Padding控件
+configRemovePadding({
+  required BuildContext context,
+  required Widget child,
+  bool removeLeft = true,
+  bool removeTop = true,
+  bool removeRight = true,
+  bool removeBottom = true,
+}) {
+  return MediaQuery.removePadding(
+    removeTop: removeTop,
+    removeBottom: removeBottom,
+    removeLeft: removeLeft,
+    removeRight: removeRight,
+    context: context,
+    child: child,
+  );
 }
