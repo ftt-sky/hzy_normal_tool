@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 08:46:03
  * @LastEditors: TT
- * @LastEditTime: 2023-07-31 09:17:14
+ * @LastEditTime: 2023-09-13 09:42:18
  */
 
 import 'package:flutter/material.dart';
@@ -80,7 +80,7 @@ mixin class HzyAbsWidget {
     BoxConstraints? constraints,
   }) {
     bool isNeed = configIsNeedScaffol();
-    dprint(isNeed);
+    dPrint(isNeed);
     Widget body = isNeed
         ? Scaffold(
             resizeToAvoidBottomInset: configResizeToAvoidBottomInset(),

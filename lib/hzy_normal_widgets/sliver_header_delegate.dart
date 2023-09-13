@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-07-10 11:05:10
  * @LastEditors: TT
- * @LastEditTime: 2023-09-12 09:09:08
+ * @LastEditTime: 2023-09-13 09:41:37
  */
 import 'package:flutter/material.dart';
 
@@ -54,7 +54,7 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
     //测试代码：如果在调试模式，且子组件设置了key，则打印日志
     assert(() {
       if (child.key != null) {
-        dprint('${child.key}: shrink: $shrinkOffset，overlaps:$overlapsContent');
+        dPrint('${child.key}: shrink: $shrinkOffset，overlaps:$overlapsContent');
       }
       return true;
     }());

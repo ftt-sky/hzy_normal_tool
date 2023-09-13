@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 10:22:23
  * @LastEditors: TT
- * @LastEditTime: 2023-07-07 14:34:47
+ * @LastEditTime: 2023-09-13 09:41:54
  */
 
 import 'package:flutter/material.dart';
@@ -24,16 +24,16 @@ abstract class HzyLifeCycleState<T extends StatefulWidget> extends HzyState<T>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      dprint("app进入前台");
+      dPrint("app进入前台");
       configAppLifeCycleResumed();
     } else if (state == AppLifecycleState.inactive) {
-      dprint("app在前台但不响应事件，比如电话，touch id等");
+      dPrint("app在前台但不响应事件，比如电话，touch id等");
       configAppLifeCycleInactive();
     } else if (state == AppLifecycleState.paused) {
-      dprint("app进入后台");
+      dPrint("app进入后台");
       configAppLifeCyclePaused();
     } else if (state == AppLifecycleState.detached) {
-      dprint("没有宿主视图但是flutter引擎仍然有效");
+      dPrint("没有宿主视图但是flutter引擎仍然有效");
       configAppLifeCycleDetached();
     }
   }

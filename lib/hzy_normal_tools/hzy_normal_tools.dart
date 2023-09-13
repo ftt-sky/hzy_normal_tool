@@ -238,7 +238,7 @@ class HzyNormalTools {
 }
 
 /// debug 环境下,日志输出
-dprint(Object? object) {
+dPrint(Object? object) {
   if (kIsWeb) {
     if (kDebugMode) {
       print(object.toString());
