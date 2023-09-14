@@ -144,7 +144,7 @@ class HzyNormalTools {
     return RegExp(regexPhoneNumber).hasMatch(input);
   }
 
-  String formatNum(
+ static String formatNum(
     double num, {
     int postion = 2,
   }) {
@@ -152,7 +152,7 @@ class HzyNormalTools {
     return money;
   }
 
-  String formartNum(
+ static String formartNum(
     num target,
     int postion, {
     bool isCrop = false,
