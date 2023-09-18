@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
  * @LastEditors: TT
- * @LastEditTime: 2023-09-06 09:54:38
+ * @LastEditTime: 2023-09-18 10:41:05
  */
 
 import 'package:flutter/material.dart';
@@ -43,7 +43,7 @@ class HzyNormalItemModel {
   bool? isHintWidget;
 
   /// 左边模块 可包含 图片 + 文字
-  // 左边文字
+  /// 左边文字
 
   /*
    * 左边视图布局样式
@@ -52,10 +52,13 @@ class HzyNormalItemModel {
    * 3 左图片 + 左文字
    * 3 左图片
    */
-
   int? leftType;
 
+  /// 左边字体
   String? leftMsg;
+
+  /// 左边字体类型
+  TextStyle? leftStyle;
 
   /// 左边 图片和文本的间距
   double? leftSpace;
@@ -93,20 +96,29 @@ class HzyNormalItemModel {
 
   /// 右边整体视图
   Widget? rightWidget;
-  // 右边 文字和图片的间距
+
+  /// 右边 文字和图片的间距
   double? rightSpace;
-  // 右边文字
+
+  /// 右边文字
   String? rightMsg;
-  // 右边文字大小
+
+  /// 右边字体类型
+  TextStyle? rightStyle;
+
+  /// 右边文字大小
   double? rightFontSize;
-  // 右边文字颜色
+
+  /// 右边文字颜色
   Color? rightFontColor;
 
-  // 右边图片路径 默认 >
+  /// 右边图片路径 默认 >
   String? rightImagePath;
-  // 右边图片大小
+
+  /// 右边图片大小
   Size? rightImageSize;
-  // 右边箭头的颜色
+
+  /// 右边箭头的颜色
   Color? rightIconColor;
 
   /// 是否显示底部细线
@@ -163,7 +175,7 @@ class HzyNormalItemModel {
   int? tapType;
 
   /// item 点击事件
-  Function({int? index})? tapItemCall;
+  TapIndexOptionCallback? tapItemCall;
 
   HzyNormalItemModel({
     this.mainAxisAlignment = MainAxisAlignment.spaceBetween,
@@ -177,6 +189,7 @@ class HzyNormalItemModel {
     this.leftImagePath,
     this.leftImageSize = const Size(20, 20),
     this.leftMsg,
+    this.leftStyle,
     this.leftMsgColor = HzyNormalColorS.col222222,
     this.leftSpace = 8,
     this.leftType = 1,
@@ -189,6 +202,7 @@ class HzyNormalItemModel {
     this.rightImagePath,
     this.rightImageSize,
     this.rightMsg,
+    this.rightStyle,
     this.rightSpace = 8,
     this.rightType = 0,
     this.rightWidget,
@@ -274,9 +288,7 @@ class HzyNormalItemWidget extends StatelessWidget {
               if (tapItemCallback != null) {
                 tapItemCallback?.call(itemModel, itemModel.type);
               } else if (itemModel.tapItemCall != null) {
-                itemModel.tapItemCall!(
-                  index: itemModel.type,
-                );
+                itemModel.tapItemCall?.call(itemModel.type);
               }
             },
             child: body,
@@ -305,10 +317,11 @@ class HzyNormalItemWidget extends StatelessWidget {
     createLeftTextWidget() {
       Widget body = Text(
         itemModel.leftMsg ?? "",
-        style: HzyTextStyle.fontMedium(
-          size: itemModel.leftFontSize,
-          color: itemModel.leftMsgColor,
-        ),
+        style: itemModel.leftStyle ??
+            HzyTextStyle.fontMedium(
+              size: itemModel.leftFontSize,
+              color: itemModel.leftMsgColor,
+            ),
         overflow: TextOverflow.ellipsis,
       );
       double maxWidth = maxW;
@@ -366,10 +379,11 @@ class HzyNormalItemWidget extends StatelessWidget {
     createRightTextWidget() {
       Widget body = Text(
         itemModel.rightMsg ?? "",
-        style: HzyTextStyle.fontMedium(
-          size: itemModel.rightFontSize,
-          color: itemModel.rightFontColor,
-        ),
+        style: itemModel.rightStyle ??
+            HzyTextStyle.fontMedium(
+              size: itemModel.rightFontSize,
+              color: itemModel.rightFontColor,
+            ),
         overflow: TextOverflow.ellipsis,
       );
       body = itemModel.rightType == 1 ? Container() : body;

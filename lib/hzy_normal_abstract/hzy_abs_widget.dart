@@ -4,13 +4,13 @@
  * @Author: TT
  * @Date: 2023-06-25 08:46:03
  * @LastEditors: TT
- * @LastEditTime: 2023-09-13 09:42:18
+ * @LastEditTime: 2023-09-18 15:57:20
  */
 
 import 'package:flutter/material.dart';
 
 import '../hzy_normal_config/page_state.dart';
-import '../hzy_normal_tools/hzy_normal_tools.dart';
+
 import '../hzy_normal_widgets/hzy_appbar_generator.dart';
 import '../hzy_normal_widgets/hzy_place_holder_widget.dart';
 
@@ -80,7 +80,7 @@ mixin class HzyAbsWidget {
     BoxConstraints? constraints,
   }) {
     bool isNeed = configIsNeedScaffol();
-    dPrint(isNeed);
+
     Widget body = isNeed
         ? Scaffold(
             resizeToAvoidBottomInset: configResizeToAvoidBottomInset(),

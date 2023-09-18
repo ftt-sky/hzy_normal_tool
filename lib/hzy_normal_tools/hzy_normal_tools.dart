@@ -144,7 +144,7 @@ class HzyNormalTools {
     return RegExp(regexPhoneNumber).hasMatch(input);
   }
 
- static String formatNum(
+  static String formatNum(
     double num, {
     int postion = 2,
   }) {
@@ -152,7 +152,7 @@ class HzyNormalTools {
     return money;
   }
 
- static String formartNum(
+  static String formartNum(
     num target,
     int postion, {
     bool isCrop = false,
@@ -279,12 +279,16 @@ Color getColorFromHex(String? hexColor) {
 configShowBottomSheet({
   required BuildContext context,
   required Widget child,
+  BoxConstraints? constraints,
   Color? backgroundColor = Colors.transparent,
   ShapeBorder? shape = const ContinuousRectangleBorder(),
+  bool isScrollControlled = false,
 }) async {
   return await showModalBottomSheet(
     context: context,
+    constraints: constraints,
     backgroundColor: backgroundColor,
+    isScrollControlled: isScrollControlled,
     shape: shape,
     builder: (ct) => child,
   );
