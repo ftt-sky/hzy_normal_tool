@@ -115,7 +115,7 @@ abstract class HzyLess extends StatelessWidget
   }
 
   @override
-  getnetworkdata({
+  getNetWorkData({
     int? type,
     Map<String, dynamic>? info,
   }) async {}

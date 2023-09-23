@@ -29,11 +29,14 @@ class HzyNormalTools {
   static configPageState({
     required int allNum,
     required int networkNum,
+    int? pageSize,
   }) {
     PageState st = PageState.dataFetchState;
     if (allNum == 0) {
       st = PageState.emptyDataState;
     } else if (networkNum == 0) {
+      st = PageState.noMoreDataState;
+    } else if (pageSize != null && pageSize > networkNum) {
       st = PageState.noMoreDataState;
     }
     return st;

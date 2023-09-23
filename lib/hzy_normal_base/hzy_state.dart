@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 09:51:56
  * @LastEditors: TT
- * @LastEditTime: 2023-08-14 17:59:40
+ * @LastEditTime: 2023-09-23 11:15:27
  */
 
 import 'package:flutter/material.dart';
@@ -156,7 +156,7 @@ abstract class HzyState<T extends StatefulWidget> extends State<T>
   }
 
   @override
-  getnetworkdata({
+  getNetWorkData({
     int? type,
     Map<String, dynamic>? info,
   }) async {}

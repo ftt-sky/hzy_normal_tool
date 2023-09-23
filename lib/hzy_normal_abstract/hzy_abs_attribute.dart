@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 10:05:36
  * @LastEditors: TT
- * @LastEditTime: 2023-07-07 16:19:13
+ * @LastEditTime: 2023-09-23 15:48:52
  */
 import 'package:flutter/material.dart';
 
@@ -94,20 +94,17 @@ mixin class HzyAbstracRefreshMehod {
 mixin class HzyAbstractNetWork {
   /// 配置网络请求参数
   /// mark 区分不同请求
-  @protected
   Map<String, dynamic>? configNetWorkParmas({
     String? mark,
     Map<String, dynamic>? params,
   }) {
-    throw UnimplementedError();
+    return null;
   }
 
   /// 网络请求
   @protected
-  getnetworkdata({
+  getNetWorkData({
     int? type,
     Map<String, dynamic>? info,
-  }) {
-    throw UnimplementedError();
-  }
+  }) {}
 }

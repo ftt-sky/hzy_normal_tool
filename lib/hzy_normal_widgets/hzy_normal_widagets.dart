@@ -293,7 +293,7 @@ Widget createNormaltfWidget({
   List<TextInputFormatter>? inputFormatters,
   Brightness? keyboardAppearance,
   EdgeInsetsGeometry? contentPadding,
-  Widget? suffixIcon,
+  Widget? prefixIcon,
   int? maxLines = 1,
   InputDecoration? decoration,
   int? minLines,
@@ -322,6 +322,7 @@ Widget createNormaltfWidget({
     decoration: decoration ??
         InputDecoration(
           border: InputBorder.none,
+          prefixIcon: prefixIcon,
           counterText: "",
           contentPadding: contentPadding,
           hintText: hintText,
