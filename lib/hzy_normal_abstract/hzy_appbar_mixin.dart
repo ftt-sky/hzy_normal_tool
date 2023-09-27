@@ -4,14 +4,12 @@
  * @Author: TT
  * @Date: 2023-09-23 11:18:24
  * @LastEditors: TT
- * @LastEditTime: 2023-09-23 11:21:16
+ * @LastEditTime: 2023-09-26 11:30:54
  */
 
 import 'package:flutter/material.dart';
 
 import '../hzy_normal_widgets/hzy_appbar_generator.dart';
-
-
 
 /// 导航栏
 mixin HzyAppBarMixin {
@@ -31,7 +29,7 @@ mixin HzyAppBarMixin {
         leadingIconColor: createLeadingIconColor(),
         icon: createLeadIcon(),
         leadingCallback: () {
-          configleadingCallbak(context);
+          configleadingCallbak(context: context);
         },
         showback: configShowBack(),
         titlew: createAppBarTitleWidget(),
@@ -107,9 +105,8 @@ mixin HzyAppBarMixin {
     return null;
   }
 
-  configleadingCallbak(
-    BuildContext context,
-  ) {
-    Navigator.of(context).pop();
-  }
+  @protected
+  configleadingCallbak({
+    BuildContext? context,
+  });
 }

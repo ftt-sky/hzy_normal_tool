@@ -354,6 +354,25 @@ Widget createNormaltfWidget({
   return body;
 }
 
+/// 保持光标在最后
+TextEditingController configTextEndEditingController({
+  String text = '',
+}) {
+  return TextEditingController.fromValue(
+    TextEditingValue(
+      // 设置内容
+      text: text,
+      // 保持光标在最后
+      selection: TextSelection.fromPosition(
+        TextPosition(
+          affinity: TextAffinity.downstream,
+          offset: text.length,
+        ),
+      ),
+    ),
+  );
+}
+
 /// 创建dialog
 configDiaLogWidget({
   required Widget child,
