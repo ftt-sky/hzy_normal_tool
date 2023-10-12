@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-19 16:51:23
  * @LastEditors: TT
- * @LastEditTime: 2023-03-19 17:02:57
+ * @LastEditTime: 2023-10-04 19:37:40
  */
 
 import 'package:flutter/material.dart';
@@ -19,14 +19,14 @@ jumpToRootWithNamePage({
   String name = "/",
 }) {
   if (isPop) {
-    Navigator.popUntil(
+    return Navigator.popUntil(
       context,
       ModalRoute.withName(
         name,
       ),
     );
   } else {
-    Navigator.pushNamedAndRemoveUntil(
+    return Navigator.pushNamedAndRemoveUntil(
       context,
       name,
       (route) => false,
@@ -42,7 +42,7 @@ jumpToRootPage({
   Object? arguments,
 }) {
   if (isPop) {
-    Navigator.popUntil(
+    return Navigator.popUntil(
       context,
       ModalRoute.withName(
         name,
@@ -50,13 +50,13 @@ jumpToRootPage({
     );
   } else {
     if (widget != null) {
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+      return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
         builder: (context) {
           return widget;
         },
       ), (route) => false);
     } else {
-      Navigator.pushNamedAndRemoveUntil(
+      return Navigator.pushNamedAndRemoveUntil(
         context,
         name,
         (route) => false,

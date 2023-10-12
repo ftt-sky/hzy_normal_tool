@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-15 22:15:22
  * @LastEditors: TT
- * @LastEditTime: 2023-09-09 16:04:07
+ * @LastEditTime: 2023-09-27 10:11:26
  */
 import 'package:flutter/material.dart';
 import '../hzy_normal_config/hzy_normal_colors.dart';
@@ -126,6 +126,8 @@ class HzyAppBarGenerator {
     Color? leadingIconColor,
     Color? backgroundColor,
     Widget? flexibleSpace,
+    double? fontSize,
+    TextStyle? textStyle,
     Function()? leadingCallback,
   }) {
     final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
@@ -135,6 +137,14 @@ class HzyAppBarGenerator {
         (themeData.appBarTheme.iconTheme?.color ?? HzyNormalColorS.col101010);
     backgroundColor ??=
         (themeData.appBarTheme.backgroundColor ?? HzyNormalColorS.colffffff);
+    textStyle ??= (themeData.appBarTheme.titleTextStyle ??
+        TextStyle(
+          color: textColor ??
+              themeData.appBarTheme.titleTextStyle?.color ??
+              HzyNormalColorS.col101010,
+          fontSize:
+              fontSize ?? themeData.appBarTheme.titleTextStyle?.fontSize ?? 18,
+        ));
     return AppBar(
       backgroundColor: backgroundColor,
       centerTitle: true,
@@ -157,10 +167,7 @@ class HzyAppBarGenerator {
       title: titlew ??
           Text(
             title,
-            style: TextStyle(
-              fontSize: 18,
-              color: textColor ?? HzyNormalColorS.col101010,
-            ),
+            style: textStyle,
           ),
       elevation: elevation,
       bottom: bottom,
