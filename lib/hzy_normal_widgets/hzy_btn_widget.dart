@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
  * @LastEditors: TT
- * @LastEditTime: 2023-08-14 17:44:01
+ * @LastEditTime: 2023-10-17 10:02:58
  */
 
 import 'package:flutter/material.dart';
@@ -47,6 +47,7 @@ class HzyBtnWidget extends StatelessWidget {
     this.fontColor = Colors.black,
     this.lineHeight,
     this.imageWidget,
+    this.textIsExpend = false,
     this.space = 4,
     this.isFittedBox = false,
     this.tapCall,
@@ -94,6 +95,9 @@ class HzyBtnWidget extends StatelessWidget {
   /// 字体样式
   final TextStyle? textStyle;
 
+  /// 文本是否需要撑满剩余界面
+  final bool textIsExpend;
+
   /// 字体大小
   final double? fontSize;
 
@@ -122,6 +126,14 @@ class HzyBtnWidget extends StatelessWidget {
     List<Widget> child = [];
     switch (btnLayoutType) {
       case BtnLayoutType.letfImg:
+        child = [
+          iW,
+          sp,
+          configTextExpend(
+            tW: tW,
+          ),
+        ];
+        break;
       case BtnLayoutType.topImg:
         child = [
           iW,
@@ -130,6 +142,14 @@ class HzyBtnWidget extends StatelessWidget {
         ];
         break;
       case BtnLayoutType.rightImg:
+        child = [
+          configTextExpend(
+            tW: tW,
+          ),
+          sp,
+          iW,
+        ];
+        break;
       case BtnLayoutType.bottomImg:
         child = [
           tW,
@@ -138,7 +158,12 @@ class HzyBtnWidget extends StatelessWidget {
         ];
         break;
       case BtnLayoutType.text:
-        child = [tW];
+        child = [
+          configTextExpend(
+            tW: tW,
+            isExpend: width == null ? textIsExpend : true,
+          ),
+        ];
         break;
       case BtnLayoutType.img:
         child = [iW];
@@ -181,6 +206,17 @@ class HzyBtnWidget extends StatelessWidget {
           )
         : body;
     return body;
+  }
+
+  configTextExpend({
+    required Widget tW,
+    bool? isExpend,
+  }) {
+    return isExpend ?? textIsExpend
+        ? Expanded(
+            child: tW,
+          )
+        : tW;
   }
 
   /// 创建布局
@@ -229,6 +265,8 @@ class HzyBtnWidget extends StatelessWidget {
                 color: fontColor,
                 height: lineHeight,
               ),
+          overflow: TextOverflow.ellipsis,
+          maxLines: 2,
         );
 
     return body;
