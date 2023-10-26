@@ -165,7 +165,7 @@ configChevronRight({
  * }
  * @return {*}
  */
-showPopDiaLogWidget({
+Future<T?> showPopDiaLogWidget<T>({
   required BuildContext context,
   Color? dialogBackColor,
   bool barrierDismissible = true,
@@ -195,7 +195,7 @@ showPopDiaLogWidget({
   int? layoutType,
   int? btnType,
 }) {
-  return showDialog(
+  return showDialog<T>(
     context: context,
     barrierDismissible: barrierDismissible,
     builder: (context) {
@@ -232,9 +232,10 @@ showPopDiaLogWidget({
               cannerMsg: cannerMsg ?? "取消",
               cannerTitleColor: cannerTitleColor ?? HzyNormalColorS.col999999,
               tapCanner: () {
-                Navigator.pop(context, false);
                 if (tapCanner != null) {
                   tapCanner();
+                } else {
+                  Navigator.pop(context, false);
                 }
               },
               tapSure: () {
