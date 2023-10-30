@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
  * @LastEditors: TT
- * @LastEditTime: 2023-10-17 10:02:58
+ * @LastEditTime: 2023-10-30 18:13:41
  */
 
 import 'package:flutter/material.dart';
@@ -43,6 +43,7 @@ class HzyBtnWidget extends StatelessWidget {
     this.titleWidget,
     this.text,
     this.textStyle,
+    this.textAlign,
     this.fontSize = 14,
     this.fontColor = Colors.black,
     this.lineHeight,
@@ -91,6 +92,9 @@ class HzyBtnWidget extends StatelessWidget {
 
   /// 文本内容
   final String? text;
+
+  /// 文本位置
+  final TextAlign? textAlign;
 
   /// 字体样式
   final TextStyle? textStyle;
@@ -266,6 +270,8 @@ class HzyBtnWidget extends StatelessWidget {
                 height: lineHeight,
               ),
           overflow: TextOverflow.ellipsis,
+          textAlign: textAlign ??
+              (btnLayoutType == BtnLayoutType.text ? TextAlign.center : null),
           maxLines: 2,
         );
 
