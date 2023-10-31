@@ -300,6 +300,7 @@ Widget createNormaltfWidget({
   int? minLines,
   Function(String value)? onChange,
   Function? ontap,
+  bool? enabled,
   Color? cursorColor,
   Function? onEditingComplete,
 }) {
@@ -309,6 +310,7 @@ Widget createNormaltfWidget({
     maxLines: maxLines,
     minLines: minLines,
     obscureText: obscureText,
+    enabled: enabled,
     maxLength: maxLength,
     inputFormatters: inputFormatters,
     style: style ??
