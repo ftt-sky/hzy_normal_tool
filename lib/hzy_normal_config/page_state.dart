@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 17:37:21
  * @LastEditors: TT
- * @LastEditTime: 2023-05-20 11:41:42
+ * @LastEditTime: 2023-12-16 09:17:51
  */
 enum PageState {
   // 初始状态
@@ -24,27 +24,12 @@ enum PageState {
 }
 
 class BaseState {
-  PageState? pageState;
-  bool isok = true;
+  PageState pageState;
+  bool isOk = true;
   String? msg;
   String? mark;
   BaseState({
     this.pageState = PageState.initializedState,
     this.msg,
   });
-}
-
-class TTcommentTool {
-  static configPageState({
-    required int allNum,
-    required int netlistNum,
-  }) {
-    PageState st = PageState.dataFetchState;
-    if (allNum == 0) {
-      st = PageState.emptyDataState;
-    } else if (netlistNum == 0) {
-      st = PageState.noMoreDataState;
-    }
-    return st;
-  }
 }

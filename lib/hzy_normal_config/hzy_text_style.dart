@@ -6,12 +6,16 @@ class HzyTextStyle {
     double? size,
     Color? color,
     double? height,
+    String? fontFamily,
+    TextDecoration? decoration,
   }) {
-    return TextStyle(
+    return configNormalTextStyle(
       fontSize: size,
       fontWeight: FontWeight.w400,
       color: color,
+      fontFamily: fontFamily,
       height: height,
+      decoration: decoration,
     );
   }
 
@@ -19,12 +23,16 @@ class HzyTextStyle {
     double? size,
     Color? color,
     double? height,
+    String? fontFamily,
+    TextDecoration? decoration,
   }) {
-    return TextStyle(
+    return configNormalTextStyle(
       fontSize: size,
       fontWeight: FontWeight.w500,
       color: color,
       height: height,
+      fontFamily: fontFamily,
+      decoration: decoration,
     );
   }
 
@@ -32,12 +40,16 @@ class HzyTextStyle {
     double? size,
     Color? color,
     double? height,
+    String? fontFamily,
+    TextDecoration? decoration,
   }) {
-    return TextStyle(
+    return configNormalTextStyle(
       fontSize: size,
       fontWeight: FontWeight.w600,
       color: color,
       height: height,
+      fontFamily: fontFamily,
+      decoration: decoration,
     );
   }
 
@@ -45,12 +57,16 @@ class HzyTextStyle {
     double? size,
     Color? color,
     double? height,
+    String? fontFamily,
+    TextDecoration? decoration,
   }) {
-    return TextStyle(
+    return configNormalTextStyle(
       fontSize: size,
       fontWeight: FontWeight.w300,
       color: color,
+      fontFamily: fontFamily,
       height: height,
+      decoration: decoration,
     );
   }
 
@@ -58,12 +74,34 @@ class HzyTextStyle {
     double? size,
     Color? color,
     double? height,
+    String? fontFamily,
+    TextDecoration? decoration,
   }) {
-    return TextStyle(
+    return configNormalTextStyle(
       fontSize: size,
       fontWeight: FontWeight.bold,
       color: color,
+      fontFamily: fontFamily,
       height: height,
+      decoration: decoration,
+    );
+  }
+
+  static TextStyle configNormalTextStyle({
+    double? fontSize,
+    Color? color,
+    double? height,
+    FontWeight? fontWeight,
+    String? fontFamily,
+    TextDecoration? decoration,
+  }) {
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      fontFamily: fontFamily,
+      height: height,
+      decoration: decoration,
     );
   }
 }

@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
  * @LastEditors: TT
- * @LastEditTime: 2023-10-30 18:13:41
+ * @LastEditTime: 2023-12-16 09:21:34
  */
 
 import 'package:flutter/material.dart';
@@ -31,7 +31,8 @@ class HzyBtnWidget extends StatelessWidget {
     super.key,
     this.btnLayoutType = BtnLayoutType.text,
     this.decoration,
-    this.alignment,
+    this.mainAxisAlignment = MainAxisAlignment.center,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
     this.margin,
     this.padding,
     this.width,
@@ -49,6 +50,7 @@ class HzyBtnWidget extends StatelessWidget {
     this.lineHeight,
     this.imageWidget,
     this.textIsExpend = false,
+    this.isCanTap = true,
     this.space = 4,
     this.isFittedBox = false,
     this.tapCall,
@@ -57,13 +59,17 @@ class HzyBtnWidget extends StatelessWidget {
   // 按钮布局类型
   final BtnLayoutType? btnLayoutType;
 
+  /// 是否可以点击
+  final bool isCanTap;
+
   /// 按钮宽
   final double? width;
 
   /// 按钮高
   final double? height;
 
-  final AlignmentGeometry? alignment;
+  final MainAxisAlignment mainAxisAlignment;
+  final CrossAxisAlignment crossAxisAlignment;
   // ---------- 装饰器 ----------- //
 
   /// 背景装饰器
@@ -183,7 +189,6 @@ class HzyBtnWidget extends StatelessWidget {
       height: height,
       margin: margin,
       padding: padding,
-      alignment: alignment ?? Alignment.center,
       decoration: decoration ??
           BoxDecoration(
             color: bgColor,
@@ -200,7 +205,9 @@ class HzyBtnWidget extends StatelessWidget {
         ? body
         : InkWell(
             onTap: () {
-              tapCall!();
+              if (isCanTap) {
+                tapCall?.call();
+              }
             },
             child: body,
           );
@@ -228,8 +235,7 @@ class HzyBtnWidget extends StatelessWidget {
     required List<Widget> list,
   }) {
     Widget body = Container();
-    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.center;
-    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center;
+
     switch (btnLayoutType) {
       case BtnLayoutType.topImg:
       case BtnLayoutType.bottomImg:

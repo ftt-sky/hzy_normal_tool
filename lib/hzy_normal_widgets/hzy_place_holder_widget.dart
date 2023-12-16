@@ -1,61 +1,18 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: TT
+ * @Date: 2023-12-16 09:22:48
+ * @LastEditors: TT
+ * @LastEditTime: 2023-12-16 09:22:49
+ */
 
 import 'package:flutter/material.dart';
 
 import '../hzy_normal_config/page_state.dart';
 
 class HzyPlaceHolderConfig {
-  static Map<String, HzyPlaceHolderModel>? placeholdinfo;
-
   static Widget? loadWidget;
-}
-
-class HzyPlaceHolderModel {
-  /// 站位图
-  Widget? icon;
-
-  /// 站位描述语
-  String? desc;
-
-  /// 站位图 本地图片路径
-  String? imageAssert;
-
-  /// 站位图大小
-  Size? imageSize;
-
-  /// 失败界面 大小
-  double? size;
-
-  /// 背景颜色
-  Color? backgroundColor;
-
-  /// 按钮与图片的距离
-  double? space;
-
-  /// 字体配置
-  TextStyle? textStyle;
-
-  /// 按钮
-  Widget? buttonWidget;
-
-  /// 扩展字段
-  Map? extendInfo;
-
-  /// 描述语
-  String? message;
-
-  HzyPlaceHolderModel({
-    this.icon,
-    this.desc,
-    this.imageAssert,
-    this.imageSize,
-    this.backgroundColor,
-    this.space,
-    this.textStyle,
-    this.buttonWidget,
-    this.extendInfo,
-    this.message,
-    this.size,
-  });
 }
 
 class HzyPlaceHolderWidget extends StatelessWidget {

@@ -165,6 +165,29 @@ configChevronRight({
  * }
  * @return {*}
  */
+
+Future<T?> showNormalDialog<T>({
+  required BuildContext context,
+  required Widget body,
+  Color? dialogBackColor,
+  bool barrierDismissible = true,
+  BorderRadius borderRadius = BorderRadius.zero,
+}) {
+  return showDialog<T>(
+    context: context,
+    barrierDismissible: barrierDismissible,
+    builder: (context) {
+      return Dialog(
+        backgroundColor: dialogBackColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: borderRadius,
+        ),
+        child: body,
+      );
+    },
+  );
+}
+
 Future<T?> showPopDiaLogWidget<T>({
   required BuildContext context,
   Color? dialogBackColor,
@@ -182,7 +205,7 @@ Future<T?> showPopDiaLogWidget<T>({
   EdgeInsetsGeometry? padding,
   double? msgAndBtnSpace,
   double? titleAndMsgSpace,
-  double? radius,
+  double? radius = 16,
   String? sureMsg,
   Color? sureBgColor,
   Color? sureTitleColor,
@@ -195,61 +218,52 @@ Future<T?> showPopDiaLogWidget<T>({
   int? layoutType,
   int? btnType,
 }) {
-  return showDialog<T>(
+  return showNormalDialog<T>(
     context: context,
     barrierDismissible: barrierDismissible,
-    builder: (context) {
-      return Dialog(
-        backgroundColor: dialogBackColor,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(
-              15,
-            ),
-          ),
-        ),
-        child: body ??
-            HzyPopDiaLogWidget(
-              bgColor: dialogBackColor ?? Colors.white,
-              titleWidget: titleWidget,
-              titleAndMsgSpace: titleAndMsgSpace ?? 10,
-              title: title,
-              titleColor: titleColor ?? HzyNormalColorS.col222222,
-              titleFontSize: titleFontSize ?? 16,
-              msg: msg,
-              msgAndBtnSpace: msgAndBtnSpace ?? 20,
-              msgColor: msgColor ?? HzyNormalColorS.col333333,
-              msgFontSize: msgFontSize ?? 14,
-              msgWidget: msgWidget,
-              btnSWidget: btnSWidget,
-              padding: padding ?? const EdgeInsets.all(20),
-              space: space ?? 20,
-              sureBgColor: sureBgColor ?? HzyNormalColorS.col2865ff,
-              radius: radius ?? 20,
-              sureMsg: sureMsg ?? "确认",
-              sureTitleColor: sureTitleColor ?? Colors.white,
-              cannerBgColor: cannerBgColor ?? HzyNormalColorS.colf5f5f5,
-              cannerMsg: cannerMsg ?? "取消",
-              cannerTitleColor: cannerTitleColor ?? HzyNormalColorS.col999999,
-              tapCanner: () {
-                if (tapCanner != null) {
-                  tapCanner();
-                } else {
-                  Navigator.pop(context, false);
-                }
-              },
-              tapSure: () {
-                if (tapSure != null) {
-                  tapSure();
-                } else {
-                  Navigator.pop(context, true);
-                }
-              },
-              layoutType: layoutType ?? 1,
-              btnType: btnType ?? 2,
-            ),
-      );
-    },
+    dialogBackColor: dialogBackColor,
+    borderRadius: BorderRadius.circular(
+      radius ?? 0,
+    ),
+    body: HzyPopDiaLogWidget(
+      bgColor: dialogBackColor ?? Colors.white,
+      titleWidget: titleWidget,
+      titleAndMsgSpace: titleAndMsgSpace ?? 10,
+      title: title,
+      titleColor: titleColor ?? HzyNormalColorS.col222222,
+      titleFontSize: titleFontSize ?? 16,
+      msg: msg,
+      msgAndBtnSpace: msgAndBtnSpace ?? 20,
+      msgColor: msgColor ?? HzyNormalColorS.col333333,
+      msgFontSize: msgFontSize ?? 14,
+      msgWidget: msgWidget,
+      btnSWidget: btnSWidget,
+      padding: padding ?? const EdgeInsets.all(20),
+      space: space ?? 20,
+      sureBgColor: sureBgColor ?? HzyNormalColorS.col2865ff,
+      radius: radius ?? 20,
+      sureMsg: sureMsg ?? "确认",
+      sureTitleColor: sureTitleColor ?? Colors.white,
+      cannerBgColor: cannerBgColor ?? HzyNormalColorS.colf5f5f5,
+      cannerMsg: cannerMsg ?? "取消",
+      cannerTitleColor: cannerTitleColor ?? HzyNormalColorS.col999999,
+      tapCanner: () {
+        if (tapCanner != null) {
+          tapCanner();
+        } else {
+          Navigator.pop(context, false);
+        }
+      },
+      tapSure: () {
+        if (tapSure != null) {
+          tapSure();
+        } else {
+          Navigator.pop(context, true);
+        }
+      },
+      layoutType: layoutType ?? 1,
+      btnType: btnType ?? 2,
+    ),
   );
 }
 
@@ -295,6 +309,7 @@ Widget createNormaltfWidget({
   Brightness? keyboardAppearance,
   EdgeInsetsGeometry? contentPadding,
   Widget? prefixIcon,
+  Widget? suffixIcon,
   int? maxLines = 1,
   InputDecoration? decoration,
   int? minLines,
@@ -324,6 +339,7 @@ Widget createNormaltfWidget({
     keyboardAppearance: keyboardAppearance,
     decoration: decoration ??
         InputDecoration(
+          suffixIcon: suffixIcon,
           border: InputBorder.none,
           prefixIcon: prefixIcon,
           counterText: "",

@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-09-23 11:15:57
  * @LastEditors: TT
- * @LastEditTime: 2023-09-23 15:16:06
+ * @LastEditTime: 2023-12-16 09:16:45
  */
 import 'package:flutter/material.dart';
 
@@ -56,7 +56,6 @@ mixin HzyScaffolMixin {
   PreferredSizeWidget? createAppBar({
     required BuildContext context,
   });
- 
 
   /// 创建界面body
   @protected

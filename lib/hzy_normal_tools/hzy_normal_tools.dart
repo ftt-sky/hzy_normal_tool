@@ -223,15 +223,21 @@ class HzyNormalTools {
     }
   }
 
+  /// 设置键盘 弹起
+  static requestFocus(
+    BuildContext context,
+  ) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      FocusManager.instance.primaryFocus?.requestFocus();
+    }
+  }
+
   // 赋值剪切板内容
   static setDataToClipboard({
     required String text,
-    Function? copyBlock,
   }) async {
     await Clipboard.setData(ClipboardData(text: text));
-    if (copyBlock != null) {
-      copyBlock();
-    }
   }
 
   // 获取剪切板内容
@@ -274,7 +280,13 @@ Color getColorFromHex(String? hexColor) {
   if (hexColor == "null" || hexColor == "" || hexColor == null) {
     return Colors.black;
   } else {
-    return Color(int.parse(hexColor.replaceFirst('#', '0xFF')));
+    if (hexColor.contains("#") && hexColor.length == 7) {
+      return Color(int.parse(hexColor.replaceFirst('#', '0xFF')));
+    } else if (hexColor.length == 6) {
+      return Color(int.parse("0xFF$hexColor"));
+    } else {
+      return Colors.black;
+    }
   }
 }
 
@@ -297,7 +309,7 @@ configShowBottomSheet({
   );
 }
 
-showDig({
+configShowDialog({
   required BuildContext context,
   required Widget widget,
   bool barrierDismissible = true,
