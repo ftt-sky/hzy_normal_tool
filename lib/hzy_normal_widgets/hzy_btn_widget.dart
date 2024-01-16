@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
  * @LastEditors: TT
- * @LastEditTime: 2023-12-16 09:21:34
+ * @LastEditTime: 2024-01-12 15:38:53
  */
 
 import 'package:flutter/material.dart';
@@ -33,6 +33,7 @@ class HzyBtnWidget extends StatelessWidget {
     this.decoration,
     this.mainAxisAlignment = MainAxisAlignment.center,
     this.crossAxisAlignment = CrossAxisAlignment.center,
+    this.mainAxisSize = MainAxisSize.max,
     this.margin,
     this.padding,
     this.width,
@@ -70,6 +71,7 @@ class HzyBtnWidget extends StatelessWidget {
 
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
+  final MainAxisSize mainAxisSize;
   // ---------- 装饰器 ----------- //
 
   /// 背景装饰器
@@ -240,6 +242,7 @@ class HzyBtnWidget extends StatelessWidget {
       case BtnLayoutType.topImg:
       case BtnLayoutType.bottomImg:
         body = Column(
+          mainAxisSize: mainAxisSize,
           mainAxisAlignment: mainAxisAlignment,
           crossAxisAlignment: crossAxisAlignment,
           children: list,
@@ -248,6 +251,7 @@ class HzyBtnWidget extends StatelessWidget {
       case BtnLayoutType.letfImg:
       case BtnLayoutType.rightImg:
         body = Row(
+          mainAxisSize: mainAxisSize,
           mainAxisAlignment: mainAxisAlignment,
           crossAxisAlignment: crossAxisAlignment,
           children: list,
@@ -255,6 +259,7 @@ class HzyBtnWidget extends StatelessWidget {
         break;
       default:
         body = Row(
+          mainAxisSize: mainAxisSize,
           mainAxisAlignment: mainAxisAlignment,
           crossAxisAlignment: crossAxisAlignment,
           children: list,
