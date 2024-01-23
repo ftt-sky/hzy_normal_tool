@@ -3,8 +3,8 @@
  * @version: 
  * @Author: TT
  * @Date: 2023-03-16 22:03:34
- * @LastEditors: TT
- * @LastEditTime: 2024-01-12 15:38:53
+ * @LastEditors: TT-hzy 
+ * @LastEditTime: 2024-01-23 14:41:47
  */
 
 import 'package:flutter/material.dart';
@@ -202,6 +202,16 @@ class HzyBtnWidget extends StatelessWidget {
           ),
       child: body,
     );
+    body = mainAxisSize == MainAxisSize.min
+        ? Row(
+            mainAxisSize: mainAxisSize,
+            mainAxisAlignment: mainAxisAlignment,
+            crossAxisAlignment: crossAxisAlignment,
+            children: [
+              body,
+            ],
+          )
+        : body;
 
     body = tapCall == null
         ? body
@@ -242,7 +252,6 @@ class HzyBtnWidget extends StatelessWidget {
       case BtnLayoutType.topImg:
       case BtnLayoutType.bottomImg:
         body = Column(
-          mainAxisSize: mainAxisSize,
           mainAxisAlignment: mainAxisAlignment,
           crossAxisAlignment: crossAxisAlignment,
           children: list,
@@ -251,7 +260,6 @@ class HzyBtnWidget extends StatelessWidget {
       case BtnLayoutType.letfImg:
       case BtnLayoutType.rightImg:
         body = Row(
-          mainAxisSize: mainAxisSize,
           mainAxisAlignment: mainAxisAlignment,
           crossAxisAlignment: crossAxisAlignment,
           children: list,
@@ -259,7 +267,6 @@ class HzyBtnWidget extends StatelessWidget {
         break;
       default:
         body = Row(
-          mainAxisSize: mainAxisSize,
           mainAxisAlignment: mainAxisAlignment,
           crossAxisAlignment: crossAxisAlignment,
           children: list,
