@@ -3,8 +3,8 @@
  * @version: 
  * @Author: TT
  * @Date: 2023-03-15 22:15:22
- * @LastEditors: TT
- * @LastEditTime: 2023-09-27 10:11:26
+ * @LastEditors: TT-hzy 
+ * @LastEditTime: 2024-02-01 18:19:55
  */
 import 'package:flutter/material.dart';
 import '../hzy_normal_config/hzy_normal_colors.dart';
@@ -21,11 +21,22 @@ class HzyAppBarGenerator {
     double elevation = 0,
     double? toolbarHeight,
     Color? textColor,
+    TextStyle? textStyle,
+    double? fontSize,
     Color? leadingIconColor,
     Color? backgroundColor,
     Widget? flexibleSpace,
     Function()? leadingCallback,
   }) {
+    ThemeData themeData = Theme.of(context);
+    textStyle ??= (themeData.appBarTheme.titleTextStyle ??
+        TextStyle(
+          color: textColor ??
+              themeData.appBarTheme.titleTextStyle?.color ??
+              HzyNormalColorS.col101010,
+          fontSize:
+              fontSize ?? themeData.appBarTheme.titleTextStyle?.fontSize ?? 18,
+        ));
     Widget leftWidget = configAppBarBackBtnWidget(
       context: context,
       leading: leading,
@@ -39,11 +50,7 @@ class HzyAppBarGenerator {
         ? Container()
         : Text(
             title,
-            style: TextStyle(
-              fontSize: 18,
-              color: textColor ?? HzyNormalColorS.col101010,
-            ),
-            textAlign: TextAlign.center,
+            style: textStyle,
           );
     textWidget = titlew ?? textWidget;
     textWidget = Center(
@@ -156,7 +163,7 @@ class HzyAppBarGenerator {
               ? (leading ??
                   IconButton(
                     icon: Icon(
-                      icon ?? Icons.arrow_back_ios,
+                      icon ?? Icons.arrow_back_ios_new,
                       color: leadingIconColor,
                     ),
                     onPressed:
