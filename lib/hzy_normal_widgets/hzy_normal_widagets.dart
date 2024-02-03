@@ -205,7 +205,7 @@ Future<T?> showPopDiaLogWidget<T>({
   EdgeInsetsGeometry? padding,
   double? msgAndBtnSpace,
   double? titleAndMsgSpace,
-  double? radius = 16,
+  double? radius = 20,
   String? sureMsg,
   Color? sureBgColor,
   Color? sureTitleColor,
