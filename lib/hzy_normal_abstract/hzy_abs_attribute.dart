@@ -3,8 +3,8 @@
  * @version: 
  * @Author: TT
  * @Date: 2023-06-25 10:05:36
- * @LastEditors: TT
- * @LastEditTime: 2023-12-16 09:14:26
+ * @LastEditors: TT-hzy 
+ * @LastEditTime: 2024-02-27 09:29:15
  */
 import 'package:flutter/material.dart';
 
@@ -78,7 +78,7 @@ mixin class HzyAbstracRefreshMehod {
   /// 结束刷新
   PageState endRefresh({
     required int type,
-    required PageState pageState,
+    required PageState state,
   }) {
     throw UnimplementedError();
   }
@@ -92,7 +92,6 @@ mixin class HzyAbstracRefreshMehod {
 
 // 配置网络请求规范
 mixin class HzyAbstractNetWork {
-
   /// 网络请求
   @protected
   getNetWorkData({
