@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-03-15 22:15:22
  * @LastEditors: TT-hzy 
- * @LastEditTime: 2024-02-01 18:19:55
+ * @LastEditTime: 2024-03-11 14:40:01
  */
 import 'package:flutter/material.dart';
 import '../hzy_normal_config/hzy_normal_colors.dart';
@@ -29,14 +29,22 @@ class HzyAppBarGenerator {
     Function()? leadingCallback,
   }) {
     ThemeData themeData = Theme.of(context);
-    textStyle ??= (themeData.appBarTheme.titleTextStyle ??
-        TextStyle(
-          color: textColor ??
-              themeData.appBarTheme.titleTextStyle?.color ??
-              HzyNormalColorS.col101010,
-          fontSize:
-              fontSize ?? themeData.appBarTheme.titleTextStyle?.fontSize ?? 18,
-        ));
+    textStyle ??= (textColor != null || fontSize != null)
+        ? TextStyle(
+            color: textColor,
+            fontSize: fontSize ??
+                themeData.appBarTheme.titleTextStyle?.fontSize ??
+                18,
+          )
+        : (themeData.appBarTheme.titleTextStyle ??
+            TextStyle(
+              color: textColor ??
+                  themeData.appBarTheme.titleTextStyle?.color ??
+                  HzyNormalColorS.col101010,
+              fontSize: fontSize ??
+                  themeData.appBarTheme.titleTextStyle?.fontSize ??
+                  18,
+            ));
     Widget leftWidget = configAppBarBackBtnWidget(
       context: context,
       leading: leading,
