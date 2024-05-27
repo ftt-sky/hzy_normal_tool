@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -323,4 +324,9 @@ configShowDialog({
       return widget;
     },
   );
+}
+
+configDartVersion() {
+  String dartVersion = Platform.version.split(' ')[0];
+  return dartVersion;
 }

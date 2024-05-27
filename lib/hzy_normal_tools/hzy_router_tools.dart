@@ -3,8 +3,8 @@
  * @version: 
  * @Author: TT
  * @Date: 2023-03-19 16:51:23
- * @LastEditors: TT
- * @LastEditTime: 2023-10-04 19:37:40
+ * @LastEditors: TT-hzy 
+ * @LastEditTime: 2024-05-27 09:01:31
  */
 
 import 'package:flutter/material.dart';
@@ -67,6 +67,8 @@ jumpToRootPage({
 }
 
 /// 获取路由跳转传惨
-configPageArguments({required BuildContext context}) {
+configPageArguments({
+  required BuildContext context,
+}) {
   return ModalRoute.of(context)?.settings.arguments;
 }
