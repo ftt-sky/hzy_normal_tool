@@ -3,8 +3,8 @@
  * @version: 
  * @Author: TT
  * @Date: 2023-06-25 08:46:03
- * @LastEditors: TT
- * @LastEditTime: 2023-09-23 11:51:38
+ * @LastEditors: TT-hzy 
+ * @LastEditTime: 2024-05-27 10:31:22
  */
 
 import 'package:flutter/material.dart';
@@ -98,11 +98,9 @@ mixin class HzyAbsWidget {
             constraints: constraints,
           );
     body = configIsAddPopScope()
-        ? WillPopScope(
+        ? PopScope(
+            canPop: configOnWillPop(),
             child: body,
-            onWillPop: () async {
-              return configOnWillPop();
-            },
           )
         : body;
     return body;
