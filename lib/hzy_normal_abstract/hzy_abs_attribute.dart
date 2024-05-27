@@ -4,7 +4,7 @@
  * @Author: TT
  * @Date: 2023-06-25 10:05:36
  * @LastEditors: TT-hzy 
- * @LastEditTime: 2024-02-27 09:29:15
+ * @LastEditTime: 2024-05-27 09:44:22
  */
 import 'package:flutter/material.dart';
 
@@ -54,18 +54,45 @@ mixin class HzyAbsState {
 /// 刷新界面 规范
 mixin class HzyAbstracRefreshWidget {
   /// 创建刷新控件
-  Widget createRefreshWidget(BuildContext context) {
+  Widget createRefreshWidget(
+    BuildContext context,
+  ) {
     throw UnimplementedError();
   }
 
   /// 创建列表
-  Widget createListView(BuildContext context) {
+  Widget createListView(
+    BuildContext context,
+  ) {
     throw UnimplementedError();
   }
 
   /// 创建列表 item
-  Widget createListitem(BuildContext context, int index) {
+  Widget createListitem(
+    BuildContext context,
+    int index,
+  ) {
     throw UnimplementedError();
+  }
+
+  /// 创建下啦刷新头部
+  createHeader() {
+    throw UnimplementedError();
+  }
+
+  /// 配置下啦刷新头部字体颜色
+  Color? configHeaderTitleColor() {
+    return null;
+  }
+
+  /// 创建上啦加载更多
+  createFooter() {
+    throw UnimplementedError();
+  }
+
+  /// 配置上啦加载更多字体颜色
+  Color? configFooterTitleColor() {
+    return null;
   }
 }
 
