@@ -3,8 +3,8 @@
  * @version: 
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
- * @LastEditors: TT
- * @LastEditTime: 2023-09-18 10:41:05
+ * @LastEditors: TT-hzy 
+ * @LastEditTime: 2024-06-01 17:56:22
  */
 
 import 'package:flutter/material.dart';
@@ -263,7 +263,7 @@ class HzyNormalItemWidget extends StatelessWidget {
         body,
         itemModel.isShowLine == true
             ? itemModel.lineWidget ??
-                HzyNormalTools.configlineSpace(
+                HzyNormalTools.configLineSpace(
                   color: itemModel.lineColor!,
                   height: itemModel.lineHeight ?? 0.5,
                   margin: itemModel.lineMargin,

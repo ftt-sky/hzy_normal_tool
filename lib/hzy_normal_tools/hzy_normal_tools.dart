@@ -44,7 +44,7 @@ class HzyNormalTools {
   }
 
   // 配置 yyyy-mm-dd
-  static String configyyyymmdd({
+  static String configYMD({
     required int year,
     required int m,
     required int d,
@@ -131,14 +131,6 @@ class HzyNormalTools {
     return format;
   }
 
-  /// 获取图片地址
-  static String getImagePath(
-    String name, {
-    String format = 'png',
-  }) {
-    return 'assets/images/$name.$format';
-  }
-
   // 校验手机号
   static bool chinaPhoneNumber(String input) {
     if (input.isEmpty) return false;
@@ -196,7 +188,7 @@ class HzyNormalTools {
   }
 
   // 通用间隔
-  static Widget configlineSpace({
+  static Widget configLineSpace({
     double height = 0.5,
     Color color = HzyNormalColorS.cole3e3e3,
     EdgeInsetsGeometry? padding,
@@ -215,7 +207,7 @@ class HzyNormalTools {
   }
 
   // 设置键盘 隐藏
-  static keydissmiss(
+  static keydissMiss(
     BuildContext context,
   ) {
     FocusScopeNode currentFocus = FocusScope.of(context);

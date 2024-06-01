@@ -12,16 +12,29 @@ import 'package:flutter/material.dart';
 abstract class AbsThemeColorConfig {
   Map<String, Color?> lightInfo = {};
   Map<String, Color?> darkInfo = {};
+
+  /*
+   * 获取颜色
+   * params: {
+   * 	colkey: 颜色key,
+   *  reversal: 是否反转,
+   *  isCloseTheme: 是否关闭主题
+   * } 
+  */
   Color configColor({
     required String colkey,
     bool reversal = false,
+    bool isCloseTheme = false,
   }) {
-    bool isbackmodel = loadThemeModel();
+    bool isBackModel = loadThemeModel();
     if (reversal) {
-      isbackmodel = !isbackmodel;
+      isBackModel = !isBackModel;
     }
-    Map colorinfo = isbackmodel ? darkInfo : lightInfo;
-    return colorinfo[colkey] ?? Colors.black;
+    Map colorInfo = isBackModel ? darkInfo : lightInfo;
+    if (isCloseTheme) {
+      colorInfo = lightInfo;
+    }
+    return colorInfo[colkey] ?? Colors.black;
   }
 
   bool loadThemeModel() {

@@ -22,10 +22,10 @@ mixin class HzyAbsAttribute {
   final Color? navBackgroudColor = null;
 
   /// 默认安全区顶部 忽略
-  final bool safeAreatop = true;
+  final bool safeAreaTop = true;
 
   /// 默认安全区底部 忽略
-  final bool safeAreabottm = true;
+  final bool safeAreaBottom = true;
 
   /// 背景颜色
   final Color? scallBackGroundColor = null;

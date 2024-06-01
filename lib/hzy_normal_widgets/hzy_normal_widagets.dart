@@ -100,7 +100,7 @@ Widget createNormalItemWidget({
             ),
           ),
           isshowline!
-              ? linewidget ?? HzyNormalTools.configlineSpace()
+              ? linewidget ?? HzyNormalTools.configLineSpace()
               : Container()
         ],
       ),
@@ -363,7 +363,7 @@ Widget createNormaltfWidget({
       }
     },
     onEditingComplete: () {
-      HzyNormalTools.keydissmiss(context);
+      HzyNormalTools.keydissMiss(context);
       if (onEditingComplete != null) onEditingComplete();
     },
   );
