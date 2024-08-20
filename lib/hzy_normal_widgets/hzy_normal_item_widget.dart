@@ -4,14 +4,15 @@
  * @Author: TT
  * @Date: 2023-03-18 18:13:28
  * @LastEditors: TT-hzy 
- * @LastEditTime: 2024-06-01 17:56:22
+ * @LastEditTime: 2024-06-04 10:40:22
  */
 
 import 'package:flutter/material.dart';
-import 'package:hzy_normal_tool/hzy_normal_config/hzy_normal_colors.dart';
-import 'package:hzy_normal_tool/hzy_normal_config/hzy_text_style.dart';
-import 'package:hzy_normal_tool/hzy_normal_tools/hzy_normal_tools.dart';
-import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_normal_widagets.dart';
+
+import '../hzy_normal_config/hzy_normal_colors.dart';
+import '../hzy_normal_config/hzy_text_style.dart';
+import '../hzy_normal_tools/hzy_normal_tools.dart';
+import 'hzy_normal_widagets.dart';
 
 class HzyNormalItemModel {
   /**
@@ -177,6 +178,9 @@ class HzyNormalItemModel {
   /// item 点击事件
   TapIndexOptionCallback? tapItemCall;
 
+  /// 其他信息
+  dynamic otherInfo;
+
   HzyNormalItemModel({
     this.mainAxisAlignment = MainAxisAlignment.spaceBetween,
     this.backGroudColor = Colors.white,
@@ -218,6 +222,7 @@ class HzyNormalItemModel {
     this.router,
     this.margin,
     this.tapType = 1,
+    this.otherInfo,
   });
 }
 
