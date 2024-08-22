@@ -3,8 +3,8 @@
  * @version: 
  * @Author: TT
  * @Date: 2023-03-15 22:15:22
- * @LastEditors: TT-hzy 
- * @LastEditTime: 2024-03-11 14:54:15
+ * @LastEditors: TT-hzy
+ * @LastEditTime: 2024-08-22 18:27:55
  */
 import 'package:flutter/material.dart';
 import '../hzy_normal_config/hzy_normal_colors.dart';
@@ -26,6 +26,7 @@ class HzyAppBarGenerator {
     Color? leadingIconColor,
     Color? backgroundColor,
     Widget? flexibleSpace,
+    double? popTop,
     Function()? leadingCallback,
   }) {
     ThemeData themeData = Theme.of(context);
@@ -75,9 +76,10 @@ class HzyAppBarGenerator {
       ],
     );
 
+    double top = popTop ?? MediaQuery.of(context).padding.top;
     body = Container(
-      height: MediaQuery.of(context).padding.top + kToolbarHeight,
-      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      height: top + kToolbarHeight,
+      padding: EdgeInsets.only(top: top),
       decoration: BoxDecoration(
         color: backgroundColor ?? Colors.white.withOpacity(0),
       ),
@@ -88,7 +90,7 @@ class HzyAppBarGenerator {
         Positioned(
           left: 0,
           right: 0,
-          top: MediaQuery.of(context).padding.top,
+          top: top,
           bottom: 0,
           child: textWidget,
         ),
