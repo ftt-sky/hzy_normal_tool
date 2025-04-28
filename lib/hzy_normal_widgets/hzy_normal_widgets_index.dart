@@ -7,8 +7,6 @@
  * @LastEditTime: 2023-07-10 11:09:46
  */
 
-/// 通用按钮
-/// 上 下 左 右
 export 'hzy_btn_widget.dart';
 
 /// 通用widget

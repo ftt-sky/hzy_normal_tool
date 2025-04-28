@@ -28,13 +28,13 @@ class HzyPlaceHolderWidget extends StatelessWidget {
   // 是否显示加载动画
   final bool? isshowloading;
   const HzyPlaceHolderWidget({
-    Key? key,
+    super.key,
     required this.pageState,
     this.child,
     this.errorWidget,
     this.loadingWidget,
     this.isshowloading = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
