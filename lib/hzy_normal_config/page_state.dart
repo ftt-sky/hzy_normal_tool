@@ -9,6 +9,8 @@
 enum PageState {
   // 初始状态
   initializedState,
+  // 加载中状态
+  loadingState,
   // 错误状态,显示失败界面
   errorState,
   // 错误状态,只弹错误信息

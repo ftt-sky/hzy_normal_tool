@@ -21,18 +21,20 @@ mixin HzyScaffolMixin {
     required BuildContext context,
     BoxConstraints? constraints,
   }) {
-    Widget body = createScallBody(
-      context: context,
-      constraints: constraints,
-    );
-    body = configIsNeedScaffol()
+    Widget body = configIsNeedScaffol()
         ? Scaffold(
             appBar: createAppBar(context: context),
             backgroundColor: configScallBackgroundColor(),
             resizeToAvoidBottomInset: configResizeToAvoidBottomInset(),
-            body: body,
+            body: createScallBody(
+              context: context,
+              constraints: constraints,
+            ),
           )
-        : body;
+        : createScallBody(
+            context: context,
+            constraints: constraints,
+          );
     return body;
   }
 

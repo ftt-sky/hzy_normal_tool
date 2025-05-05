@@ -30,17 +30,19 @@ mixin HzyBodyMixin {
     required BuildContext context,
     BoxConstraints? constraints,
   }) {
-    Widget body = createSafeBody(
-      context: context,
-      constraints: constraints,
-    );
-    body = configIsNeedSafeArea()
+    Widget body = configIsNeedSafeArea()
         ? SafeArea(
             top: configSafeAreaTop(),
             bottom: configSafeAreaBottom(),
-            child: body,
+            child: createSafeBody(
+              context: context,
+              constraints: constraints,
+            ),
           )
-        : body;
+        : createSafeBody(
+            context: context,
+            constraints: constraints,
+          );
     return body;
   }
 
@@ -49,19 +51,25 @@ mixin HzyBodyMixin {
     required BuildContext context,
     BoxConstraints? constraints,
   }) {
-    Widget body = createBody(
-      constraints: constraints,
-      context: context,
-    );
-    body = configIsNeedPlaceHolder()
+    Widget body = configIsNeedPlaceHolder()
         ? HzyPlaceHolderWidget(
             pageState: configPageState(),
             errorWidget: createEmptyWidget(),
             loadingWidget: createLoadingWidget(),
-            isshowloading: configIsshowLoading(),
-            child: body,
+            isShowLoading: configIsshowLoading(),
+            child: (configIsshowLoading() &&
+                        configPageState() == PageState.initializedState ||
+                    configPageState() == PageState.loadingState)
+                ? createLoadingWidget()
+                : createBody(
+                    constraints: constraints,
+                    context: context,
+                  ),
           )
-        : body;
+        : createBody(
+            constraints: constraints,
+            context: context,
+          );
     return body;
   }
 
