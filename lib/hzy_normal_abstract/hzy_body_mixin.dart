@@ -55,7 +55,7 @@ mixin HzyBodyMixin {
         ? HzyPlaceHolderWidget(
             pageState: configPageState(),
             errorWidget: createEmptyWidget(),
-            loadingWidget: createLoadingWidget(),
+            loadingWidget: configIsshowLoading() ? createLoadingWidget() : null,
             isShowLoading: configIsshowLoading(),
             child: (configIsshowLoading() &&
                         configPageState() == PageState.initializedState ||
