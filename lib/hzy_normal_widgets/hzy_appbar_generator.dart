@@ -14,12 +14,12 @@ class HzyAppBarGenerator {
     required BuildContext context,
     String? title,
     List<Widget>? actions,
-    Widget? titlew,
-    Widget? leading,
+    Widget? titleWidget,
+    Widget? leadingWidget,
     IconData? icon,
-    bool showback = true,
+    bool showBack = true,
     double elevation = 0,
-    double? toolbarHeight,
+    double? toolBarHeight,
     Color? textColor,
     TextStyle? textStyle,
     double? fontSize,
@@ -48,9 +48,9 @@ class HzyAppBarGenerator {
             ));
     Widget leftWidget = configAppBarBackBtnWidget(
       context: context,
-      leading: leading,
+      leading: leadingWidget,
       icon: icon,
-      showback: showback,
+      showback: showBack,
       leadingIconColor: leadingIconColor,
       leadingCallback: leadingCallback,
     );
@@ -61,7 +61,7 @@ class HzyAppBarGenerator {
             title,
             style: textStyle,
           );
-    textWidget = titlew ?? textWidget;
+    textWidget = titleWidget ?? textWidget;
     textWidget = Center(
       child: textWidget,
     );
@@ -147,8 +147,8 @@ class HzyAppBarGenerator {
     TextStyle? textStyle,
     Function()? leadingCallback,
   }) {
-    final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
-    bool canshowback = parentRoute?.canPop ?? false;
+    bool canPop = Navigator.of(context).canPop();
+    bool canShowBack = canPop && showback;
     ThemeData themeData = Theme.of(context);
     leadingIconColor ??=
         (themeData.appBarTheme.iconTheme?.color ?? HzyNormalColorS.col101010);
@@ -176,19 +176,16 @@ class HzyAppBarGenerator {
       toolbarHeight: toolbarHeight,
       actions: actions,
       flexibleSpace: flexibleSpace,
-      leading: showback
-          ? (canshowback
-              ? (leading ??
-                  IconButton(
-                    icon: Icon(
-                      icon ?? Icons.arrow_back_ios_new,
-                      color: leadingIconColor,
-                    ),
-                    onPressed:
-                        leadingCallback ?? () => Navigator.of(context).pop(),
-                  ))
-              : null)
-          : null,
+      leading: (canShowBack
+          ? (leading ??
+              IconButton(
+                icon: Icon(
+                  icon ?? Icons.arrow_back_ios_new,
+                  color: leadingIconColor,
+                ),
+                onPressed: leadingCallback ?? () => Navigator.of(context).pop(),
+              ))
+          : null),
       title: titlew ??
           Text(
             title,
@@ -201,7 +198,9 @@ class HzyAppBarGenerator {
   }
 
   // 判断是否是一级界面
-  static bool isfirstPage({required BuildContext context}) {
+  static bool isfirstPage({
+    required BuildContext context,
+  }) {
     bool showback;
     final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
     showback = parentRoute?.canPop ?? false;
