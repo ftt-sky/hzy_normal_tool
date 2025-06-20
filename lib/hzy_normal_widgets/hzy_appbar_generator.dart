@@ -109,8 +109,8 @@ class HzyAppBarGenerator {
     Color? leadingIconColor,
     Function()? leadingCallback,
   }) {
-    final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
-    bool canShowBack = parentRoute?.canPop ?? false;
+    bool canPop = Navigator.of(context).canPop();
+    bool canShowBack = canPop || showback;
     ThemeData themeData = Theme.of(context);
     leadingIconColor ??=
         (themeData.appBarTheme.iconTheme?.color ?? HzyNormalColorS.col101010);
@@ -124,7 +124,6 @@ class HzyAppBarGenerator {
           onPressed: leadingCallback ?? () => Navigator.of(context).pop(),
         );
     backBtn = canShowBack ? backBtn : Container();
-    backBtn = showback ? backBtn : Container();
     return backBtn;
   }
 
@@ -148,7 +147,7 @@ class HzyAppBarGenerator {
     Function()? leadingCallback,
   }) {
     bool canPop = Navigator.of(context).canPop();
-    bool canShowBack = canPop && showback;
+    bool canShowBack = canPop || showback;
     ThemeData themeData = Theme.of(context);
     leadingIconColor ??=
         (themeData.appBarTheme.iconTheme?.color ?? HzyNormalColorS.col101010);
