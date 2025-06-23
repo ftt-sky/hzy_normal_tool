@@ -234,7 +234,7 @@ class HzyNormalItemWidget extends StatelessWidget {
   });
 
   final HzyNormalItemModel itemModel;
-  final TapItemCallback? tapItemCallback;
+  final ItemTapCallback? tapItemCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -268,7 +268,7 @@ class HzyNormalItemWidget extends StatelessWidget {
         body,
         itemModel.isShowLine == true
             ? itemModel.lineWidget ??
-                HzyNormalTools.configLineSpace(
+                HzyNormalTools.buildDividerLine(
                   color: itemModel.lineColor!,
                   height: itemModel.lineHeight ?? 0.5,
                   margin: itemModel.lineMargin,
@@ -398,8 +398,8 @@ class HzyNormalItemWidget extends StatelessWidget {
 
     // 创建右边图片部分
     createRightImageWidget() {
-      Widget body = configChevronRight(
-        color: itemModel.rightIconColor,
+      Widget body = buildArrowIcon(
+        color: itemModel.rightIconColor ?? HzyNormalColorS.col666666,
       );
       body = itemModel.rightImagePath == null
           ? body

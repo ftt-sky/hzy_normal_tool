@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hzy_normal_tool/hzy_normal_config/hzy_normal_colors.dart';
 import 'package:hzy_normal_tool/hzy_normal_tools/hzy_normal_tools.dart';
-import 'package:hzy_normal_tool/hzy_normal_widgets/hzy_normal_widgets_index.dart';
 import '../hzy_normal_config/hzy_text_style.dart';
 
 /// 通用列表项配置类

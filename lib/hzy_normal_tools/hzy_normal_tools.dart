@@ -526,7 +526,7 @@ void printLongText(String message, {int maxLength = 1000}) {
 
   // 打印剩余部分
   if (remainingText.isNotEmpty) {
-    print(remainingText);
+    debugPrint(remainingText);
   }
 }
 

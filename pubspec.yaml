@@ -1,6 +1,6 @@
 name: hzy_normal_tool
 description: 一个为 Flutter 开发者提供的综合性工具包，包含常用的 UI 组件、工具类、抽象类和配置文件，帮助开发者快速构建高质量的 Flutter 应用。
-version: 0.0.5
+version: 0.0.3
 homepage: "https://gitee.com/tengteng_fan/hzy_normal_tool"
 repository: "https://gitee.com/tengteng_fan/hzy_normal_tool.git"
 issue_tracker: "https://gitee.com/tengteng_fan/hzy_normal_tool/issues"

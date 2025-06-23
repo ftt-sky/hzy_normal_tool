@@ -20,7 +20,7 @@
 
 ```yaml
 dependencies:
-  hzy_normal_tool: ^0.0.5
+  hzy_normal_tool: ^0.0.3
 ```
 
 或者使用 Git 仓库：
