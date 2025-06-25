@@ -471,7 +471,7 @@ Widget buildNormalItemWidget(NormalItemConfig config) {
           ),
           // 分割线：根据配置决定是否显示
           config.showLine
-              ? config.lineWidget ?? HzyNormalTools.buildDividerLine()
+              ? config.lineWidget ?? buildDividerLine()
               : const SizedBox.shrink(),
         ],
       ),
@@ -797,10 +797,10 @@ Widget createNormaltfWidget({
       cursorColor: cursorColor,
       onEditingComplete: onEditingComplete != null
           ? () {
-              HzyNormalTools.keydissMiss(context);
+              keydissMiss(context);
               onEditingComplete();
             }
-          : () => HzyNormalTools.keydissMiss(context),
+          : () => keydissMiss(context),
     ),
   );
 }

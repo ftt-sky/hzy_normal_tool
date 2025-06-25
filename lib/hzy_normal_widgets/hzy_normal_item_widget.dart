@@ -176,7 +176,7 @@ class HzyNormalItemModel {
   int? tapType;
 
   /// item 点击事件
-  TapIndexOptionCallback? tapItemCall;
+  OptionalIndexTapCallback? tapItemCall;
 
   /// 其他信息
   dynamic otherInfo;
@@ -268,7 +268,7 @@ class HzyNormalItemWidget extends StatelessWidget {
         body,
         itemModel.isShowLine == true
             ? itemModel.lineWidget ??
-                HzyNormalTools.buildDividerLine(
+                buildDividerLine(
                   color: itemModel.lineColor!,
                   height: itemModel.lineHeight ?? 0.5,
                   margin: itemModel.lineMargin,
