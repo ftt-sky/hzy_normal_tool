@@ -7,6 +7,7 @@
  * @LastEditTime: 2024-08-22 18:27:55
  */
 import 'package:flutter/material.dart';
+
 import '../hzy_normal_config/hzy_normal_colors.dart';
 
 class HzyAppBarGenerator {
@@ -17,7 +18,7 @@ class HzyAppBarGenerator {
     Widget? titleWidget,
     Widget? leadingWidget,
     IconData? icon,
-    bool showBack = true,
+    bool forceShowBack = false,
     double elevation = 0,
     double? toolBarHeight,
     Color? textColor,
@@ -50,7 +51,7 @@ class HzyAppBarGenerator {
       context: context,
       leading: leadingWidget,
       icon: icon,
-      showback: showBack,
+      forceShowBack: forceShowBack,
       leadingIconColor: leadingIconColor,
       leadingCallback: leadingCallback,
     );
@@ -105,12 +106,15 @@ class HzyAppBarGenerator {
     required BuildContext context,
     Widget? leading,
     IconData? icon,
-    bool showback = true,
+    bool forceShowBack = false,
     Color? leadingIconColor,
     Function()? leadingCallback,
   }) {
     bool canPop = Navigator.of(context).canPop();
-    bool canShowBack = canPop || showback;
+    bool canShowBack = canPop;
+    if (forceShowBack) {
+      canShowBack = true;
+    }
     ThemeData themeData = Theme.of(context);
     leadingIconColor ??=
         (themeData.appBarTheme.iconTheme?.color ?? HzyNormalColorS.col101010);
@@ -134,7 +138,7 @@ class HzyAppBarGenerator {
     Widget? titlew,
     Widget? leading,
     IconData? icon,
-    bool showback = true,
+    bool forceShowBack = false,
     double elevation = 0,
     double? toolbarHeight,
     PreferredSizeWidget? bottom,
@@ -147,7 +151,12 @@ class HzyAppBarGenerator {
     Function()? leadingCallback,
   }) {
     bool canPop = Navigator.of(context).canPop();
-    bool canShowBack = canPop || showback;
+
+    bool canShowBack = canPop;
+    if (forceShowBack) {
+      canShowBack = true;
+    }
+
     ThemeData themeData = Theme.of(context);
     leadingIconColor ??=
         (themeData.appBarTheme.iconTheme?.color ?? HzyNormalColorS.col101010);
@@ -192,12 +201,12 @@ class HzyAppBarGenerator {
           ),
       elevation: elevation,
       bottom: bottom,
-      automaticallyImplyLeading: showback,
+      automaticallyImplyLeading: forceShowBack,
     );
   }
 
   // 判断是否是一级界面
-  static bool isfirstPage({
+  static bool isFirstPage({
     required BuildContext context,
   }) {
     bool showback;
