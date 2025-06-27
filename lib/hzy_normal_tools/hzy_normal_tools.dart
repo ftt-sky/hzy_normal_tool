@@ -599,7 +599,7 @@ Color getColorFromHex(String? hexColor) {
 /// [isScrollControlled] 是否支持滚动控制
 ///
 /// 返回Future，当弹窗关闭时完成
-Future<T?> showBottomSheet<T>({
+Future<T?> modalBottomSheet<T>({
   required BuildContext context,
   required Widget child,
   Color? backgroundColor,
@@ -628,7 +628,7 @@ Future<T?> showBottomSheet<T>({
 }
 
 /// 兼容旧版本的底部弹窗显示函数（已废弃）
-@Deprecated('请使用 showBottomSheet 替代')
+@Deprecated('请使用 modalBottomSheet 替代')
 configShowBottomSheet({
   required BuildContext context,
   required Widget child,
@@ -637,7 +637,7 @@ configShowBottomSheet({
   ShapeBorder? shape = const ContinuousRectangleBorder(),
   bool isScrollControlled = false,
 }) async {
-  return await showBottomSheet(
+  return await modalBottomSheet(
     context: context,
     child: child,
     constraints: constraints,
