@@ -1,3 +1,12 @@
+## [0.0.4] - 2025-06-30
+
+- chore: bump version to 0.0.4
+- feat: 添加 Windows 和 Linux 平台的发布脚本
+- docs: 删除冗余的Project.md文件并格式化README
+- refactor(hzy_normal_tools): 重命名showBottomSheet为modalBottomSheet以提高一致性
+- refactor(appbar): 将showback参数重命名为forceShowBack并修改默认行为
+- refactor: 将工具类方法从静态方法改为顶层函数
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
