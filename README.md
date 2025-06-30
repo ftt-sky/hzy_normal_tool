@@ -7,12 +7,12 @@
 
 ## ✨ 特性
 
-- 🎨 **丰富的 UI 组件** - 提供常用的按钮、列表项、对话框等组件
-- 🛠️ **实用工具类** - 包含页面状态管理、路由工具等实用功能
-- 🏗️ **抽象基类** - 提供生命周期管理、主题配置等抽象类
-- 🎯 **统一配置** - 预定义的颜色、文本样式和页面状态
-- 📱 **高度可定制** - 支持自定义样式和行为
-- 🚀 **开箱即用** - 简单易用的 API 设计
+-   🎨 **丰富的 UI 组件** - 提供常用的按钮、列表项、对话框等组件
+-   🛠️ **实用工具类** - 包含页面状态管理、路由工具等实用功能
+-   🏗️ **抽象基类** - 提供生命周期管理、主题配置等抽象类
+-   🎯 **统一配置** - 预定义的颜色、文本样式和页面状态
+-   📱 **高度可定制** - 支持自定义样式和行为
+-   🚀 **开箱即用** - 简单易用的 API 设计
 
 ## 📦 安装
 
@@ -20,16 +20,16 @@
 
 ```yaml
 dependencies:
-  hzy_normal_tool: ^0.0.3
+    hzy_normal_tool: ^0.0.3
 ```
 
 或者使用 Git 仓库：
 
 ```yaml
 dependencies:
-  hzy_normal_tool:
-    git:
-      url: https://gitee.com/tengteng_fan/hzy_normal_tool.git
+    hzy_normal_tool:
+        git:
+            url: https://gitee.com/tengteng_fan/hzy_normal_tool.git
 ```
 
 然后运行：
@@ -100,6 +100,7 @@ lib/
 ### UI 组件
 
 #### 通用列表项
+
 ```dart
 // 创建带箭头的列表项
 Widget item = createNormalItemWidget(
@@ -113,6 +114,7 @@ Widget item = createNormalItemWidget(
 ```
 
 #### 按钮组件
+
 ```dart
 // 确认取消按钮组
 Widget buttons = HzySureCancelBtnWidget(
@@ -126,6 +128,7 @@ Widget buttons = HzySureCancelBtnWidget(
 ```
 
 #### 弹窗组件
+
 ```dart
 // 显示确认对话框
 showPopDiaLogWidget(
@@ -141,6 +144,7 @@ showPopDiaLogWidget(
 ### 工具类
 
 #### 页面状态管理
+
 ```dart
 // 使用页面状态枚举
 PageState currentState = PageState.loading;
@@ -161,6 +165,7 @@ Widget buildContent() {
 ```
 
 #### 回调函数类型
+
 ```dart
 // 使用预定义的回调类型
 IndexTapCallback onItemTap = (int index) {
@@ -175,13 +180,14 @@ BooleanCallback onToggle = (bool value) {
 ### 抽象类和 Mixin
 
 #### 生命周期管理
+
 ```dart
 class MyPage extends StatefulWidget with HzyNormalLifeCycleAbs {
   @override
   void onPageInit() {
     // 页面初始化
   }
-  
+
   @override
   void onPageDispose() {
     // 页面销毁
@@ -190,6 +196,7 @@ class MyPage extends StatefulWidget with HzyNormalLifeCycleAbs {
 ```
 
 #### AppBar Mixin
+
 ```dart
 class MyPage extends StatefulWidget with HzyAppBarMixin {
   @override
@@ -205,6 +212,7 @@ class MyPage extends StatefulWidget with HzyAppBarMixin {
 ### 配置文件
 
 #### 颜色配置
+
 ```dart
 // 使用预定义颜色
 Color primary = HzyNormalColors.primaryColor;
@@ -213,6 +221,7 @@ Color text = HzyNormalColors.textColor;
 ```
 
 #### 文本样式
+
 ```dart
 // 使用预定义文本样式
 TextStyle title = HzyTextStyle.titleStyle;
@@ -224,20 +233,20 @@ TextStyle body = HzyTextStyle.bodyStyle;
 
 ### 核心组件
 
-| 组件 | 描述 | 主要参数 |
-|------|------|----------|
-| `createNormalItemWidget` | 创建通用列表项 | `title`, `message`, `onTap`, `showNext` |
-| `showPopDiaLogWidget` | 显示弹窗 | `context`, `title`, `content`, `onConfirm` |
-| `HzySureCancelBtnWidget` | 确认取消按钮组 | `onSurePressed`, `onCancelPressed` |
-| `HzyAppBarGenerator` | AppBar 生成器 | `title`, `backgroundColor`, `actions` |
+| 组件                     | 描述           | 主要参数                                   |
+| ------------------------ | -------------- | ------------------------------------------ |
+| `createNormalItemWidget` | 创建通用列表项 | `title`, `message`, `onTap`, `showNext`    |
+| `showPopDiaLogWidget`    | 显示弹窗       | `context`, `title`, `content`, `onConfirm` |
+| `HzySureCancelBtnWidget` | 确认取消按钮组 | `onSurePressed`, `onCancelPressed`         |
+| `HzyAppBarGenerator`     | AppBar 生成器  | `title`, `backgroundColor`, `actions`      |
 
 ### 工具类
 
-| 类/方法 | 描述 | 用途 |
-|---------|------|------|
-| `HzyNormalTools` | 通用工具类 | 提供各种实用方法 |
-| `HzyRouterTools` | 路由工具类 | 页面导航和路由管理 |
-| `PageState` | 页面状态枚举 | 统一页面状态管理 |
+| 类/方法          | 描述         | 用途               |
+| ---------------- | ------------ | ------------------ |
+| `HzyNormalTools` | 通用工具类   | 提供各种实用方法   |
+| `HzyRouterTools` | 路由工具类   | 页面导航和路由管理 |
+| `PageState`      | 页面状态枚举 | 统一页面状态管理   |
 
 ## 🔧 自定义配置
 
@@ -248,7 +257,7 @@ TextStyle body = HzyTextStyle.bodyStyle;
 class MyTheme implements HzyNormalThemeAbstract {
   @override
   Color get primaryColor => Colors.blue;
-  
+
   @override
   TextStyle get titleStyle => TextStyle(
     fontSize: 18,
@@ -281,18 +290,16 @@ class MyBasePage extends StatefulWidget with HzyScaffolMixin {
 
 ## 🔗 相关链接
 
-- [Pub.dev](https://pub.dev/packages/hzy_normal_tool)
-- [GitHub](https://github.com/your-username/hzy_normal_tool)
-- [Gitee](https://gitee.com/tengteng_fan/hzy_normal_tool)
+-   [Pub.dev](https://pub.dev/packages/hzy_normal_tool)
+-   [GitHub](https://github.com/your-username/hzy_normal_tool)
+-   [Gitee](https://gitee.com/tengteng_fan/hzy_normal_tool)
 
 ## 📞 联系方式
 
 如果你有任何问题或建议，请通过以下方式联系我们：
 
-- 提交 [Issue](https://gitee.com/tengteng_fan/hzy_normal_tool/issues)
-- 发送邮件到：[your-email@example.com]
+-   提交 [Issue](https://gitee.com/tengteng_fan/hzy_normal_tool/issues)
 
 ---
 
 **感谢使用 HZY Normal Tool！** 🎉
- 
